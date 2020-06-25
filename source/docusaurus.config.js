@@ -75,7 +75,7 @@ module.exports = {
         //   ],
         // },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Crazydan Studio. Built with <a href="https://v2.docusaurus.io/">Docusaurus 2</a>.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Crazydan Studio.<br>Built with <a href="https://v2.docusaurus.io/">Docusaurus 2</a>.`,
     },
   },
   presets: [
