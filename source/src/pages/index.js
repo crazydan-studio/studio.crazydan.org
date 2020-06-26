@@ -12,7 +12,7 @@ const features = [
     imageUrl: 'img/artisan-sprit.jpg',
     description: (
       <>
-        以工匠持之以恒的态度和精益求精的精神，创作和打磨精良的软件产品。
+        以工匠的持之以恒的态度和精益求精的精神，创作和打磨精良的软件产品。
       </>
     ),
   },
@@ -26,8 +26,8 @@ const features = [
     ),
   },
   {
-    title: <>凝望星空</>,
-    imageUrl: 'img/stars-sky.jpg',
+    title: <>探索未来</>,
+    imageUrl: 'img/take-fly-to-the-sky.jpg',
     description: (
       <>
         遥望浩瀚宇宙，畅想遥远未来，力争打造出能够跨越时空，影响世代的作品。
