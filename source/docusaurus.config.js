@@ -14,13 +14,18 @@ module.exports = {
         src: 'img/logo.png',
       },
       links: [
-        // {
-        //   to: 'docs/',
-        //   activeBasePath: 'docs',
-        //   label: 'Docs',
-        //   position: 'left',
-        // },
-        // {to: 'blog', label: 'Blog', position: 'left'},
+        {
+          to: 'projects/',
+          activeBasePath: 'projects',
+          label: 'Projects',
+          position: 'right',
+        },
+        {
+          to: 'blog/',
+          activeBasePath: 'blog',
+          label: 'Blog',
+          position: 'right',
+        },
         {
           href: 'https://git.crazydan.org/explore/repos',
           label: 'Open Source',
@@ -78,24 +83,33 @@ module.exports = {
       copyright: `Copyright © ${new Date().getFullYear()} Crazydan Studio.<br>Built with <a href="https://v2.docusaurus.io/">Docusaurus 2</a>.`,
     },
   },
+  plugins: [
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        path: 'projects',
+        routeBasePath: 'projects',
+        include: ['**/*.md', '**/*.mdx'],
+        homePageId: 'index',
+      },
+    ]
+  ],
   presets: [
     [
       '@docusaurus/preset-classic',
       {
-        // docs: {
-        //   // It is recommended to set document id as docs home page (`docs/` path).
-        //   homePageId: 'doc1',
-        //   sidebarPath: require.resolve('./sidebars.js'),
-        //   // Please change this to your repo.
-        //   editUrl:
-        //     'https://github.com/facebook/docusaurus/edit/master/website/',
-        // },
-        // blog: {
-        //   showReadingTime: true,
-        //   // Please change this to your repo.
-        //   editUrl:
-        //     'https://github.com/facebook/docusaurus/edit/master/website/blog/',
-        // },
+        blog: {
+          path: 'blog',
+          routeBasePath: 'blog',
+          include: ['*.md', '*.mdx'],
+          postsPerPage: 10,
+          showReadingTime: true,
+          truncateMarker: /<!--\s*(more)\s*-->/,
+          feedOptions: {
+            type: 'all',
+            copyright: `Copyright © ${new Date().getFullYear()} Crazydan Studio.`,
+          },
+        },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
