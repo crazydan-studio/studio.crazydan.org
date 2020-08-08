@@ -23,3 +23,10 @@ image:
 - 架构设计为可替换可组合，而不是可扩展，避免引入新的概念，减少代码调用层次，简化实现流程
 - 机器关注的是指令，而不是函数本身；人类关注的是数据及数据结构，而不是代码本身；人类只是通过代码告诉机器要做什么以得到人类所需的数据，但机器并不理解为什么或者怎么做；
 - 算法优化就是对数据去粗取精的过程，通过降低计算规模和计算次数实现提升计算速度的目的；
+
+
+:::info Copyright
+- 文章作者: flytreeleft - [flytreeleft@crazydan.org](mailto:flytreeleft@crazydan.org)
+- 版权声明: 本文章采用 [知识共享署名 4.0 国际许可协议](https://creativecommons.org/licenses/by/4.0/)。
+  转载请注明来自 [Crazydan Studio](https://crazydan.org/)！
+:::
