@@ -28,6 +28,6 @@ image:
 
 :::info Copyright
 - 文章作者: flytreeleft - [flytreeleft@crazydan.org](mailto:flytreeleft@crazydan.org)
-- 版权声明: 本文章采用 [知识共享署名 4.0 国际许可协议](https://creativecommons.org/licenses/by/4.0/)。
+- 版权声明: 本文章采用许可协议 [署名 4.0 国际 (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/)。
   转载请注明来自 [Crazydan Studio](https://crazydan.org/)！
 :::

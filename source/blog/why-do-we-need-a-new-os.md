@@ -1,5 +1,5 @@
 ---
-title: 为什么我们需要一个新的操作系统？
+title: (译文) 为什么我们需要一个新的操作系统？
 author: Thomas Hintz
 author_title: Creator of 3L Project
 author_url: https://thintz.com/
@@ -158,6 +158,6 @@ we know it pays off in the long run.
 - 原文链接: [https://3lproject.org/blog/why-do-we-need-a-new-os](https://3lproject.org/blog/why-do-we-need-a-new-os)
 - 原文作者: Thomas Hintz - [t@thintz.com](mailto:t@thintz.com)
 - 译文作者: flytreeleft - [flytreeleft@crazydan.org](mailto:flytreeleft@crazydan.org)
-- 版权声明: 本译文采用 [署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/)。
+- 版权声明: 本译文采用许可协议 [署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/)。
   转载请注明来自 [Crazydan Studio](https://crazydan.org/)！
 :::
