@@ -21,7 +21,6 @@ and the momentum behind supporting legacy software.
 
 可以理解，有关 [3L Project](https://3lproject.org) 的最常见问题是<u>「为什么我们需要一个新的操作系统？」</u>。
 该答案存在于迷你和微型计算机的历史，以及<u>对传统软件支持</u>的驱动力之中。
-
 <!-- more -->
 
 :::note 原文段落
@@ -44,7 +43,7 @@ when computing resources were limited even though it is no longer technically ne
 当迷你和微型计算机在60年代、70年代和80年代被建造出来时，内存被限制在千字节或几兆字节，
 并且处理器的运行速度与当下相比简直比蜗牛还慢。在为低资源计算机开发第一个操作系统（OS）时，它们必须尽可能地轻量级。
 因此，出于这样的必要，操作系统都是用汇编语言或C语言编写的，这就更像是一组库的集合，而不是作为资源管理器和程序调度器。
-随着计算机内存和处理器速度的提高，操作系统可以处理更多的常见任务，但经济型计算机仍然需要一个快速、轻便的OS才是实用的。
+随着计算机内存和处理器速度的提高，操作系统可以处理更多的常见任务，但经济型计算机仍然需要一个快速、轻便的OS才能变得实用。
 由于计算资源有限，随着时间的推移，到经济型计算机变得足够强大，可以应付更繁重和功能更全面的操作系统的时侯，
 我们已**被禁锢在旧的架构**之中。尽管 在计算资源有限时所开发的 架构 在技术上已经不再是必需的了，
 但我们今天所拥有的Windows、Linux、Mac OS X和BSD系列的操作系统，依然是采用这样的架构构建的。
@@ -133,6 +132,20 @@ we know it pays off in the long run.
 随着我们的<u>生活和金钱越来越多地转移到电脑和网络上</u>，开发<u>强大的安全机制只会变得越来越重要</u>，
 受到过去的阻碍是没有意义的。**如果我们能做得更好，我们就应该做得更好**。
 就像在一个国家中建设新的基础设施需要大量的前期投资一样，我们知道，从长远来看，这是会有所回报的。
+
+## 译文-扩展阅读
+
+- [一种新的操作系统设计](http://www.yinwang.org/blog-cn/2013/04/14/os-design):
+  转载文章在[这里](./a-new-os-design-by-wangyin)。
+- [Awesome Lisp Machine](https://github.com/ghosthamlet/awesome-lisp-machine):
+  A curated list of awesome Lisp Machine and Lisp Operating System stuff.
+- [3L Project](https://3lproject.org/):
+  The 3L project is building an computing system from the ground up to be secure, private, safe, and extensible.
+- [Mezzano](https://github.com/froggey/Mezzano):
+  An operating system written in Common Lisp.
+- [Oberon System](https://en.wikipedia.org/wiki/Oberon_(operating_system)):
+  A modular, single-user, single-process, multitasking operating system written in the programming language of the same name.
+  The project home page is [Project Oberon](http://www.projectoberon.com/).
 
 
 :::info Copyright

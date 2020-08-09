@@ -6,6 +6,7 @@ author_url: https://flytreeleft.org
 author_image_url:
 tags:
 - 软件开发
+- 软件基础设施
 description:
 image:
 ---
