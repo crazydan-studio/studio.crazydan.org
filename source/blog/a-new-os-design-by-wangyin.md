@@ -1,5 +1,5 @@
 ---
-title: (转载) 一种新的操作系统设计
+title: (转载) 王垠：一种新的操作系统设计
 author: 王垠
 author_title:
 author_url: http://www.yinwang.org/
