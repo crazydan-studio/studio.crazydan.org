@@ -7,7 +7,7 @@ author_image_url:
 tags:
 - 外文翻译
 - 新操作系统
-- 3L Project
+- 3L
 description:
 image:
 ---
@@ -25,7 +25,7 @@ The answer lies in the history of the mini and micro computer
 and the momentum behind supporting legacy software.
 :::
 
-可以理解，有关 [3L Project](https://3lproject.org) 的最常见问题是<u>「为什么我们需要一个新的操作系统？」</u>。
+可以理解，有关 [3L 项目](https://3lproject.org) 的最常见问题是<u>「为什么我们需要一个新的操作系统？」</u>。
 其答案存在于迷你和微型计算机的历史，以及<u>支持传统软件的推力</u>之中。
 <!-- more -->
 
@@ -145,10 +145,16 @@ we know it pays off in the long run.
 
 - [一种新的操作系统设计](http://www.yinwang.org/blog-cn/2013/04/14/os-design):
   转载文章在[这里](./a-new-os-design-by-wangyin)。
-- [Awesome Lisp Machine](https://github.com/ghosthamlet/awesome-lisp-machine):
-  A curated list of awesome Lisp Machine and Lisp Operating System stuff.
+- [Save Our Computing Future](https://thintz.com/essays/save-our-computing-future):
+  译文见 [拯救我们计算的未来](./save-our-computing-future)。
 - [3L Project](https://3lproject.org/):
   The 3L project is building an computing system from the ground up to be secure, private, safe, and extensible.
+- [3L Project: Theories & Hypotheses](https://3lproject.org/theories):
+  译文见 [3L 项目的理论与假设](./the-theories-and-hypotheses-of-3l-project)。
+- [The 3L Project In Depth](https://3lproject.org/in-depth):
+  译文见 [深入了解 3L 项目](./the-3l-project-in-depth)。
+- [Awesome Lisp Machine](https://github.com/ghosthamlet/awesome-lisp-machine):
+  A curated list of awesome Lisp Machine and Lisp Operating System stuff.
 - [Mezzano](https://github.com/froggey/Mezzano):
   An operating system written in Common Lisp.
 - [Oberon System](https://en.wikipedia.org/wiki/Oberon_(operating_system)):

@@ -121,6 +121,8 @@ image:
 
 - [Why do we need a new OS?](https://3lproject.org/blog/why-do-we-need-a-new-os):
   译文见 [为什么我们需要一个新的操作系统？](./why-do-we-need-a-new-os)。
+- [Save Our Computing Future](https://thintz.com/essays/save-our-computing-future):
+  译文见 [拯救我们计算的未来](./save-our-computing-future)。
 - [谈 Linux，Windows 和 Mac](http://www.yinwang.org/blog-cn/2013/03/07/linux-windows-mac):
   多质疑、多反思，不应被权威或固有思想和规则所禁锢，认真理智对待和评判事物的优缺点。
 - [几个超炫的专业词汇](http://www.yinwang.org/blog-cn/2013/04/15/terminology):

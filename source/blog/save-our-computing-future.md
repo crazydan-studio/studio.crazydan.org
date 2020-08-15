@@ -8,7 +8,7 @@ draft: true
 tags:
 - 外文翻译
 - 计算的未来
-- 3L Project
+- 3L
 - 软件基础设施
 description:
 image:
@@ -122,6 +122,15 @@ And even better, invest time or money contributing to projects that provide bett
 :::
 
 ## 译文-扩展阅读
+
+- [一种新的操作系统设计](http://www.yinwang.org/blog-cn/2013/04/14/os-design):
+  转载文章在[这里](./a-new-os-design-by-wangyin)。
+- [Why do we need a new OS?](https://3lproject.org/blog/why-do-we-need-a-new-os):
+  译文见 [为什么我们需要一个新的操作系统？](./why-do-we-need-a-new-os)。
+- [3L Project: Theories & Hypotheses](https://3lproject.org/theories):
+  译文见 [3L 项目的理论与假设](./the-theories-and-hypotheses-of-3l-project)。
+- [The 3L Project In Depth](https://3lproject.org/in-depth):
+  译文见 [深入了解 3L 项目](./the-3l-project-in-depth)。
 
 
 :::info Copyright
