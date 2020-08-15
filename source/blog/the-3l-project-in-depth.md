@@ -259,6 +259,7 @@ This is an option if you want the maximum performance.
 - [Oberon System](https://en.wikipedia.org/wiki/Oberon_(operating_system)):
   A modular, single-user, single-process, multitasking operating system written in the programming language of the same name.
   The project home page is [Project Oberon](http://www.projectoberon.com/).
+- [A minimal boot sector tutorial](https://yinwang0.wordpress.com/2011/09/04/boot-sector/): 21行bootloader启动代码。
 
 
 :::info Copyright
