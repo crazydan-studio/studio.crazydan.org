@@ -4,6 +4,7 @@ author: 王垠
 author_title:
 author_url: http://www.yinwang.org/
 author_image_url:
+draft: true
 tags:
 - 好文转载
 - 新操作系统

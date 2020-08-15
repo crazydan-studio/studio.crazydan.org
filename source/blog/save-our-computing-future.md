@@ -4,7 +4,6 @@ author: Thomas Hintz
 author_title: Creator of 3L Project
 author_url: https://thintz.com/
 author_image_url:
-draft: true
 tags:
 - 外文翻译
 - 计算的未来
