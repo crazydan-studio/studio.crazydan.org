@@ -3,16 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "docusaurus start",
-    "build": "docusaurus build --out-dir dist",
+    "start": "npm run _hack_ && docusaurus start",
+    "build": "npm run _hack_ && docusaurus build --out-dir dist",
     "swizzle": "docusaurus swizzle",
-    "deploy": "docusaurus deploy"
+    "deploy": "docusaurus deploy",
+    "_hack_": "cp -f build/plugin-content-blog/blogUtils.js node_modules/@docusaurus/plugin-content-blog/lib/blogUtils.js"
   },
   "dependencies": {
-    "@docusaurus/core": "^2.0.0-alpha.58",
-    "@docusaurus/plugin-content-blog": "^2.0.0-alpha.58",
-    "@docusaurus/plugin-content-docs": "^2.0.0-alpha.58",
-    "@docusaurus/preset-classic": "^2.0.0-alpha.58",
+    "@docusaurus/core": "2.0.0-alpha.65",
+    "@docusaurus/preset-classic": "2.0.0-alpha.65",
+    "@mdx-js/react": "^1.5.8",
     "clsx": "^1.1.1",
     "react": "^16.8.4",
     "react-dom": "^16.8.4"

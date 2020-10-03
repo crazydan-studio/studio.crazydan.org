@@ -13,7 +13,7 @@ module.exports = {
         alt: 'Crazydan Studio',
         src: 'img/logo.png',
       },
-      links: [
+      items: [
         {
           to: 'projects/',
           activeBasePath: 'projects',
@@ -87,18 +87,19 @@ module.exports = {
     [
       '@docusaurus/plugin-content-docs',
       {
+        id: 'projects',
         path: 'projects',
         routeBasePath: 'projects',
         include: ['**/*.md', '**/*.mdx'],
-        homePageId: 'index',
       },
-    ]
+    ],
   ],
   presets: [
     [
       '@docusaurus/preset-classic',
       {
         blog: {
+          id: 'blog',
           path: 'blog',
           routeBasePath: 'blog',
           include: ['*.md', '*.mdx'],
