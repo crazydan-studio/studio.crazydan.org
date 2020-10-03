@@ -27,6 +27,11 @@ module.exports = {
           position: 'right',
         },
         {
+          href: 'https://book.crazydan.org',
+          label: 'Book',
+          position: 'right',
+        },
+        {
           href: 'https://git.crazydan.org/explore/repos',
           label: 'Open Source',
           position: 'right',
