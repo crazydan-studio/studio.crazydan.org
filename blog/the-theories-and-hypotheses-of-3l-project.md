@@ -118,7 +118,7 @@ by providing an environment of readers to each reader
 and a separate eval and/or compilation step
 for each language.
 
-```lisp
+```scheme
 (scheme (+ 1 ((lambda (proc) (proc 2))
   (javascript function(n) { return scheme((+ n 1)); }))))
 
@@ -128,7 +128,7 @@ for each language.
 
 通过为每个读者（译注：后续有解释）提供一个读者环境，以及为每种语言提供单独的 eval 和/或 编译步骤，可以进一步实现这一点。
 
-```lisp
+```scheme
 (scheme (+ 1 ((lambda (proc) (proc 2))
   (javascript function(n) { return scheme((+ n 1)); }))))
 
@@ -149,7 +149,7 @@ before returning the underlying lisp code.
 :::note 原文段落
 In the example, a possible compilation of the Javascript portion could be:
 
-```lisp
+```scheme
 (lambda (n) (+ n 1))
 ```
 
@@ -158,7 +158,7 @@ It would also be possible for readers to extend other readers to process "interm
 
 在该示例中，JavaScript 部分可能编译为：
 
-```lisp
+```scheme
 (lambda (n) (+ n 1))
 ```
 
