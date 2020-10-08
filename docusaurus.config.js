@@ -41,49 +41,33 @@ module.exports = {
     footer: {
       style: 'dark',
       links: [
-        // {
-        //   title: 'Docs',
-        //   items: [
-        //     // {
-        //     //   label: 'Style Guide',
-        //     //   to: 'docs/',
-        //     // },
-        //     // {
-        //     //   label: 'Second Doc',
-        //     //   to: 'docs/doc2/',
-        //     // },
-        //   ],
-        // },
-        // {
-        //   title: 'Community',
-        //   items: [
-        //     // {
-        //     //   label: 'Stack Overflow',
-        //     //   href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-        //     // },
-        //     // {
-        //     //   label: 'Discord',
-        //     //   href: 'https://discordapp.com/invite/docusaurus',
-        //     // },
-        //     // {
-        //     //   label: 'Twitter',
-        //     //   href: 'https://twitter.com/docusaurus',
-        //     // },
-        //   ],
-        // },
-        // {
-        //   title: 'More',
-        //   items: [
-        //     // {
-        //     //   label: 'Blog',
-        //     //   to: 'blog',
-        //     // },
-        //     // {
-        //     //   label: 'GitHub',
-        //     //   href: 'https://github.com/facebook/docusaurus',
-        //     // },
-        //   ],
-        // },
+        {
+          title: 'Our',
+          items: [
+            {
+              label: 'Book',
+              href: 'https://book.crazydan.org',
+            },
+          ],
+        },
+        {
+          title: 'Site',
+          items: [
+            {
+              label: '百家辩',
+              href: 'https://baijia.link',
+            },
+          ],
+        },
+        {
+          title: 'More',
+          items: [
+            {
+              label: 'flytreeleft\'s Blog',
+              href: 'https://flytreeleft.org',
+            },
+          ],
+        },
       ],
       copyright: `Copyright © ${new Date().getFullYear()} Crazydan Studio.<br>Built with <a href="https://v2.docusaurus.io/">Docusaurus 2</a>.`,
     },
