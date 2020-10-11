@@ -54,7 +54,7 @@ module.exports = {
           title: 'Site',
           items: [
             {
-              label: '百家辩',
+              label: '百家',
               href: 'https://baijia.link',
             },
           ],
