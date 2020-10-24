@@ -23,3 +23,9 @@
   margin: 0 calc(-1 * var(--ifm-pre-padding));
   padding: 0 var(--ifm-pre-padding);
 }
+
+.main-wrapper {
+  /* 100% of viewport height (vh) */
+  min-height: 100vh;
+  min-height: calc(100vh - var(--ifm-navbar-height));
+}

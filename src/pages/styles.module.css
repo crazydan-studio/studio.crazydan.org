@@ -10,13 +10,21 @@
   text-align: center;
   position: relative;
   overflow: hidden;
-  position: relative;
   background-color: #fff;
   background-attachment: fixed;
   background-position: top;
   background-size: 100% auto;
   background-repeat: no-repeat;
   background-image: url(/img/walle-watch-the-stars-sky.jpg);
+  min-height: 40vh;
+}
+
+.heroTitle {
+  font-size: 4rem;
+}
+
+.heroSubtitle {
+  font-size: 2rem;
 }
 
 @media screen and (max-width: 966px) {
