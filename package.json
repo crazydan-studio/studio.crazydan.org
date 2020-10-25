@@ -4,10 +4,11 @@
   "private": true,
   "scripts": {
     "start": "npm run _hack_ && docusaurus start",
-    "build": "npm run _hack_ && docusaurus build --out-dir dist",
+    "build": "npm run _hack_ && npm run _timestamp_ && docusaurus build --out-dir dist",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
-    "_hack_": "cp -f build/plugin-content-blog/blogUtils.js node_modules/@docusaurus/plugin-content-blog/lib/blogUtils.js"
+    "_hack_": "cp -f build/plugin-content-blog/blogUtils.js node_modules/@docusaurus/plugin-content-blog/lib/blogUtils.js",
+    "_timestamp_": "bash build/update-post-timestamp.sh"
   },
   "dependencies": {
     "@docusaurus/core": "2.0.0-alpha.65",
