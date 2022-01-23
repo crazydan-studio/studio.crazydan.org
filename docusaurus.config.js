@@ -3,7 +3,7 @@ module.exports = {
   tagline: 'Make life easier and happier.',
   url: 'https://crazydan.org',
   baseUrl: '/',
-  favicon: 'img/logo.png',
+  favicon: 'img/logo.svg',
   organizationName: 'crazydan-studio',
   projectName: 'crazydan.org',
   themeConfig: {
