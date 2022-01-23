@@ -11,7 +11,7 @@ module.exports = {
       title: 'Crazydan Studio',
       logo: {
         alt: 'Crazydan Studio',
-        src: 'img/logo.png',
+        src: 'img/logo.svg',
       },
       items: [
         {
@@ -32,7 +32,7 @@ module.exports = {
           position: 'right',
         },
         {
-          href: 'https://git.crazydan.org/explore/repos',
+          href: 'https://code.studio.crazydan.org/explore/repos',
           label: 'Open Source',
           position: 'right',
         },
@@ -45,7 +45,11 @@ module.exports = {
           title: 'Our',
           items: [
             {
-              label: 'Book',
+              label: 'Crazydan\'s Home',
+              href: 'https://crazydan.org',
+            },
+            {
+              label: 'Crazydan\'s Book',
               href: 'https://book.crazydan.org',
             },
           ],
