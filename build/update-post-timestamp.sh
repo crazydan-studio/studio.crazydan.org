@@ -11,6 +11,6 @@ git ls-files -z "$post_dir" \
     | while read -d '' path; do \
         touch \
           -m -t \
-          "$(git log -1 --format="%cd" --date=iso -- "$path" | sed -r 's/(-|:| )//g; s/\+.*//g')" \
+          "$(git log -1 --format="%cd" --date=iso -- "$path" | sed -r 's/(-|:| )//g; s/\+.*//g; s/([0-9]{2})$/.\1/g')" \
           "$path"; \
       done
