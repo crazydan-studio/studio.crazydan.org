@@ -102,8 +102,8 @@ async function generateBlogPosts(blogDir, { siteConfig, siteDir }, options) {
         if (frontMatter.date) {
             date = new Date(frontMatter.date);
         }
-        // Use file create time for blog.
-        date = date || (await fs_extra_1.default.stat(source)).birthtime;
+        // Use file modify time for blog.
+        date = date || (await fs_extra_1.default.stat(source)).mtime;
         const slug = frontMatter.slug || (match ? toUrl({ date, link: linkName }) : linkName);
         frontMatter.title = frontMatter.title || linkName;
         blogPosts.push({
