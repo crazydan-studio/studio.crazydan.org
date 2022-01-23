@@ -9,5 +9,8 @@ post_dir=blog
 # %ct: 1570612408
 git ls-files -z "$post_dir" \
     | while read -d '' path; do \
-        touch -d "$(git log -1 --format="@%ct" -- "$path")" "$path"; \
+        touch \
+          -m -t \
+          "$(git log -1 --format="%cd" --date=iso -- "$path" | sed -r 's/(-|:| )//g; s/\+.*//g')" \
+          "$path"; \
       done
