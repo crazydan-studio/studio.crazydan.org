@@ -1,11 +1,11 @@
 module.exports = {
   title: 'Crazydan Studio',
   tagline: 'Make life easier and happier.',
-  url: 'https://crazydan.org',
+  url: 'https://studio.crazydan.org',
   baseUrl: '/',
   favicon: 'img/logo.svg',
   organizationName: 'crazydan-studio',
-  projectName: 'crazydan.org',
+  projectName: 'studio.crazydan.org',
   themeConfig: {
     navbar: {
       title: 'Crazydan Studio',
