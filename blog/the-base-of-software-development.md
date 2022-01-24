@@ -3,7 +3,7 @@ title: 软件开发的基础
 author: flytreleft
 author_title: Creator of Crazydan Studio
 author_url: https://flytreeleft.org
-author_image_url:
+author_image_url: /img/avatar/flytreeleft.svg
 tags:
 - 软件开发
 - 软件基础设施
