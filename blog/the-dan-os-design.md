@@ -243,17 +243,34 @@ image:
 
 ## 功能特性
 
-- 一切皆为结构化数据：数据自带结构，消除编解码
-- 统一且一致的分布式层：开放，连接，协作，共享
-- 统一且一致的数据存取层：高存取性能，规模无关；结构化数据，数据之间任意层级的关联和实时查询；数据不可变和版本化；
-- 统一且一致的程序语言：消除程序碎片化与应用隔离，强制共建互利生态
-- 统一且一致的开发界面：数据定义及引用界面；函数编写界面；应用配置界面；数据查询界面；用户端组装界面；
-- 应用程序函数化，函数可共享，可迁移：减少重造的轮子，成果共享（仅结果非资产共享），实现生态内互利
-- 函数及数据版本化：依赖升级无破坏性，变更可跟踪可回溯
+- 一切皆为结构化数据
+  - 数据自带结构，消除编解码
+  - 数据结构自描述：可自动化识别数据，并可自动与相关函数和数据等建立起联系
+- 统一且一致的分布式层
+  - 开放，连接，协作，共享
+- 统一且一致的数据存取层
+  - 高存取性能，规模无关
+  - 结构化数据，数据之间任意层级的关联和实时查询
+  - 数据不可变和版本化
+- 统一且一致的程序语言
+  - 消除程序碎片化与应用隔离，强制共建互利生态
+- 统一且一致的开发界面
+  - 数据定义及引用界面
+  - 函数编写界面：附带函数说明、参数说明、使用样例等
+  - 应用配置界面
+  - 数据查询界面
+  - 用户 UI 装配界面
+  - 统一且规范的代码格式化：不支持自定义代码风格
+- 应用程序函数化，函数可共享，可迁移
+  - 减少重造的轮子，成果共享（仅结果非资产共享），实现生态内互利
+- 函数及数据版本化
+  - 依赖升级无破坏性，变更可跟踪可回溯
 - 应用间运行环境完全隔离，以消息交换数据，权限最小化
-- 中断的应用可从中断位置继续运行：灾难恢复
+- 中断的应用可从中断位置继续运行
+  - 灾难恢复
 - 原生且默认的数据加密
-- 在自身这端提供对旧世界的接入层，该接入层以原有方式与其对接，再对收到的数据结构化后，返回给调用端（反之为该过程的逆过程），系统提供通用的对接支持和相应的工具
+- 在自身这端提供对旧世界的接入层，该接入层以原有方式与其对接，再对收到的数据结构化后，
+  返回给调用端（反之为该过程的逆过程），系统提供通用的对接支持和相应的工具
 
 ## 架构设计
 
@@ -279,6 +296,13 @@ UI 组件架构：
 - [Pick Operating System](https://en.wikipedia.org/wiki/Pick_operating_system):
   A demand-paged, multiuser, virtual memory, time-sharing computer operating system
   based around a MultiValue database.
+- 数据结构
+  - [Tagged union](https://en.wikipedia.org/wiki/Tagged_union):
+    `type Tree = Empty | Leaf Int | Node Tree Tree`
+    - [Algebraic data type](https://en.wikipedia.org/wiki/Algebraic_data_type)
+  - [Record (computer science)](https://en.wikipedia.org/wiki/Record_(computer_science)):
+    `type alias User = {name: String, age: Int}`
+  - [Metadata](https://en.wikipedia.org/wiki/Metadata)
 
 
 :::info Copyright
