@@ -31,6 +31,8 @@ image:
 
 <!-- more -->
 
+<img src="/img/danos/danos-boot.jpg" alt="Dan OS 启动界面"/>
+
 ## 应对挑战
 
 ### 数据格式的千奇百怪
@@ -303,6 +305,9 @@ UI 组件架构：
   - [Record (computer science)](https://en.wikipedia.org/wiki/Record_(computer_science)):
     `type alias User = {name: String, age: Int}`
   - [Metadata](https://en.wikipedia.org/wiki/Metadata)
+    - 粒度粗细会影响维护成本，故版本控制、属性引用id化能降低数据结构变更的影响
+  - [Purely Functional Data Structures](https://doc.lagout.org/programmation/Functional%20Programming/Chris_Okasaki-Purely_Functional_Data_Structures-Cambridge_University_Press%281998%29.pdf)
+    - [Git is a purely functional data structure](https://blog.jayway.com/2013/03/03/git-is-a-purely-functional-data-structure/)
 
 
 :::info Copyright
