@@ -251,13 +251,13 @@ This is an option if you want the maximum performance.
 ## 译文-扩展阅读
 
 - [Why do we need a new OS?](https://3lproject.org/blog/why-do-we-need-a-new-os):
-  译文见 [为什么我们需要一个新的操作系统？](./why-do-we-need-a-new-os)。
+  译文见 [为什么我们需要一个新的操作系统？](./why-do-we-need-a-new-os.md)。
 - [Save Our Computing Future](https://thintz.com/essays/save-our-computing-future):
-  译文见 [拯救我们计算的未来](./save-our-computing-future)。
+  译文见 [拯救我们计算的未来](./save-our-computing-future.md)。
 - [3L Project](https://3lproject.org/):
   The 3L project is building an computing system from the ground up to be secure, private, safe, and extensible.
 - [3L Project: Theories & Hypotheses](https://3lproject.org/theories):
-  译文见 [3L 项目的理论与假设](./the-theories-and-hypotheses-of-3l-project)。
+  译文见 [3L 项目的理论与假设](./the-theories-and-hypotheses-of-3l-project.md)。
 - [Awesome Lisp Machine](https://github.com/ghosthamlet/awesome-lisp-machine):
   A curated list of awesome Lisp Machine and Lisp Operating System stuff.
 - [Mezzano](https://github.com/froggey/Mezzano):

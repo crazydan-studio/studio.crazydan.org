@@ -144,15 +144,15 @@ we know it pays off in the long run.
 ## 译文-扩展阅读
 
 - [一种新的操作系统设计](http://www.yinwang.org/blog-cn/2013/04/14/os-design):
-  转载文章在[这里](./a-new-os-design-by-wangyin)。
+  转载文章在[这里](./a-new-os-design-by-wangyin.md)。
 - [Save Our Computing Future](https://thintz.com/essays/save-our-computing-future):
-  译文见 [拯救我们计算的未来](./save-our-computing-future)。
+  译文见 [拯救我们计算的未来](./save-our-computing-future.md)。
 - [3L Project](https://3lproject.org/):
   The 3L project is building an computing system from the ground up to be secure, private, safe, and extensible.
 - [3L Project: Theories & Hypotheses](https://3lproject.org/theories):
-  译文见 [3L 项目的理论与假设](./the-theories-and-hypotheses-of-3l-project)。
+  译文见 [3L 项目的理论与假设](./the-theories-and-hypotheses-of-3l-project.md)。
 - [The 3L Project In Depth](https://3lproject.org/in-depth):
-  译文见 [深入了解 3L 项目](./the-3l-project-in-depth)。
+  译文见 [深入了解 3L 项目](./the-3l-project-in-depth.md)。
 - [Awesome Lisp Machine](https://github.com/ghosthamlet/awesome-lisp-machine):
   A curated list of awesome Lisp Machine and Lisp Operating System stuff.
 - [Mezzano](https://github.com/froggey/Mezzano):

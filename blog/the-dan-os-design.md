@@ -74,7 +74,7 @@ UI 组件架构：
 ## 相关阅读
 
 - [一种新的操作系统设计](http://www.yinwang.org/blog-cn/2013/04/14/os-design):
-  转载文章在[这里](./a-new-os-design-by-wangyin)。
+  转载文章在[这里](./a-new-os-design-by-wangyin.md)。
 - [Pick Operating System](https://en.wikipedia.org/wiki/Pick_operating_system):
   A demand-paged, multiuser, virtual memory, time-sharing computer operating system
   based around a MultiValue database.

@@ -457,13 +457,13 @@ instead of kicking the can down the road.
 ## 译文-扩展阅读
 
 - [一种新的操作系统设计](http://www.yinwang.org/blog-cn/2013/04/14/os-design):
-  转载文章在[这里](./a-new-os-design-by-wangyin)。
+  转载文章在[这里](./a-new-os-design-by-wangyin.md)。
 - [Why do we need a new OS?](https://3lproject.org/blog/why-do-we-need-a-new-os):
-  译文见 [为什么我们需要一个新的操作系统？](./why-do-we-need-a-new-os)。
+  译文见 [为什么我们需要一个新的操作系统？](./why-do-we-need-a-new-os.md)。
 - [3L Project: Theories & Hypotheses](https://3lproject.org/theories):
-  译文见 [3L 项目的理论与假设](./the-theories-and-hypotheses-of-3l-project)。
+  译文见 [3L 项目的理论与假设](./the-theories-and-hypotheses-of-3l-project.md)。
 - [The 3L Project In Depth](https://3lproject.org/in-depth):
-  译文见 [深入了解 3L 项目](./the-3l-project-in-depth)。
+  译文见 [深入了解 3L 项目](./the-3l-project-in-depth.md)。
 
 
 :::info Copyright

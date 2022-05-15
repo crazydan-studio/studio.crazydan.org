@@ -101,7 +101,7 @@ image:
 我们不应该继续「抱残守缺」，继续日复一日年复一年地干着「挖坑」和「填坑」的事情，或者，反复重复实现已经存在了的解决方案。
 我们应该跳出当前的困境和视野，在当前的认知和已知的问题之上，面向未来，重新构建一个新的操作系统、一个全新的软件世界。
 
-> 为什么是重建而不是完善现有的，可以继续阅读 [为什么我们需要一个新的操作系统？](./why-do-we-need-a-new-os)。
+> 为什么是重建而不是完善现有的，可以继续阅读 [为什么我们需要一个新的操作系统？](./why-do-we-need-a-new-os.md)。
 
 作为软件开发者，编者认为，软件的基础设施（包括操作系统）应该提供更加完备的和统一的数据存储和处理机制，
 让开发者从「泥潭」中脱身，以更加关注功能需求的开发。什么高并发、分布式、数据查询优化、应用监控、日志处理等等问题，
@@ -126,9 +126,9 @@ image:
 ## 转载文章-扩展阅读
 
 - [Why do we need a new OS?](https://3lproject.org/blog/why-do-we-need-a-new-os):
-  译文见 [为什么我们需要一个新的操作系统？](./why-do-we-need-a-new-os)。
+  译文见 [为什么我们需要一个新的操作系统？](./why-do-we-need-a-new-os.md)。
 - [Save Our Computing Future](https://thintz.com/essays/save-our-computing-future):
-  译文见 [拯救我们计算的未来](./save-our-computing-future)。
+  译文见 [拯救我们计算的未来](./save-our-computing-future.md)。
 - [谈 Linux，Windows 和 Mac](http://www.yinwang.org/blog-cn/2013/03/07/linux-windows-mac):
   多质疑、多反思，不应被权威或固有思想和规则所禁锢，认真理智对待和评判事物的优缺点。
 - [几个超炫的专业词汇](http://www.yinwang.org/blog-cn/2013/04/15/terminology):
