@@ -174,6 +174,25 @@ UI 组件架构：
 ```
 -->
 
+## 界面原型
+
+### 用户界面
+
+<div style={{ textAlign: 'center' }}>
+  <img src="/img/danos/facebook-open-graph.jpg" alt="DanOS用户界面参考样例"/>
+  <span style={{ color: 'var(--ifm-blockquote-color)' }}>
+    注：<a target="_blank" href="https://web-payments.org/slides/2013/cc-linked-data/images/facebook-open-graph.jpg">图片来源</a>
+  </span>
+</div>
+
+设计原则：
+- 若无需用户操作，则不提供**用户界面**，但提供用户**干预界面**；
+- 围绕数据进行用户操作，自动联合起数据处理的应用，除应用配置外，应用无**应用界面**；
+
+### 开发界面
+
+包含**调试界面**。
+
 ## 相关阅读
 
 - [一种新的操作系统设计](http://www.yinwang.org/blog-cn/2013/04/14/os-design):
