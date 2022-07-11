@@ -17,7 +17,7 @@ image:
 > - 在文末有本文编者的联系方式，有不同意见和建议的朋友可以与其保持联系；
 
 `DanDB`（也称为**蛋DB**）是一款存取**结构化**、**不可变**和**版本化**数据的数据库，
-其为[DanOS](./the-dan-os-design.md)的数据存储层。
+其为[DanOS](./the-dan-os-design.md)与[DanBot](./the-dan-bot-design.md)的数据存储层。
 
 <!-- more -->
 
