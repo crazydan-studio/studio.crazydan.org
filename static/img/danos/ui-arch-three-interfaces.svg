@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="278px" preserveAspectRatio="none" style="width:216px;height:278px;background:#FFFFFF;" version="1.1" viewBox="0 0 216 278" width="216px" zoomAndPan="magnify"><defs/><g><g id="elem_data_inf"><rect fill="#F1F1F1" height="44.5938" style="stroke:#181818;stroke-width:0.5;" width="70" x="7" y="39.5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="56" x="14" y="54.4951">数据界面</text><line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="76" y1="59.7969" y2="59.7969"/><ellipse cx="18" cy="70.7969" fill="#000000" rx="3" ry="3" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="42" x="27" y="76.792">结构树</text></g><g id="elem_user_inf"><rect fill="#F1F1F1" height="77.1875" style="stroke:#181818;stroke-width:0.5;" width="82" x="67" y="194"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="56" x="80" y="208.9951">用户界面</text><line style="stroke:#181818;stroke-width:0.5;" x1="68" x2="148" y1="214.2969" y2="214.2969"/><ellipse cx="78" cy="225.2969" fill="#000000" rx="3" ry="3" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="42" x="87" y="231.292">显示器</text><ellipse cx="78" cy="241.5938" fill="#000000" rx="3" ry="3" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="56" x="87" y="247.5889">外设反馈</text><ellipse cx="78" cy="257.8906" fill="#000000" rx="3" ry="3" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="15" x="87" y="263.8857">...</text></g><g id="elem_interact_inf"><rect fill="#F1F1F1" height="109.7813" style="stroke:#181818;stroke-width:0.5;" width="70" x="140" y="7"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="56" x="147" y="21.9951">交互界面</text><line style="stroke:#181818;stroke-width:0.5;" x1="141" x2="209" y1="27.2969" y2="27.2969"/><ellipse cx="151" cy="38.2969" fill="#000000" rx="3" ry="3" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="28" x="160" y="44.292">鼠标</text><ellipse cx="151" cy="54.5938" fill="#000000" rx="3" ry="3" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="28" x="160" y="60.5889">键盘</text><ellipse cx="151" cy="70.8906" fill="#000000" rx="3" ry="3" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="28" x="160" y="76.8857">语音</text><ellipse cx="151" cy="87.1875" fill="#000000" rx="3" ry="3" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="28" x="160" y="93.1826">网络</text><ellipse cx="151" cy="103.4844" fill="#000000" rx="3" ry="3" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="15" x="160" y="109.4795">...</text></g><!--MD5=[b030b1b4b66871e9c97e9837c8aee77b]
+reverse link interact_inf to user_inf--><g id="link_interact_inf_user_inf"><path codeLine="17" d="M151.549,121.977 C142.051,145.864 131.365,172.739 122.955,193.8885 " fill="none" id="interact_inf-backto-user_inf" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="153.432,117.242,146.3905,124.1281,151.5851,121.8884,153.8248,127.083,153.432,117.242" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="26" x="143" y="160.0669">引导</text></g><!--MD5=[b909131606f0ba65c1841b7053bd83ac]
+link data_inf to user_inf--><g id="link_data_inf_user_inf"><path codeLine="18" d="M50.4932,84.683 C60.7801,110.946 78.3456,155.791 91.3631,189.0255 " fill="none" id="data_inf-to-user_inf" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="93.2493,193.841,93.6911,184.0021,91.4256,189.1855,86.2422,186.92,93.2493,193.841" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="26" x="82" y="160.0669">呈现</text></g><!--MD5=[c0ae5c9a94d21b32d40958d9306f49b5]
+reverse link data_inf to interact_inf--><g id="link_data_inf_interact_inf"><path codeLine="19" d="M82.3466,62 C100.5799,62 121.933,62 139.543,62 " fill="none" id="data_inf-backto-interact_inf" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="77.2924,62,86.2924,66,82.2924,62,86.2924,58,77.2924,62" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="26" x="95.5" y="55.0669">变更</text></g><!--MD5=[7a9cc13dad3b4e729096b9dc72436717]
+@startuml
+object "数据界面" as data_inf {
+  *结构树
+}
+object "用户界面" as user_inf {
+  *显示器
+  *外设反馈
+  *...
+}
+object "交互界面" as interact_inf {
+  *鼠标
+  *键盘
+  *语音
+  *网络
+  *...
+}
+
+user_inf -up-> interact_inf : 引导
+data_inf -down-> user_inf : 呈现
+interact_inf -left-> data_inf : 变更
+@enduml
+
+PlantUML version 1.2022.7beta2(Unknown compile time)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>
