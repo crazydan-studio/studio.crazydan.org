@@ -14,6 +14,13 @@ description:
 image:
 ---
 
+<!--
+- [PlantUML](http://plantuml.com/): Text described UML language
+- [Gravizo examples](https://github.com/tlmak0/gravizo/): The examples show how to use gravizo in markdown file
+- [PlantUML diagram creator](http://www.plantuml.com/plantuml/uml/)
+- [Graphviz/DOT](http://www.graphviz.org/documentation/)
+-->
+
 > - DanOS 的设计仍在逐步改进与完善中，本文将随时发生变化，感兴趣的朋友们可以时刻保持关注；
 > - 在文末有本文编者的联系方式，有不同意见和建议的朋友可以与其保持联系；
 
@@ -29,6 +36,7 @@ image:
 - 用户数据安全（加密），以及应用运行环境隔离、应用权限控制等
 - 提供统一且一致的应用用户体验，由操作系统提供「用户界面」，从而消除应用使用体验的割裂，
   以及应用之间的隔离，强制共建互助互利的应用生态
+  - 增强用户的专注力，激发用户思维的活跃度，是最能提升用户体验和工具使用的愉悦度的方式
 - 开发成果共享，打破技术壁垒，降低社会总体的重复开发、重复躺坑的工作量和心路历程
 - 统一且规范的软件开发底层「基础设施」，让开发更加聚焦于业务，而基础设施能够拿来即用，
   无需做全新开发或独立部署
@@ -183,18 +191,84 @@ UI 组件架构：
 
 ## 界面原型
 
+架构图：
+
+![界面架构图](/img/danos/ui-arch-three-interfaces.svg)
+<details>
+<summary>Show graph description</summary>
+<p>
+
+```js
+@startuml
+
+object "数据界面" as data_inf {
+  *结构树
+}
+
+object "用户界面" as user_inf {
+  *显示器
+  *外设反馈
+  *...
+}
+
+object "交互界面" as interact_inf {
+  *鼠标
+  *键盘
+  *语音
+  *网络
+  *...
+}
+
+user_inf -up-> interact_inf : 引导
+data_inf -down-> user_inf : 呈现
+interact_inf -left-> data_inf : 变更
+
+@enduml
+```
+
+</p>
+</details>
+
 ### 用户界面
 
 <div style={{ textAlign: 'center' }}>
-  <img src="/img/danos/facebook-open-graph.jpg" alt="DanOS用户界面参考样例"/>
+  <img src="/img/danos/prototype-user-interface.svg" alt="DanOS用户界面原型图"/>
   <span style={{ color: 'var(--ifm-blockquote-color)' }}>
     注：<a target="_blank" href="https://web-payments.org/slides/2013/cc-linked-data/images/facebook-open-graph.jpg">图片来源</a>
   </span>
 </div>
+<details>
+<summary>Show graph description</summary>
+<p>
+
+```js
+@startsalt
+
+{
+--
+<img:https://web-payments.org/slides/2013/cc-linked-data/images/facebook-open-graph.jpg>
+--
+>> (get [firend, listen, like, cook, watch] of mine) to link_graph _
+--
+}
+
+@endsalt
+```
+
+</p>
+</details>
 
 设计原则：
-- 若无需用户操作，则不提供**用户界面**，但提供用户**干预界面**；
-- 围绕数据进行用户操作，自动联合起数据处理的应用，除应用配置外，应用无**应用界面**；
+- 若无需用户操作，则不提供**用户界面**，但提供用户可实施干预的用户界面
+- 围绕数据变更提供**交互界面**，根据用户操作自动将数据变更交给对应的应用
+  - 应用除配置界面以外，无其他用户界面，并且，配置界面也由OS统一提供
+- 用户仅需确定数据之间的关系以及可展示的属性，剩下的视图布局、组件样式等，由OS统一处理和绘制
+  - 比如，[PlantUML](https://pdf.plantuml.net/PlantUML_Language_Reference_Guide_en.pdf#section.14)做声明式便可绘制出**用户界面**
+- 交互界面的目的是对目标数据**实施变更**，可以在用户界面展示数据的变化过程，也可以仅展示变更结果
+  - 变更动效不是必须的，其主要目的是吸引用户的注意，但在有历史记录以及更高效和直接的反馈方式时，
+    是不需要动效的，不必要的动效反而会使用户分心
+- 用户界面只是对数据变更结果的展示，通过视觉上的反馈，让用户知晓变更情况，
+  以进一步确认变更是否有效、是否正确等
 
 ### 开发界面
 
