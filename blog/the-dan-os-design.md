@@ -219,9 +219,9 @@ object "交互界面" as interact_inf {
   *...
 }
 
-user_inf -up-> interact_inf : 引导
-data_inf -down-> user_inf : 呈现
-interact_inf -left-> data_inf : 变更
+user_inf -left-> interact_inf : 引导
+interact_inf -down-> data_inf : 变更
+data_inf -up-> user_inf : 呈现
 
 @enduml
 ```
