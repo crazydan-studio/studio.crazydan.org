@@ -1,7 +1,7 @@
 ---
 title: DanOS 设计
 author: flytreleft
-author_title: Creator of Crazydan Studio
+author_title: Founder of Crazydan Studio
 author_url: https://flytreeleft.org
 author_image_url: /img/avatar/flytreeleft.svg
 tags:
