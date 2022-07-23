@@ -23,6 +23,212 @@ image:
 
 ## 架构设计
 
+![主体关系图](/img/dandb/arch-subject-relation-graph.svg)
+<details>
+<summary>Show graph description</summary>
+<p>
+
+```js
+@startuml
+
+<style>
+agent {
+  BackGroundColor pink
+  LineColor red
+  TextColor red
+}
+storage {
+  BackGroundColor palegreen
+  LineColor green
+  TextColor green
+}
+cloud {
+  BackGroundColor aliceblue
+  LineColor blue
+  TextColor blue
+}
+</style>
+
+circle Root #black;line:black [
+]
+
+agent e1
+agent e2
+agent e3
+agent e4
+
+storage e1_id [
+  ab51b
+]
+cloud e1_id_type [
+  string
+]
+cloud e1_id_size [
+  5
+]
+cloud e1_id_other [
+  ...
+]
+storage e1_type [
+  Org
+]
+cloud e1_type_type [
+  string
+]
+cloud e1_type_size [
+  3
+]
+cloud e1_type_other [
+  ...
+]
+storage e1_name [
+  技术研发部
+]
+cloud e1_name_type [
+  string
+]
+cloud e1_name_other [
+  ...
+]
+storage e1_other [
+  ...
+]
+
+storage e2_id [
+  cfe78
+]
+cloud e2_id_type [
+  string
+]
+cloud e2_id_size [
+  5
+]
+cloud e2_id_other [
+  ...
+]
+storage e2_type [
+  Org
+]
+cloud e2_type_type [
+  string
+]
+cloud e2_type_other [
+  ...
+]
+storage e2_name [
+  成都分部
+]
+cloud e2_name_type [
+  string
+]
+cloud e2_name_other [
+  ...
+]
+storage e2_other [
+  ...
+]
+
+storage e3_id [
+  8bda1
+]
+cloud e3_id_type [
+  string
+]
+cloud e3_id_other [
+  ...
+]
+storage e3_type [
+  User
+]
+cloud e3_type_other [
+  ...
+]
+storage e3_name [
+  张三
+]
+storage e3_other [
+  ...
+]
+
+storage e4_id [
+  a28dc
+]
+cloud e4_id_type [
+  string
+]
+cloud e4_id_other [
+  ...
+]
+storage e4_type [
+  User
+]
+cloud e4_type_other [
+  ...
+]
+storage e4_name [
+  李四
+]
+storage e4_other [
+  ...
+]
+
+Root ~~ e1 : entity
+Root ~~ e2 : entity
+Root ~~ e3 : entity
+Root ~~ e4 : entity
+
+e1 --> e2 : parent
+e2 --> e3 : leader
+e1 --> e4 : staff
+e3 --> e4 : friend
+
+e1 .. e1_id : id
+e1_id -- e1_id_type : type
+e1_id -- e1_id_size : size
+e1_id -- e1_id_other : ...
+e1 .. e1_name : name
+e1_name -- e1_name_type : type
+e1_name -- e1_name_other : ...
+e1 .. e1_type : type
+e1_type -- e1_type_type : type
+e1_type -- e1_type_size : size
+e1_type -- e1_type_other : ...
+e1 .. e1_other : ...
+
+e2 .. e2_id : id
+e2_id -- e2_id_type : type
+e2_id -- e2_id_size : size
+e2_id -- e2_id_other : ...
+e2 .. e2_name : name
+e2_name -- e2_name_type : type
+e2_name -- e2_name_other : ...
+e2 .. e2_type : type
+e2_type -- e2_type_type : type
+e2_type -- e2_type_other : ...
+e2 .. e2_other : ...
+
+e3 .. e3_id : id
+e3_id -- e3_id_type : type
+e3_id -- e3_id_other : ...
+e3 .. e3_type : type
+e3_type -- e3_type_other : ...
+e3 .. e3_name : name
+e3 .. e3_other : ...
+
+e4 .. e4_id : id
+e4_id -- e4_id_type : type
+e4_id -- e4_id_other : ...
+e4 .. e4_type : type
+e4_type -- e4_type_other : ...
+e4 .. e4_name : name
+e4 .. e4_other : ...
+
+@enduml
+```
+
+</p>
+</details>
+
 术语：
 - 模型（`Model`）：对主体结构的描述
 - 主体（`Subject`）：
