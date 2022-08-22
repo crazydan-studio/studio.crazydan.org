@@ -115,6 +115,7 @@ image:
 ### 应用能力共享
 
 - 非源码（资产）共享，而是函数能力的共享，共享的是开发成果
+  - 代码仅需写一次
 - 应用服务于**数据所有者**（个人或组织），而不是其开发者
 - 应用之间没有竞争关系，其协同为数据所有者服务，构成一个不可分割的整体
 - 应用的能力可做任意组合，以共同完成大型或复杂的任务，同时提供顺畅的、无割裂、一致的用户体验
@@ -294,6 +295,10 @@ data_inf -up-> user_inf : 呈现
 - [Pick Operating System](https://en.wikipedia.org/wiki/Pick_operating_system):
   A demand-paged, multiuser, virtual memory, time-sharing computer operating system
   based around a MultiValue database.
+- [DBOS - A Database-oriented Operating System](https://dbos-project.github.io/):
+  基于数据库的操作系统，按“一切皆表，一切皆存储过程”进行设计，面向云平台。含数据变更日志。
+  - [DBOS: A DBMS-Oriented Operating System (VLDB 2022)](https://vldb.org/pvldb/vol15/p21-skiadopoulos.pdf)
+  - [A Progress Report on DBOS: A DBMS-Oriented Operating System (CIDR 2022)](http://cidrdb.org/cidr2022/papers/p26-li.pdf)
 - 数据结构
   - [Tagged union](https://en.wikipedia.org/wiki/Tagged_union):
     `type Tree = Empty | Leaf Int | Node Tree Tree`
