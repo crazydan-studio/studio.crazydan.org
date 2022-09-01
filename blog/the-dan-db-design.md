@@ -27,9 +27,8 @@ import sampleCashbagData from './dandb/sample-app-cashbag-data';
 ## 架构设计
 
 <DataLinkGraph data={sampleCashbagData} dimensions ={{
-  width: 640,
+  width: 740,
   height: 800,
-  margin: { top: 30, right: 30, bottom: 30, left: 60 }
 }}
 >某记账App数据关系图</DataLinkGraph>
 
