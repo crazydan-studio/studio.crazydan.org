@@ -4,10 +4,9 @@ import * as d3 from "d3";
 import hierarchy from './hierarchy';
 
 // TODO 待实现功能
-// - [ ] 根据输入实时过滤节点、连线
+// - [x] 根据输入过滤节点、连线
+// - [x] 仅显示指定类型的节点
 // - [ ] 画布缩放
-// - [ ] 透视图
-// - [ ] 紧凑、稀疏按钮
 
 const fontSize = 12;
 
@@ -35,105 +34,108 @@ function _drag(simulation) {
       .on("end", dragended);
 }
 
+function _filter(svg, nodes, links, bound) {
+  const contains = (obj, v) => (obj.value + '').includes(v);
+  const dataTypeFilters = {model: true, prop: true, data: true, keyword: ''};
+  const btnClick = function(el, type) {
+    if (el.className.includes("active")) {
+      el.className = "btn";
+      dataTypeFilters[type] = false;
+    } else {
+      el.className = "btn active";
+      dataTypeFilters[type] = true;
+    }
+
+    search();
+  };
+  const canNodeShow = (node) => (node.type == "model" && dataTypeFilters.model)
+    || (node.type == "prop" && dataTypeFilters.prop)
+    || (node.type == "data" && dataTypeFilters.data);
+  const search = () => {
+    const keyword = dataTypeFilters.keyword;
+
+    const filteredLinks = links
+      .filter((link) => contains(link, keyword) || (contains(link.source, keyword) && contains(link.target, keyword)))
+      .filter((link) => canNodeShow(link.source) && canNodeShow(link.target));
+    const filteredLinkNodeIdMap = filteredLinks.reduce((map, link) => {
+      map[link.source.id] = map[link.target.id] = true;
+      return map;
+    }, {});
+
+    const filteredNodes = nodes
+      .filter((node) => filteredLinkNodeIdMap[node.id] || contains(node, keyword))
+      .filter(canNodeShow);
+
+    _graph(svg, filteredNodes, filteredLinks);
+  };
+
+  const body = svg
+    .append("foreignObject")
+    .attr("width", bound.width)
+    .attr("height", 34)
+    .attr('x', bound.x)
+    .attr('y', bound.y)
+    .append("xhtml:body")
+    .attr('xmlns','http://www.w3.org/1999/xhtml');
+  body.append("style")
+    .html(".buttons { display:flex; }"
+      + ".buttons .btn { height:32px;border:none;padding:6px;cursor:pointer;color:#fff;background-color:#0d6efd;border-color:#0d6efd;transition:color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out; }"
+      + ".buttons .btn:hover { color:#fff;background-color:#0b5ed7;border-color:#0a58ca; }"
+      + ".buttons .btn.active { color:#fff;background-color:#0a58ca;border-color:#0a53be; }"
+      + ".buttons .divider { display:inline-block;align-self:stretch;width:1px;min-height:1em;opacity:.25;background-color:#000; }"
+      + ".search { width:100%;height:32px;padding:6px;border:none;border-left:2px solid #dadde1; }");
+
+  const filter = body.append("div")
+      .attr("style", "display:flex;border-bottom:2px solid #dadde1;");
+  const buttons = filter.append("div").attr("class", "buttons");
+
+  buttons.append("input")
+    .attr("class", "btn" + (dataTypeFilters.data ? " active" : ""))
+    .attr("type", "button")
+    .attr("value", "显示数据节点")
+    .on("click", function() { btnClick(this, "data") });
+  buttons.append("div").attr("class", "divider");
+  buttons.append("input")
+    .attr("class", "btn" + (dataTypeFilters.prop ? " active" : ""))
+    .attr("type", "button")
+    .attr("value", "显示属性节点")
+    .on("click", function() { btnClick(this, "prop") });
+  buttons.append("div").attr("class", "divider");
+  buttons.append("input")
+    .attr("class", "btn" + (dataTypeFilters.model ? " active" : ""))
+    .attr("type", "button")
+    .attr("value", "显示数据结构")
+    .on("click", function() { btnClick(this, "model") });
+
+  filter.append("div")
+    .attr("style", "flex-grow:1;")
+    .append("input")
+      .attr("class", "search")
+      .attr("type", "text")
+      .attr("placeholder", "输入关键字过滤数据...")
+      .on("change", (e) => {
+        dataTypeFilters.keyword = e.target.value;
+        search();
+      });
+}
+
 // https://observablehq.com/@sandraviz/force-directed-layout?collection=@observablehq/featured-creators
 // https://observablehq.com/@d3/force-directed-graph
 // https://observablehq.com/@d3/line-with-tooltip?collection=@d3/charts
 // http://using-d3js.com/05_01_paths.html
 function _graph(svg, nodes, links) {
+  svg.selectAll("[role='links']").remove();
+  svg.selectAll("[role='nodes']").remove();
+
   const simulation = d3.forceSimulation(nodes)
       .force("link", d3.forceLink(links).id(d => d.id).distance((d) => d.weight).strength(1))
       .force("charge", d3.forceManyBody().strength(-240))
       .force("x", d3.forceX())
       .force("y", d3.forceY());
 
-  // const link = svg
-  //   .append("g")
-  //   .selectAll("line")
-  //   .data(links)
-  //   .join("line")
-  //     .attr("stroke", (d) => d.color)
-  //     .attr("stroke-width", 1)
-  //     .attr("stroke-opacity", 0.8);
-
-  // const node = svg
-  //   .append("g")
-  //     .attr("fill", "#fff")
-  //     .attr("stroke", "#000")
-  //     .attr("stroke-width", 1.5)
-  //   .selectAll("circle")
-  //   .data(nodes)
-  //   .join("circle")
-  //     .attr("fill", (d) => d.color)
-  //     .attr("r", (d) => d.weight)
-  //   .call(_drag(simulation));
-
-  // 文本路径跟随方案
-  // const node = svg
-  //   .append("g")
-  //     .attr("fill", "#fff")
-  //     .attr("stroke", "#000")
-  //     .attr("stroke-width", 1.5)
-  //   .selectAll("path")
-  //   .data(nodes)
-  //   .join("path")
-  //     .attr("fill", (d) => d.color)
-  //     .attr("id", (d) => `node-${d.id}`)
-  //     .attr("d", (d) => {
-  //       const path = d3.path();
-  //       path.arc(d.x, d.y, d.weight, 0, Math.PI * 2);
-  //       path.closePath();
-  //       return path;
-  //     })
-  //   .call(_drag(simulation));
-  // const nodeText = svg
-  //   .append("g")
-  //   .selectAll("text")
-  //   .data(nodes)
-  //   .join("text")
-  //     .attr("pointer-events", "none")
-  //     .call((text) =>
-  //       text.append("textPath")
-  //         .attr("xlink:href", (d) => `#node-${d.id}`)
-  //         .text((d) => d.value)
-  //     );
-
-  // const node = svg
-  //   .append("g")
-  //     .attr("fill", "#fff")
-  //     .attr("stroke", "#000")
-  //     .attr("stroke-width", 1.5)
-  //   .selectAll("g")
-  //   .data(nodes)
-  //   .join("g")
-  //     .call((g) => {
-  //       g.append("circle")
-  //         .attr("fill", (d) => d.color)
-  //         .attr("r", (d) => d.weight);
-  //       g.append("path")
-  //         .attr("id", (d) => `node-${d.id}`)
-  //         .attr("fill", "transparent")
-  //         .attr("stroke", "transparent")
-  //         .attr("d", (d) => {
-  //           const path = d3.path();
-  //           path.moveTo(d.x - 2 * d.weight, d.y);
-  //           path.lineTo(d.x + 2 * d.weight, d.y);
-  //           // path.arc(d.x, d.y, d.weight, 0, Math.PI * 2);
-  //           path.closePath();
-  //           return path;
-  //         });
-  //       g.append("text")
-  //         .attr("pointer-events", "none")
-  //         // .text((d) => d.value)
-  //         .append("textPath")
-  //         .attr("xlink:href", (d) => `#node-${d.id}`)
-  //         .text((d) => d.value);
-  //       return g;
-  //     })
-  //   .call(_drag(simulation));
-
-
   const link = svg
     .append("g")
+      .attr("role", "links")
     .selectAll("g")
     .data(links)
     .join("g")
@@ -164,6 +166,7 @@ function _graph(svg, nodes, links) {
 
   const node = svg
     .append("g")
+      .attr("role", "nodes")
     .selectAll("g")
     .data(nodes)
     .join("g")
@@ -204,15 +207,6 @@ function _graph(svg, nodes, links) {
         path.closePath();
         return path;
       });
-    // link.selectAll("text")
-    //   .attr("x", (d) => Math.min(d.source.x, d.target.x) + (Math.abs(d.target.x - d.source.x) / 2))
-    //   .attr("y", (d) => Math.min(d.source.y, d.target.y) + (Math.abs(d.target.y - d.source.y) / 2));
-
-    // link
-    //   .attr("x1", (d) => d.source.x)
-    //   .attr("y1", (d) => d.source.y)
-    //   .attr("x2", (d) => d.target.x)
-    //   .attr("y2", (d) => d.target.y);
 
     node.selectAll("circle")
       .attr("cx", (d) => d.x)
@@ -225,34 +219,18 @@ function _graph(svg, nodes, links) {
       });
     node.selectAll("tspan")
       .attr("x", (d) => d.source.x);
-
-    // node.selectAll("circle")
-    //   .attr("cx", (d) => d.x)
-    //   .attr("cy", (d) => d.y);
-    // node.selectAll("path").attr("d", (d) => {
-    //   const path = d3.path();
-    //   path.moveTo(d.x - 2 * d.weight, d.y);
-    //   path.lineTo(d.x + 2 * d.weight, d.y);
-    //   path.closePath();
-    //   return path;
-    // });
-
-    // node.attr("d", (d) => {
-    //   const path = d3.path();
-    //   path.arc(d.x, d.y, d.weight, 0, Math.PI * 2);
-    //   path.closePath();
-    //   return path;
-    // });
   });
-
-  return svg.node();
 }
 
 const DataLinkGraph = ({ data, dimensions, children }) => {
   const svgRef = React.useRef(null);
-  const { width, height, margin } = dimensions;
-  const svgWidth = width + margin.left + margin.right;
-  const svgHeight = height + margin.top + margin.bottom;
+  const { width, height } = dimensions;
+  const viewBox = {
+    x: -width / 2,
+    y: -height / 2,
+    width: width,
+    height: height
+  };
 
   React.useEffect(() => {
     const nodes = data.nodes;
@@ -260,20 +238,21 @@ const DataLinkGraph = ({ data, dimensions, children }) => {
 
     // Create root container where we will append all other chart elements
     const svg = d3.select(svgRef.current)
-                  .attr("viewBox", [-width / 2, -height / 2, width, height])
-                  // .attr("style", "max-width: 100%; height: auto; height: intrinsic;")
-                  .attr("font-size", fontSize)
-                  // .attr("font-family", "sans-serif")
-                  .attr("font-weight", "normal")
-                  .attr("text-anchor", "middle");
+      .attr("viewBox", [viewBox.x, viewBox.y, viewBox.width, viewBox.height])
+      // .attr("style", "max-width: 100%; height: auto; height: intrinsic;")
+      .attr("font-size", fontSize)
+      // .attr("font-family", "sans-serif")
+      .attr("font-weight", "normal")
+      .attr("text-anchor", "middle");
     svg.selectAll("*").remove(); // Clear svg content before adding new elements
 
     _graph(svg, nodes, links);
+    _filter(svg, nodes, links, viewBox);
   }, [data]); // Redraw chart if data changes
 
   return (
     <div>
-      <svg ref={svgRef} width={svgWidth} height={svgHeight} style={{border: 'solid 2px #dadde1'}} />
+      <svg ref={svgRef} width={width} height={height} style={{border: 'solid 2px #dadde1'}} />
       <p style={{textAlign: 'center', color: '#6a737d'}}>{children}</p>
     </div>
   );

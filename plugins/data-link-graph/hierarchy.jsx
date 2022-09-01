@@ -31,6 +31,7 @@ function _hierarchy(nodes, links, obj, options) {
     if (!nodes[data_id]) {
         nodes[data_id] = {
             id: data_id
+            , type: 'data'
             , value: obj.label
             , weight: data_node_size
             , color: data_node_color
@@ -48,6 +49,7 @@ function _hierarchy(nodes, links, obj, options) {
         if (!nodes[sub_data_id]) {
             nodes[sub_data_id] = {
                 id: sub_data_id
+                , type: is_data ? 'data' : (prop == 'model_type' ? 'model' : 'prop')
                 , value: sub_obj.label ? sub_obj.label : sub_obj
                 , weight: is_data ? data_node_size : data_model_type_node_size
                 , color: is_data ? data_node_color : (prop == 'model_type' ? data_model_type_node_color : data_prop_node_color)
@@ -62,7 +64,7 @@ function _hierarchy(nodes, links, obj, options) {
                 id: link_id
                 , source: data_id
                 , target: sub_data_id
-                , value: prop_def ? prop_def.label : (prop == 'model_type' ? '模型结构' : prop)
+                , value: prop_def ? prop_def.label : (prop == 'model_type' ? '数据结构' : prop)
                 , weight: is_data ? data_link_length : data_prop_link_length
                 , color: data_link_color
             };
@@ -77,6 +79,7 @@ function _hierarchy(nodes, links, obj, options) {
                 const model_prop_id = `${model_type_id}_with_${p}`;
                 nodes[model_prop_id] = {
                     id: model_prop_id
+                    , type: 'model'
                     , value: v.label
                     , weight: data_model_type_prop_node_size
                     , color: data_model_type_prop_node_color
