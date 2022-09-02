@@ -170,7 +170,7 @@ function _filter(svg, nodes, links, viewBox) {
 function _graph(svg, nodes, links, viewBox) {
   const simulation = d3.forceSimulation(nodes)
       .force("link", d3.forceLink(links).id(d => d.id).distance((d) => d.weight).strength(1))
-      .force("charge", d3.forceManyBody().strength(-240))
+      .force("charge", d3.forceManyBody().strength(-540))
       .force("x", d3.forceX())
       .force("y", d3.forceY());
 
