@@ -26,11 +26,12 @@ import sampleCashbagData from './dandb/sample-app-cashbag-data';
 
 ## 架构设计
 
-<DataLinkGraph data={sampleCashbagData} dimensions ={{
-  width: 740,
-  height: 800,
-}}
->某记账App数据关系图</DataLinkGraph>
+<DataLinkGraph
+  data={sampleCashbagData}
+  height={800}
+>
+某记账App数据关系图
+</DataLinkGraph>
 
 术语：
 - 模型（`Model`）：对主体结构的描述
