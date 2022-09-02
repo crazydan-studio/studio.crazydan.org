@@ -129,11 +129,11 @@ function _filter(svg, nodes, links, viewBox) {
       .attr("style", "display:flex;border-bottom:2px solid #dadde1;");
   const buttons = filter.append("div").attr("class", "buttons");
 
-  buttons.append("input")
-    .attr("class", "btn" + (filterCondition.data ? " active" : ""))
-    .attr("type", "button")
-    .attr("value", "显示数据节点")
-    .on("click", function() { btnClick(this, "data") });
+  // buttons.append("input")
+  //   .attr("class", "btn" + (filterCondition.data ? " active" : ""))
+  //   .attr("type", "button")
+  //   .attr("value", "显示数据节点")
+  //   .on("click", function() { btnClick(this, "data") });
   buttons.append("div").attr("class", "divider");
   buttons.append("input")
     .attr("class", "btn" + (filterCondition.prop ? " active" : ""))
@@ -157,7 +157,7 @@ function _filter(svg, nodes, links, viewBox) {
         filterCondition.keyword = e.target.value;
         search();
       });
-  filter.append("div").attr("style", "display:flex;align-items:center;")
+  filter.append("div").attr("style", "display:flex;align-items:center;background:#fff;")
     .append("span")
       .attr("class", "fullscreen")
       .on("click", (e) => _fullscreen(svg, viewBox));
