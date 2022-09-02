@@ -42,9 +42,13 @@ function _fullscreen(svg, viewBox) {
   if (parent.fullscreen) {
     parent.fullscreen = false;
     parent.style = "";
+    parent.querySelector(".graph-text").style.display = "";
+    parent.ownerDocument.body.style.overflow = "visible";
   } else {
     parent.fullscreen = true;
-    parent.style = `position: absolute;top: 0;left: 0;background-color: rgba(0,0,0,.5);padding: ${padding}px;width: 100%;height: 100%;z-index: 10000;`;
+    parent.style = `position: fixed;top: 0;left: 0;background-color: rgba(0,0,0,.5);padding: ${padding}px;width: 100%;height: 100%;z-index: 10000;`;
+    parent.querySelector(".graph-text").style.display = "none";
+    parent.ownerDocument.body.style.overflow = "hidden";
   }
 
   const parentRect = parent.getBoundingClientRect();
@@ -297,11 +301,11 @@ const DataLinkGraph = ({ data, height, children }) => {
 
   return (
     <div>
-      <svg ref={svgRef}
+      <svg class="graph-area" ref={svgRef}
         preserveAspectRatio="xMidYMid meet"
         style={{border: 'solid 2px #dadde1', backgroundColor: '#fff'}}
       />
-      <p style={{textAlign: 'center', color: '#6a737d'}}>{children}</p>
+      <p class="graph-text" style={{textAlign: 'center', color: '#6a737d'}}>{children}</p>
     </div>
   );
 };
