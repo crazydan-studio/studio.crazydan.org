@@ -6,7 +6,8 @@ import hierarchy from './hierarchy';
 // TODO 待实现功能
 // - [x] 根据输入过滤节点、连线
 // - [x] 仅显示指定类型的节点
-// - [ ] 画布缩放
+// - [x] 根据页面设置画布宽度
+// - [x] 全屏弹窗
 
 const fontSize = 12;
 
@@ -34,25 +35,55 @@ function _drag(simulation) {
       .on("end", dragended);
 }
 
-function _filter(svg, nodes, links, bound) {
+function _fullscreen(svg, viewBox) {
+  const padding = 32;
+  const parent = viewBox.parent;
+
+  if (parent.fullscreen) {
+    parent.fullscreen = false;
+    parent.style = "";
+  } else {
+    parent.fullscreen = true;
+    parent.style = `position: absolute;top: 0;left: 0;background-color: rgba(0,0,0,.5);padding: ${padding}px;width: 100%;height: 100%;z-index: 10000;`;
+  }
+
+  const parentRect = parent.getBoundingClientRect();
+  const sizeDiff = parent.fullscreen ? padding * 2 : 0;
+  const width = parentRect.width - sizeDiff;
+  const height = (parent.fullscreen ? parentRect.height : viewBox.height) - sizeDiff;
+  const newViewBox = {
+    x: -width / 2,
+    y: -height / 2,
+    width: width,
+    height: height,
+    parent: parent
+  };
+
+  svg.attr("viewBox", [newViewBox.x, newViewBox.y, newViewBox.width, newViewBox.height]);
+  svg.select("foreignObject[role='filter']")
+    .attr("x", newViewBox.x)
+    .attr("y", newViewBox.y);
+}
+
+function _filter(svg, nodes, links, viewBox) {
   const contains = (obj, v) => (obj.value + '').includes(v);
-  const dataTypeFilters = {model: true, prop: true, data: true, keyword: ''};
+  const filterCondition = {model: true, prop: true, data: true, keyword: ''};
   const btnClick = function(el, type) {
     if (el.className.includes("active")) {
       el.className = "btn";
-      dataTypeFilters[type] = false;
+      filterCondition[type] = false;
     } else {
       el.className = "btn active";
-      dataTypeFilters[type] = true;
+      filterCondition[type] = true;
     }
 
     search();
   };
-  const canNodeShow = (node) => (node.type == "model" && dataTypeFilters.model)
-    || (node.type == "prop" && dataTypeFilters.prop)
-    || (node.type == "data" && dataTypeFilters.data);
+  const canNodeShow = (node) => (node.type == "model" && filterCondition.model)
+    || (node.type == "prop" && filterCondition.prop)
+    || (node.type == "data" && filterCondition.data);
   const search = () => {
-    const keyword = dataTypeFilters.keyword;
+    const keyword = filterCondition.keyword;
 
     const filteredLinks = links
       .filter((link) => contains(link, keyword) || (contains(link.source, keyword) && contains(link.target, keyword)))
@@ -66,23 +97,28 @@ function _filter(svg, nodes, links, bound) {
       .filter((node) => filteredLinkNodeIdMap[node.id] || contains(node, keyword))
       .filter(canNodeShow);
 
-    _graph(svg, filteredNodes, filteredLinks);
+    _graph(svg, filteredNodes, filteredLinks, viewBox);
   };
 
   const body = svg
     .append("foreignObject")
-    .attr("width", bound.width)
+    .attr("role", "filter")
+    .attr("width", "100%")
     .attr("height", 34)
-    .attr('x', bound.x)
-    .attr('y', bound.y)
+    .attr('x', viewBox.x)
+    .attr('y', viewBox.y)
     .append("xhtml:body")
     .attr('xmlns','http://www.w3.org/1999/xhtml');
   body.append("style")
     .html(".buttons { display:flex; }"
       + ".buttons .btn { height:32px;border:none;padding:6px;cursor:pointer;color:#fff;background-color:#0d6efd;border-color:#0d6efd;transition:color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out; }"
-      + ".buttons .btn:hover { color:#fff;background-color:#0b5ed7;border-color:#0a58ca; }"
+      + ".buttons .btn:hover {  }"
       + ".buttons .btn.active { color:#fff;background-color:#0a58ca;border-color:#0a53be; }"
       + ".buttons .divider { display:inline-block;align-self:stretch;width:1px;min-height:1em;opacity:.25;background-color:#000; }"
+      + ".fullscreen { font-size:2em;margin:4px;cursor:pointer;vertical-align:middle;box-sizing:border-box;display:inline-block;border:.1em solid rgb(28, 206, 206);width:1em;height:1em;position:relative; }"
+      + ".fullscreen::before { width:.333em;height:1.1em;left:.233em;top:-.1em; }"
+      + ".fullscreen::before, .fullscreen::after { content:'';background:#fff;position:absolute; }"
+      + ".fullscreen::after { width:1em;height:.333em;top:.233em;left:-.1em; }"
       + ".search { width:100%;height:32px;padding:6px;border:none;border-left:2px solid #dadde1; }");
 
   const filter = body.append("div")
@@ -90,19 +126,19 @@ function _filter(svg, nodes, links, bound) {
   const buttons = filter.append("div").attr("class", "buttons");
 
   buttons.append("input")
-    .attr("class", "btn" + (dataTypeFilters.data ? " active" : ""))
+    .attr("class", "btn" + (filterCondition.data ? " active" : ""))
     .attr("type", "button")
     .attr("value", "显示数据节点")
     .on("click", function() { btnClick(this, "data") });
   buttons.append("div").attr("class", "divider");
   buttons.append("input")
-    .attr("class", "btn" + (dataTypeFilters.prop ? " active" : ""))
+    .attr("class", "btn" + (filterCondition.prop ? " active" : ""))
     .attr("type", "button")
     .attr("value", "显示属性节点")
     .on("click", function() { btnClick(this, "prop") });
   buttons.append("div").attr("class", "divider");
   buttons.append("input")
-    .attr("class", "btn" + (dataTypeFilters.model ? " active" : ""))
+    .attr("class", "btn" + (filterCondition.model ? " active" : ""))
     .attr("type", "button")
     .attr("value", "显示数据结构")
     .on("click", function() { btnClick(this, "model") });
@@ -114,28 +150,32 @@ function _filter(svg, nodes, links, bound) {
       .attr("type", "text")
       .attr("placeholder", "输入关键字过滤数据...")
       .on("change", (e) => {
-        dataTypeFilters.keyword = e.target.value;
+        filterCondition.keyword = e.target.value;
         search();
       });
+  filter.append("div").attr("style", "display:flex;align-items:center;")
+    .append("span")
+      .attr("class", "fullscreen")
+      .on("click", (e) => _fullscreen(svg, viewBox));
 }
 
 // https://observablehq.com/@sandraviz/force-directed-layout?collection=@observablehq/featured-creators
 // https://observablehq.com/@d3/force-directed-graph
 // https://observablehq.com/@d3/line-with-tooltip?collection=@d3/charts
 // http://using-d3js.com/05_01_paths.html
-function _graph(svg, nodes, links) {
-  svg.selectAll("[role='links']").remove();
-  svg.selectAll("[role='nodes']").remove();
-
+function _graph(svg, nodes, links, viewBox) {
   const simulation = d3.forceSimulation(nodes)
       .force("link", d3.forceLink(links).id(d => d.id).distance((d) => d.weight).strength(1))
       .force("charge", d3.forceManyBody().strength(-240))
       .force("x", d3.forceX())
       .force("y", d3.forceY());
 
-  const link = svg
-    .append("g")
-      .attr("role", "links")
+  const link = svg.select("[role='links']").size() > 0
+    ? svg.select("[role='links']")
+    : svg.append("g").attr("role", "links");
+  link.selectAll("*").remove();
+
+  link
     .selectAll("g")
     .data(links)
     .join("g")
@@ -164,10 +204,12 @@ function _graph(svg, nodes, links) {
         return g;
       });
 
-  const node = svg
-    .append("g")
-      .attr("role", "nodes")
-    .selectAll("g")
+  const node = svg.select("[role='nodes']").size() > 0
+    ? svg.select("[role='nodes']")
+    : svg.append("g").attr("role", "nodes");
+  node.selectAll("*").remove();
+
+  node.selectAll("g")
     .data(nodes)
     .join("g")
       .call((g) => {
@@ -222,19 +264,22 @@ function _graph(svg, nodes, links) {
   });
 }
 
-const DataLinkGraph = ({ data, dimensions, children }) => {
+const DataLinkGraph = ({ data, height, children }) => {
   const svgRef = React.useRef(null);
-  const { width, height } = dimensions;
-  const viewBox = {
-    x: -width / 2,
-    y: -height / 2,
-    width: width,
-    height: height
-  };
 
   React.useEffect(() => {
     const nodes = data.nodes;
     const links = data.links;
+    const parent = svgRef.current.parentNode;
+    const parentRect = parent.getBoundingClientRect();
+    const width = parentRect.width;
+    const viewBox = {
+      x: -width / 2,
+      y: -height / 2,
+      width: width,
+      height: height,
+      parent: parent
+    };
 
     // Create root container where we will append all other chart elements
     const svg = d3.select(svgRef.current)
@@ -246,13 +291,16 @@ const DataLinkGraph = ({ data, dimensions, children }) => {
       .attr("text-anchor", "middle");
     svg.selectAll("*").remove(); // Clear svg content before adding new elements
 
-    _graph(svg, nodes, links);
+    _graph(svg, nodes, links, viewBox);
     _filter(svg, nodes, links, viewBox);
   }, [data]); // Redraw chart if data changes
 
   return (
     <div>
-      <svg ref={svgRef} width={width} height={height} style={{border: 'solid 2px #dadde1'}} />
+      <svg ref={svgRef}
+        preserveAspectRatio="xMidYMid meet"
+        style={{border: 'solid 2px #dadde1', backgroundColor: '#fff'}}
+      />
       <p style={{textAlign: 'center', color: '#6a737d'}}>{children}</p>
     </div>
   );
@@ -262,12 +310,12 @@ const DataLinkGraph = ({ data, dimensions, children }) => {
 export default function ({
   children,
   data,
-  dimensions,
+  height,
 }) {
   return (
     <DataLinkGraph
       data={hierarchy(data)}
-      dimensions={dimensions}
+      height={height}
       children={children}
     />
   );
