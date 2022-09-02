@@ -201,7 +201,12 @@ function _graph(svg, nodes, links, viewBox) {
         g.append("text")
           .attr("pointer-events", "none")
         .append("textPath")
-          .attr("startOffset", (d) => d.source.weight * 2 + fontSize)
+          .attr("startOffset", (d) =>
+            ((d.source.weight + fontSize) * 100
+              / (d.weight + d.source.weight + d.target.weight)
+            )
+            + "%"
+          )
           .attr("xlink:href", (d) => `#line-${d.id}`)
           .text((d) => d.value);
 

@@ -1,10 +1,10 @@
 const data_node_size = 32;
 const data_node_color = '#c30771';
 
-const data_link_length = 180;
+const data_link_length = 120;
 const data_link_color = '#999';
 
-const data_prop_link_length = 140;
+const data_prop_link_length = 120;
 const data_prop_node_color = '#ffbedc';
 
 const data_model_type_node_size = 16;
@@ -109,8 +109,21 @@ export default function hierarchy(data, options) {
         });
     });
 
+    const data_nodes = [];
+    const data_prop_nodes = [];
+    const data_model_nodes = [];
+    Object.values(nodes).forEach((node) => {
+        if (node.type == 'data') {
+            data_nodes.push(node);
+        } else if (node.type == 'prop') {
+            data_prop_nodes.push(node);
+        } else if (node.type == 'model') {
+            data_model_nodes.push(node);
+        }
+    });
+
     return {
-        nodes: Object.values(nodes)
+        nodes: [...data_nodes, ...data_prop_nodes, ...data_model_nodes]
         , links: Object.values(links)
     };
 }
