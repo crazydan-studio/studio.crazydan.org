@@ -8,8 +8,11 @@ import hierarchy from './hierarchy';
 // - [x] 仅显示指定类型的节点
 // - [x] 根据页面设置画布宽度
 // - [x] 全屏弹窗
+// - [x] 数据实体之间需能够明显区分源和目标节点
+// - [ ] 合理排列节点，减少交叉
 
 const fontSize = 12;
+const arrowMarkerSize = 8;
 
 function _drag(simulation) {
   function dragstarted(event, d) {
@@ -163,6 +166,46 @@ function _filter(svg, nodes, links, viewBox) {
       .on("click", (e) => _fullscreen(svg, viewBox));
 }
 
+function _drawLinkPath(link, targetMarkerSize) {
+  const source = link.source;
+  const target = link.target;
+  const x0 = source.x, y0 = source.y;
+  const x1 = target.x, y1 = target.y;
+  const d = x1 - x0, h = y1 - y0;
+  const l = Math.sqrt(d * d + h * h);
+  const cosA = d / l, sinA = h / l;
+  const sourceGap = source.weight;
+  const x01 = x0 + (cosA * sourceGap), y01 = y0 + (sinA * sourceGap);
+  const targetGap = link.type == 'data' ? target.weight + targetMarkerSize : target.weight;
+  const x11 = x1 - (cosA * targetGap), y11 = y1 - (sinA * targetGap);
+
+  // Note: 通过 path 绘制的路径，无法与 arrow 准确连接上，而且会出现闪动
+  // const path = d3.path();
+  // path.moveTo(x01, y01);
+  // path.lineTo(x11, y11);
+  // path.closePath();
+  // return path;
+
+  return `M${x01},${y01} L${x11},${y11} C`;
+}
+
+function _drawArrow(svg, id, markerSize) {
+  svg.append("svg:defs")
+    .append("svg:marker")
+      .attr("id", id)
+      .attr("viewBox", "0 -5 10 10")
+      .attr("refX", 0)
+      .attr("refY", 0)
+      .attr("fill", "#999")
+      .attr("markerWidth", markerSize)
+      .attr("markerHeight", markerSize)
+      .attr("orient", "auto")
+      .append("path")
+      .attr("d", "M0,-5L10,0L0,5");
+
+  return id;
+}
+
 // https://observablehq.com/@sandraviz/force-directed-layout?collection=@observablehq/featured-creators
 // https://observablehq.com/@d3/force-directed-graph
 // https://observablehq.com/@d3/line-with-tooltip?collection=@d3/charts
@@ -173,6 +216,9 @@ function _graph(svg, nodes, links, viewBox) {
       .force("charge", d3.forceManyBody().strength(-540))
       .force("x", d3.forceX())
       .force("y", d3.forceY());
+
+  const dataLinkTargetArrowId = 'data-link-target-arrow';
+  _drawArrow(svg, dataLinkTargetArrowId, arrowMarkerSize);
 
   const link = svg.select("[role='links']").size() > 0
     ? svg.select("[role='links']")
@@ -189,24 +235,15 @@ function _graph(svg, nodes, links, viewBox) {
           .attr("stroke", (d) => d.color)
           .attr("stroke-width", 1.5)
           .attr("stroke-opacity", 0.8)
-          .attr("d", (d) => {
-            const path = d3.path();
-            path.moveTo(d.source.x, d.source.y);
-            path.lineTo(d.target.x, d.target.y);
-            path.closePath();
-            return path;
-          });
+          .attr('marker-end', (d) => d.type == 'data' ? `url(#${dataLinkTargetArrowId})` : '')
+        ;
         g.append("title").text((d) => d.value);
 
         g.append("text")
           .attr("pointer-events", "none")
         .append("textPath")
-          .attr("startOffset", (d) =>
-            ((d.source.weight + fontSize) * 100
-              / (d.weight + d.source.weight + d.target.weight)
-            )
-            + "%"
-          )
+          .attr("startOffset", "50%")
+          .attr("text-anchor", "middle")
           .attr("xlink:href", (d) => `#line-${d.id}`)
           .text((d) => d.value);
 
@@ -251,13 +288,8 @@ function _graph(svg, nodes, links, viewBox) {
 
   simulation.on("tick", () => {
     link.selectAll("path")
-      .attr("d", (d) => {
-        const path = d3.path();
-        path.moveTo(d.source.x, d.source.y);
-        path.lineTo(d.target.x, d.target.y);
-        path.closePath();
-        return path;
-      });
+      .attr("d", (d) => _drawLinkPath(d, arrowMarkerSize))
+    ;
 
     node.selectAll("circle")
       .attr("cx", (d) => d.x)
