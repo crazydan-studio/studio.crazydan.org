@@ -10,6 +10,7 @@ import hierarchy, {node_types} from './hierarchy';
 // - [x] 全屏弹窗
 // - [x] 数据实体之间需能够明显区分源和目标节点
 // - [x] 合理排列节点，减少交叉
+// - [x] 画布可拖动
 
 const fontSize = 12;
 const arrowMarkerSize = 8;
@@ -30,6 +31,40 @@ function _drag(simulation) {
     if (!event.active) simulation.alphaTarget(0);
     d.fx = null;
     d.fy = null;
+  }
+
+  return d3.drag()
+      .on("start", dragstarted)
+      .on("drag", dragged)
+      .on("end", dragended);
+}
+
+function _updateSvgViewBox(svg, viewBox) {
+  svg.attr("viewBox", [viewBox.x, viewBox.y, viewBox.width, viewBox.height]);
+  svg.select("foreignObject[role='filter']")
+    .attr("x", viewBox.x)
+    .attr("y", viewBox.y);
+}
+
+function _dragGraph(svg) {
+  function dragstarted(event) {
+    svg.node().style.cursor = 'move';
+  }
+
+  function dragged(event) {
+    const viewBox = svg.node().viewBox.baseVal;
+    const newViewBox = {
+      x: viewBox.x - event.dx,
+      y: viewBox.y - event.dy,
+      width: viewBox.width,
+      height: viewBox.height
+    };
+
+    _updateSvgViewBox(svg, newViewBox);
+  }
+
+  function dragended(event) {
+    svg.node().style.cursor = '';
   }
 
   return d3.drag()
@@ -66,10 +101,7 @@ function _fullscreen(svg, viewBox) {
     parent: parent
   };
 
-  svg.attr("viewBox", [newViewBox.x, newViewBox.y, newViewBox.width, newViewBox.height]);
-  svg.select("foreignObject[role='filter']")
-    .attr("x", newViewBox.x)
-    .attr("y", newViewBox.y);
+  _updateSvgViewBox(svg, newViewBox);
 }
 
 function _filter(svg, nodes, links, viewBox) {
@@ -223,6 +255,8 @@ function _graph(svg, nodes, links, viewBox) {
       .force("charge", d3.forceManyBody().strength(-540))
       .force("x", d3.forceX())
       .force("y", d3.forceY());
+
+  svg.call(_dragGraph(svg));
 
   const dataLinkTargetArrowId = 'data-link-target-arrow';
   _drawArrow(svg, dataLinkTargetArrowId, arrowMarkerSize);

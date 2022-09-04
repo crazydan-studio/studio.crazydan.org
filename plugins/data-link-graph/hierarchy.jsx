@@ -189,8 +189,6 @@ export default function hierarchy(data, options) {
         // });
     });
 
-    console.log(node_graph, sorted_data_graph_node_ids);
-
     Object.values(nodes).forEach((node) => {
         if (!node) {
             return;
