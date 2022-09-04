@@ -1,7 +1,7 @@
 import React from 'react';
 import * as d3 from "d3";
 
-import hierarchy from './hierarchy';
+import hierarchy, {node_types} from './hierarchy';
 
 // TODO 待实现功能
 // - [x] 根据输入过滤节点、连线
@@ -9,7 +9,7 @@ import hierarchy from './hierarchy';
 // - [x] 根据页面设置画布宽度
 // - [x] 全屏弹窗
 // - [x] 数据实体之间需能够明显区分源和目标节点
-// - [ ] 合理排列节点，减少交叉
+// - [x] 合理排列节点，减少交叉
 
 const fontSize = 12;
 const arrowMarkerSize = 8;
@@ -74,7 +74,13 @@ function _fullscreen(svg, viewBox) {
 
 function _filter(svg, nodes, links, viewBox) {
   const contains = (obj, v) => (obj.value + '').includes(v);
-  const filterCondition = {model: true, prop: true, data: true, keyword: ''};
+  const filterCondition = {
+    [node_types.model]: true
+    , [node_types.prop]: true
+    , [node_types.data]: true
+    , keyword: ''
+  };
+
   const btnClick = function(el, type) {
     if (el.className.includes("active")) {
       el.className = "btn";
@@ -86,15 +92,16 @@ function _filter(svg, nodes, links, viewBox) {
 
     search();
   };
-  const canNodeShow = (node) => (node.type == "model" && filterCondition.model)
-    || (node.type == "prop" && filterCondition.prop)
-    || (node.type == "data" && filterCondition.data);
+
+  const canNodeShow = (node) => !!filterCondition[node.type];
+
   const search = () => {
     const keyword = filterCondition.keyword;
 
     const filteredLinks = links
       .filter((link) => contains(link, keyword) || (contains(link.source, keyword) && contains(link.target, keyword)))
       .filter((link) => canNodeShow(link.source) && canNodeShow(link.target));
+
     const filteredLinkNodeIdMap = filteredLinks.reduce((map, link) => {
       map[link.source.id] = map[link.target.id] = true;
       return map;
@@ -136,19 +143,19 @@ function _filter(svg, nodes, links, viewBox) {
   //   .attr("class", "btn" + (filterCondition.data ? " active" : ""))
   //   .attr("type", "button")
   //   .attr("value", "显示数据节点")
-  //   .on("click", function() { btnClick(this, "data") });
+  //   .on("click", function() { btnClick(this, node_types.data) });
   buttons.append("div").attr("class", "divider");
   buttons.append("input")
     .attr("class", "btn" + (filterCondition.prop ? " active" : ""))
     .attr("type", "button")
     .attr("value", "显示属性节点")
-    .on("click", function() { btnClick(this, "prop") });
+    .on("click", function() { btnClick(this, node_types.prop) });
   buttons.append("div").attr("class", "divider");
   buttons.append("input")
     .attr("class", "btn" + (filterCondition.model ? " active" : ""))
     .attr("type", "button")
     .attr("value", "显示数据结构")
-    .on("click", function() { btnClick(this, "model") });
+    .on("click", function() { btnClick(this, node_types.model) });
 
   filter.append("div")
     .attr("style", "flex-grow:1;")
@@ -176,7 +183,7 @@ function _drawLinkPath(link, targetMarkerSize) {
   const cosA = d / l, sinA = h / l;
   const sourceGap = source.weight;
   const x01 = x0 + (cosA * sourceGap), y01 = y0 + (sinA * sourceGap);
-  const targetGap = link.type == 'data' ? target.weight + targetMarkerSize : target.weight;
+  const targetGap = link.type == node_types.data ? target.weight + targetMarkerSize : target.weight;
   const x11 = x1 - (cosA * targetGap), y11 = y1 - (sinA * targetGap);
 
   // Note: 通过 path 绘制的路径，无法与 arrow 准确连接上，而且会出现闪动
@@ -235,7 +242,7 @@ function _graph(svg, nodes, links, viewBox) {
           .attr("stroke", (d) => d.color)
           .attr("stroke-width", 1.5)
           .attr("stroke-opacity", 0.8)
-          .attr('marker-end', (d) => d.type == 'data' ? `url(#${dataLinkTargetArrowId})` : '')
+          .attr('marker-end', (d) => d.type == node_types.data ? `url(#${dataLinkTargetArrowId})` : '')
         ;
         g.append("title").text((d) => d.value);
 
