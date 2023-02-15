@@ -56,7 +56,7 @@ function Home() {
   const {siteConfig = {}} = context;
   return (
     <Layout
-      title={`Welcome to ${siteConfig.title}`}
+      title={`${siteConfig.title} - ${siteConfig.tagline}`}
       description={`${siteConfig.title}: ${siteConfig.tagline}`}>
       <header className={clsx('hero hero--primary', styles.heroBanner)}>
         <div className="container">
