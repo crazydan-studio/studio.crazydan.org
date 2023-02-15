@@ -1,6 +1,6 @@
 module.exports = {
   title: 'Crazydan Studio',
-  tagline: 'Make life easier and happier.',
+  tagline: 'Make life easier and happier',
   url: 'https://studio.crazydan.org',
   baseUrl: '/',
   favicon: 'img/logo.svg',
