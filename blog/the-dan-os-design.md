@@ -1,17 +1,13 @@
 ---
 title: DanOS 设计
-author: flytreleft
-author_title: Founder of Crazydan Studio
-author_url: https://flytreeleft.org
-author_image_url: /img/avatar/flytreeleft.svg
+authors:
+- flytreleft
 tags:
 - DanOS
 - 软件基础设施
 - 新操作系统
 - 数据结构化
 - 应用函数化
-description:
-image:
 ---
 
 <!--

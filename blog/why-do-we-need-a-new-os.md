@@ -1,15 +1,11 @@
 ---
 title: (译文) 为什么我们需要一个新的操作系统？
-author: Thomas Hintz
-author_title: Creator of 3L Project
-author_url: https://thintz.com/
-author_image_url:
+authors:
+- thintz
 tags:
 - 外文翻译
 - 新操作系统
 - 3L
-description:
-image:
 ---
 
 > 本译文已得到原文作者的中文翻译许可，并采用与原文相同的许可协议 -

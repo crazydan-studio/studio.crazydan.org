@@ -1,17 +1,13 @@
 ---
 title: DanBot 设计
-author: flytreleft
-author_title: Founder of Crazydan Studio
-author_url: https://flytreeleft.org
-author_image_url: /img/avatar/flytreeleft.svg
+authors:
+- flytreleft
 tags:
 - DanBot
 - 结构化语义
 - 语义分析
 - 机器智能
 - 聊天机器人
-description:
-image:
 ---
 
 > - DanBot 的设计仍在逐步改进与完善中，本文将随时发生变化，感兴趣的朋友们可以时刻保持关注；

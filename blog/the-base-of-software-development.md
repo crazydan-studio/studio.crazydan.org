@@ -1,14 +1,10 @@
 ---
 title: 软件开发的基础
-author: flytreleft
-author_title: Founder of Crazydan Studio
-author_url: https://flytreeleft.org
-author_image_url: /img/avatar/flytreeleft.svg
+authors:
+- flytreleft
 tags:
 - 软件开发
 - 软件基础设施
-description:
-image:
 ---
 
 - 原生支持并发、分布式、集群的开发语言

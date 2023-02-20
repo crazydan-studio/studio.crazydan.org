@@ -1,15 +1,11 @@
 ---
 title: (译文) 3L 项目的理论与假设
-author: Thomas Hintz
-author_title: Creator of 3L Project
-author_url: https://thintz.com/
-author_image_url:
+authors:
+- thintz
 tags:
 - 外文翻译
 - 新操作系统
 - 3L
-description:
-image:
 ---
 
 > 本译文已得到原文作者的中文翻译许可，并采用与原文相同的许可协议 -

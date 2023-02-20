@@ -1,16 +1,12 @@
 ---
 title: (译文) 拯救我们计算的未来
-author: Thomas Hintz
-author_title: Creator of 3L Project
-author_url: https://thintz.com/
-author_image_url:
+authors:
+- thintz
 tags:
 - 外文翻译
 - 计算的未来
 - 3L
 - 软件基础设施
-description:
-image:
 ---
 
 > 本译文已得到原文作者的中文翻译许可，并采用与原文相同的许可协议 -
