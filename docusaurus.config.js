@@ -78,12 +78,21 @@ module.exports = {
   },
   plugins: [
     [
-      '@docusaurus/plugin-content-docs',
+      '@docusaurus/plugin-content-blog',
       {
         id: 'projects',
         path: 'projects',
         routeBasePath: 'projects',
-        include: ['**/*.md', '**/*.mdx'],
+        include: ['*.md', '*.mdx'],
+        blogTitle: 'Projects',
+        blogDescription: '',
+        blogListComponent: '@site/src/components/Projects/List.js',
+        blogPostComponent: '@theme/BlogPostPage',
+        blogTagsListComponent: '@theme/BlogTagsListPage',
+        blogTagsPostsComponent: '@theme/BlogTagsPostsPage',
+        feedOptions: {
+          type: null,
+        },
       },
     ],
   ],
