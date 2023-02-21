@@ -15,9 +15,9 @@ module.exports = {
       },
       items: [
         {
-          to: 'projects/',
-          activeBasePath: 'projects',
-          label: 'Projects',
+          to: 'project/',
+          activeBasePath: 'project',
+          label: 'Project',
           position: 'right',
         },
         {
@@ -80,13 +80,13 @@ module.exports = {
     [
       '@docusaurus/plugin-content-blog',
       {
-        id: 'projects',
-        path: 'projects',
-        routeBasePath: 'projects',
+        id: 'project',
+        path: 'project',
+        routeBasePath: 'project',
         include: ['*.md', '*.mdx'],
-        blogTitle: 'Projects',
+        blogTitle: 'Project',
         blogDescription: '',
-        blogListComponent: '@site/src/components/Projects/List.js',
+        blogListComponent: '@site/src/components/Project/List.js',
         blogPostComponent: '@theme/BlogPostPage',
         blogTagsListComponent: '@theme/BlogTagsListPage',
         blogTagsPostsComponent: '@theme/BlogTagsPostsPage',
