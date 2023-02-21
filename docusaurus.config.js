@@ -90,6 +90,8 @@ module.exports = {
         blogPostComponent: '@theme/BlogPostPage',
         blogTagsListComponent: '@theme/BlogTagsListPage',
         blogTagsPostsComponent: '@theme/BlogTagsPostsPage',
+        showReadingTime: true,
+        truncateMarker: /<!--\s*(more)\s*-->/,
         feedOptions: {
           type: null,
         },
