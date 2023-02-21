@@ -3,10 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "export NODE_OPTIONS=--openssl-legacy-provider && docusaurus start",
-    "build": "export NODE_OPTIONS=--openssl-legacy-provider && docusaurus build --out-dir dist",
+    "start": "export NODE_OPTIONS=--openssl-legacy-provider && npm run _hack_ && docusaurus start",
+    "build": "export NODE_OPTIONS=--openssl-legacy-provider && npm run _hack_ && docusaurus build --out-dir dist",
     "swizzle": "docusaurus swizzle",
-    "deploy": "docusaurus deploy"
+    "deploy": "docusaurus deploy",
+    "_hack_": "cp -f build/hackjs/LocaleDropdownNavbarItem.js node_modules/@docusaurus/theme-classic/lib/theme/NavbarItem/LocaleDropdownNavbarItem/index.js"
   },
   "dependencies": {
     "@docusaurus/core": "^2.3.1",
