@@ -11,6 +11,8 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { BlogPostProvider } from '@docusaurus/theme-common/internal';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Link from '@docusaurus/Link';
+
+import i18n from './i18n';
 import styles from './styles.module.css';
 
 function sortProjectByCategory(projects) {
@@ -46,8 +48,8 @@ function sortProjectByCategory(projects) {
 function Project({ children, frontMatter, title }) {
   const imageUrl = useBaseUrl(frontMatter.image);
   const links = [
-    { url: frontMatter.demo, name: '演示' },
-    { url: frontMatter.document, name: '文档' }
+    { url: frontMatter.demo, name: i18n('演示') },
+    { url: frontMatter.document, name: i18n('文档') }
   ];
 
   return (
@@ -121,7 +123,7 @@ function Component({ items, metadata }) {
   const categoryProjects = sortProjectByCategory(items);
   const categoryProjectsKeys = Object.keys(categoryProjects).sort();
   const sidebar = {
-    title: 'Project categories',
+    title: i18n('项目分类'),
     items: categoryProjectsKeys.map((key) => ({
       title: key,
       permalink: '#' + key
@@ -136,8 +138,8 @@ function Component({ items, metadata }) {
       )}
     >
       <Layout
-        title={blogTitle}
-        description={`${siteConfig.title}: ${siteConfig.tagline}`}
+        title={i18n(blogTitle)}
+        description={`${i18n(siteConfig.title)}: ${i18n(siteConfig.tagline)}`}
       >
         <div className="container margin-vert--lg">
           <div className="row">

@@ -1,80 +1,84 @@
 module.exports = {
   title: 'Crazydan Studio',
-  tagline: 'Make life easier and happier',
+  tagline: '让生活：更简单，更美好',
   url: 'https://studio.crazydan.org',
   baseUrl: '/',
   favicon: 'img/logo.svg',
   organizationName: 'crazydan-studio',
   projectName: 'studio.crazydan.org',
+  i18n: {
+    defaultLocale: 'zh',
+    locales: ['zh', 'en']
+  },
   themeConfig: {
     navbar: {
       title: 'Crazydan Studio',
       logo: {
         alt: 'Crazydan Studio',
-        src: 'img/logo.svg',
+        src: 'img/logo.svg'
       },
       items: [
         {
           to: 'project/',
           activeBasePath: 'project',
-          label: 'Project',
-          position: 'right',
+          label: '项目',
+          position: 'right'
         },
         {
           to: 'blog/',
           activeBasePath: 'blog',
-          label: 'Blog',
-          position: 'right',
+          label: '博客',
+          position: 'right'
         },
         {
           href: 'https://book.crazydan.org',
-          label: 'Book',
-          position: 'right',
+          label: '书籍',
+          position: 'right'
         },
         {
           href: 'https://code.studio.crazydan.org/explore/repos',
-          label: 'Open Source',
-          position: 'right',
+          label: '开源代码',
+          position: 'right'
         },
-      ],
+        {
+          type: 'localeDropdown',
+          position: 'right'
+        }
+      ]
     },
     footer: {
       style: 'dark',
       links: [
         {
-          title: 'Our',
+          title: '我们',
           items: [
             {
-              label: 'Crazydan\'s Home',
-              href: 'https://crazydan.org',
-            },
-            {
-              label: 'Crazydan\'s Book',
-              href: 'https://book.crazydan.org',
-            },
-          ],
+              label: 'Crazydan主站',
+              href: 'https://crazydan.org'
+            }
+          ]
         },
         {
-          title: 'Site',
+          title: '站点',
           items: [
             {
               label: '百家',
-              href: 'https://baijia.link',
-            },
-          ],
+              href: 'https://baijia.link'
+            }
+          ]
         },
         {
-          title: 'More',
+          title: '更多',
           items: [
             {
-              label: 'flytreeleft\'s Blog',
-              href: 'https://flytreeleft.org',
-            },
-          ],
-        },
+              label: 'flytreeleft的博客',
+              href: 'https://flytreeleft.org'
+            }
+          ]
+        }
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Crazydan Studio.<br>Built with <a href="https://v2.docusaurus.io/">Docusaurus 2</a>.`,
-    },
+      copyright: `版权所有 © ${new Date().getFullYear()} Crazydan Studio<br>本站通过<a href="https://v2.docusaurus.io/">Docusaurus 2</a>构建`
+    }
   },
   plugins: [
     [
@@ -84,7 +88,7 @@ module.exports = {
         path: 'project',
         routeBasePath: 'project',
         include: ['*.md', '*.mdx'],
-        blogTitle: 'Project',
+        blogTitle: '项目',
         blogDescription: '',
         blogListComponent: '@site/src/components/Project/List.js',
         blogPostComponent: '@theme/BlogPostPage',
@@ -93,10 +97,10 @@ module.exports = {
         showReadingTime: true,
         truncateMarker: /<!--\s*(more)\s*-->/,
         feedOptions: {
-          type: null,
-        },
-      },
-    ],
+          type: null
+        }
+      }
+    ]
   ],
   presets: [
     [
@@ -112,13 +116,13 @@ module.exports = {
           truncateMarker: /<!--\s*(more)\s*-->/,
           feedOptions: {
             type: 'all',
-            copyright: `Copyright © ${new Date().getFullYear()} Crazydan Studio.`,
-          },
+            copyright: `Copyright © ${new Date().getFullYear()} Crazydan Studio.`
+          }
         },
         theme: {
-          customCss: require.resolve('./src/css/custom.css'),
-        },
-      },
-    ],
-  ],
+          customCss: require.resolve('./src/css/custom.css')
+        }
+      }
+    ]
+  ]
 };
