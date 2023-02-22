@@ -80,7 +80,8 @@
   padding: 16px;
 }
 
-.cardBodyContent p {
+.cardBodyContent p,
+.cardBodyContent blockquote {
   margin: 0px;
 }
 
