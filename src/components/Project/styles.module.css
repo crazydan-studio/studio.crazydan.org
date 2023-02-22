@@ -1,4 +1,4 @@
-.projectListByCategory {
+.projectListByCategory:not(:first-child) {
   margin-top: 64px;
 }
 

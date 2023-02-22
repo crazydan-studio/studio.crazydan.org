@@ -38,69 +38,6 @@ function sortProjectByCategory(projects) {
   return categoryProjects;
 }
 
-function Project({ project, category }) {
-  const {
-    content: {
-      frontMatter,
-      metadata: { title }
-    }
-  } = project;
-  const coverImageUrl = useBaseUrl(frontMatter.cover_image);
-  const links = [
-    { url: frontMatter.demo_url, name: i18n('演示') },
-    { url: frontMatter.document_url, name: i18n('文档') }
-  ];
-
-  return (
-    <section className={clsx(styles.card)}>
-      <div>
-        project: {JSON.stringify(frontMatter)}, image: {coverImageUrl}
-      </div>
-      <div className={clsx(styles.cardBody)}>
-        <div
-          className={clsx(
-            styles.cardBodyCover,
-            !!coverImageUrl || styles.cardBodyCoverNone
-          )}
-          style={{
-            backgroundImage: !!coverImageUrl && 'url(' + coverImageUrl + ')'
-          }}
-        ></div>
-        <div className={clsx(styles.cardBodyContent)}>
-          <h3>{title}</h3>
-          <div>
-            {[project].map(({ content: BlogPostContent }) => (
-              <MDXContent
-                key={
-                  category + '-project-' + BlogPostContent.metadata.permalink
-                }
-              >
-                <BlogPostContent />
-              </MDXContent>
-            ))}
-          </div>
-        </div>
-        <span className={clsx(styles.cardBodyFocusHighlight)}></span>
-      </div>
-      <footer className={clsx(styles.cardFooter)}>
-        {links.map(({ url, name }, idx) => (
-          <Link
-            key={title + '-' + url + '-' + idx}
-            className={clsx(
-              styles.cardFooterButton,
-              !!url || styles.cardFooterButtonDisabled
-            )}
-            to={url}
-            {...{ target: '_blank' }}
-          >
-            {name}
-          </Link>
-        ))}
-      </footer>
-    </section>
-  );
-}
-
 function Category({ category }) {
   const categoryName = category.title || category.content.frontMatter.title;
 
@@ -133,13 +70,75 @@ function Category({ category }) {
   );
 }
 
+function Project({ project, category }) {
+  const {
+    content: {
+      frontMatter,
+      metadata: { title }
+    }
+  } = project;
+  const coverImageUrl = useBaseUrl(frontMatter.cover_image);
+  const links = [
+    { url: frontMatter.demo_url, name: i18n('演示') },
+    { url: frontMatter.document_url, name: i18n('文档') }
+  ];
+
+  return (
+    <div className={clsx(styles.card)}>
+      <div>
+        project: {JSON.stringify(frontMatter)}, image: {coverImageUrl}
+      </div>
+      <div className={clsx(styles.cardBody)}>
+        <div
+          className={clsx(
+            styles.cardBodyCover,
+            !!coverImageUrl || styles.cardBodyCoverNone
+          )}
+          style={{
+            backgroundImage: !!coverImageUrl && 'url(' + coverImageUrl + ')'
+          }}
+        ></div>
+        <div className={clsx(styles.cardBodyContent)}>
+          <h3>{title}</h3>
+          <div>
+            {[project].map(({ content: BlogPostContent }) => (
+              <MDXContent
+                key={
+                  category + '-project-' + BlogPostContent.metadata.permalink
+                }
+              >
+                <BlogPostContent />
+              </MDXContent>
+            ))}
+          </div>
+        </div>
+        <span className={clsx(styles.cardBodyFocusHighlight)}></span>
+      </div>
+      <div className={clsx(styles.cardFooter)}>
+        {links.map(({ url, name }, idx) => (
+          <Link
+            key={category + '-project-' + title + '-link-' + idx}
+            className={clsx(
+              styles.cardFooterButton,
+              !!url || styles.cardFooterButtonDisabled
+            )}
+            to={url}
+            {...{ target: '_blank' }}
+          >
+            {name}:{url}
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function ProjectList({ category, projects }) {
   const categoryName = category.title || category.content.frontMatter.title;
 
   return (
     <div className={clsx(styles.projectListByCategory)}>
       <Category category={category} />
-      <div>{JSON.stringify(projects.map((p) => p.content.metadata))}</div>
       <div className={clsx(styles.projectList)}>
         {projects.map((project, idx) => (
           <Project
