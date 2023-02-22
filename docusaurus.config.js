@@ -62,7 +62,7 @@ module.exports = {
           title: '产品',
           items: [
             {
-              label: '百家',
+              label: '百家•辩',
               href: 'https://baijia.link'
             }
           ]
@@ -88,8 +88,8 @@ module.exports = {
         path: 'project',
         routeBasePath: 'project',
         include: ['*.md', '*.mdx', 'category/*.md'],
-        blogTitle: '项目',
         postsPerPage: 'ALL',
+        blogTitle: '项目',
         blogDescription: '',
         blogListComponent: '@site/src/components/Project/List.js',
         blogPostComponent: '@theme/BlogPostPage',
