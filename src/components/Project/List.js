@@ -67,9 +67,9 @@ function Project({ children, frontMatter, title }) {
         <span className={clsx(styles.cardBodyFocusHighlight)}></span>
       </div>
       <footer className={clsx(styles.cardFooter)}>
-        {links.map(({ url, name }) => (
+        {links.map(({ url, name }, idx) => (
           <Link
-            key={title + '-' + url}
+            key={title + '-' + url + '-' + idx}
             className={clsx(
               styles.cardFooterButton,
               !!url || styles.cardFooterButtonDisabled
