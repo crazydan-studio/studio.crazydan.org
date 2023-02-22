@@ -1,12 +1,12 @@
 ---
 title: DanOS
-image: /img/danos/arch-v1.0.jpg
-demo:
-document: /blog/the-dan-os-design
+cover_image: /img/danos/arch-v1.0.jpg
+demo_url:
+document_url: /blog/the-dan-os-design
 authors:
 - flytreleft
 categories:
-- 软件开发基础
+- 重建数字基础
 ---
 
 以**数据结构化**和**应用函数化**为核心设计原则的面向未来的**用户操作系统**，

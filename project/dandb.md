@@ -1,12 +1,12 @@
 ---
 title: DanDB
-image: /img/danos/prototype-user-interface.svg
-demo:
-document: /blog/the-dan-db-design
+cover_image: /img/danos/prototype-user-interface.svg
+demo_url:
+document_url: /blog/the-dan-db-design
 authors:
 - flytreleft
 categories:
-- 软件开发基础
+- 重建数字基础
 ---
 
 面向**结构化数据**的数据库，用于维护数据自身的结构以及数据之间的关联关系，
