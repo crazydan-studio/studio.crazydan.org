@@ -28,7 +28,7 @@ function sortProjectByCategory(projects) {
     const categories = project.content.metadata.frontMatter.categories || [];
 
     if (categories.length == 0) {
-      addProjectByCategory('default', project);
+      addProjectByCategory(i18n('未分类'), project);
     } else {
       categories.forEach((category) => {
         addProjectByCategory(category, project);
@@ -36,20 +36,14 @@ function sortProjectByCategory(projects) {
     }
   });
 
-  for (const category in categoryProjects) {
-    categoryProjects[category] = categoryProjects[category].sort((a, b) =>
-      a.content.metadata.title.localeCompare(b.content.metadata.title)
-    );
-  }
-
   return categoryProjects;
 }
 
 function Project({ children, frontMatter, title }) {
-  const imageUrl = useBaseUrl(frontMatter.image);
+  const coverImageUrl = useBaseUrl(frontMatter.cover_image);
   const links = [
-    { url: frontMatter.demo, name: i18n('演示') },
-    { url: frontMatter.document, name: i18n('文档') }
+    { url: frontMatter.demo_url, name: i18n('演示') },
+    { url: frontMatter.document_url, name: i18n('文档') }
   ];
 
   return (
@@ -58,9 +52,11 @@ function Project({ children, frontMatter, title }) {
         <div
           className={clsx(
             styles.cardBodyCover,
-            !!imageUrl || styles.cardBodyCoverNone
+            !!coverImageUrl || styles.cardBodyCoverNone
           )}
-          style={{ backgroundImage: !!imageUrl && 'url(' + imageUrl + ')' }}
+          style={{
+            backgroundImage: !!coverImageUrl && 'url(' + coverImageUrl + ')'
+          }}
         ></div>
         <div className={clsx(styles.cardBodyContent)}>
           <h3>{title}</h3>
@@ -89,16 +85,40 @@ function Project({ children, frontMatter, title }) {
   );
 }
 
-function ProjectList({ category, projects }) {
+function Category({ category }) {
+  const name = category.title || category.content.frontMatter.title;
+
   return (
     <div>
-      <h2 id={category} className={clsx(styles.projectCategory)}>
+      <h2 id={name} className={clsx(styles.projectCategory)}>
         <div className={clsx(styles.projectCategorySeparator)}></div>
-        <Link className={clsx('hash-link')} to={'#' + category} />
-        {category}
+        <Link className={clsx('hash-link')} to={'#' + name} />
+        {name}
         <div style={{ width: '24px' }}></div>
         <div className={clsx(styles.projectCategorySeparator)}></div>
       </h2>
+      {(category.content ? [category] : []).map(
+        ({ content: BlogPostContent }) => (
+          <BlogPostProvider
+            key={category + '-' + BlogPostContent.metadata.permalink}
+            content={BlogPostContent}
+          >
+            <blockquote className={clsx(styles.projectCategoryDescription)}>
+              <MDXContent>
+                <BlogPostContent />
+              </MDXContent>
+            </blockquote>
+          </BlogPostProvider>
+        )
+      )}
+    </div>
+  );
+}
+
+function ProjectList({ category, projects }) {
+  return (
+    <div>
+      <Category category={category} />
       <div className={clsx(styles.projectList)}>
         {projects.map(({ content: BlogPostContent }, idx) => (
           <BlogPostProvider
@@ -120,11 +140,36 @@ function Component({ items, metadata }) {
   const { blogTitle } = metadata;
   const { siteConfig = {} } = context;
 
-  const categoryProjects = sortProjectByCategory(items);
-  const categoryProjectsKeys = Object.keys(categoryProjects).sort();
+  const categories = items
+    .filter((item) => !!item.content.frontMatter.type)
+    .sort((a, b) =>
+      a.content.metadata.source.localeCompare(b.content.metadata.source)
+    );
+  const categoryMap = categories.reduce((map, category) => {
+    map[category.content.frontMatter.title] = category;
+    return map;
+  }, {});
+
+  const projects = items
+    .filter((item) => !item.content.frontMatter.type)
+    .sort((a, b) =>
+      a.content.metadata.title.localeCompare(b.content.metadata.title)
+    );
+  const categoryProjects = sortProjectByCategory(projects);
+  const categoryProjectsKeys = Object.keys(categoryProjects).sort((a, b) =>
+    a.localeCompare(b)
+  );
+
+  const categoryNames = Object.keys(categoryMap);
+  for (const name of categoryProjectsKeys) {
+    if (!categoryNames.includes(name)) {
+      categoryNames.push(name);
+    }
+  }
+
   const sidebar = {
     title: i18n('项目分类'),
-    items: categoryProjectsKeys.map((key) => ({
+    items: categoryNames.map((key) => ({
       title: key,
       permalink: '#' + key
     }))
@@ -145,11 +190,15 @@ function Component({ items, metadata }) {
           <div className="row">
             <BlogSidebar sidebar={sidebar} />
             <main className={clsx('col col--7')}>
-              {categoryProjectsKeys.map((category) => (
+              {categoryNames.map((categoryName) => (
                 <ProjectList
-                  key={category}
-                  category={category}
-                  projects={categoryProjects[category]}
+                  key={categoryName}
+                  category={
+                    categoryMap[categoryName]
+                      ? categoryMap[categoryName]
+                      : { title: categoryName }
+                  }
+                  projects={categoryProjects[categoryName]}
                 />
               ))}
             </main>
