@@ -8,7 +8,6 @@ import {
 import MDXContent from '@theme/MDXContent';
 import BlogSidebar from '@theme/BlogSidebar';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import { BlogPostProvider } from '@docusaurus/theme-common/internal';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Link from '@docusaurus/Link';
 
@@ -39,7 +38,13 @@ function sortProjectByCategory(projects) {
   return categoryProjects;
 }
 
-function Project({ children, frontMatter, title }) {
+function Project({ project, category }) {
+  const {
+    content: {
+      frontMatter,
+      metadata: { title }
+    }
+  } = project;
   const coverImageUrl = useBaseUrl(frontMatter.cover_image);
   const links = [
     { url: frontMatter.demo_url, name: i18n('演示') },
@@ -48,7 +53,9 @@ function Project({ children, frontMatter, title }) {
 
   return (
     <section className={clsx(styles.card)}>
-      <div>project: {JSON.stringify(frontMatter)}, image: {coverImageUrl}</div>
+      <div>
+        project: {JSON.stringify(frontMatter)}, image: {coverImageUrl}
+      </div>
       <div className={clsx(styles.cardBody)}>
         <div
           className={clsx(
@@ -62,7 +69,15 @@ function Project({ children, frontMatter, title }) {
         <div className={clsx(styles.cardBodyContent)}>
           <h3>{title}</h3>
           <div>
-            <MDXContent>{children}</MDXContent>
+            {[project].map(({ content: BlogPostContent }) => (
+              <MDXContent
+                key={
+                  category + '-project-' + BlogPostContent.metadata.permalink
+                }
+              >
+                <BlogPostContent />
+              </MDXContent>
+            ))}
           </div>
         </div>
         <span className={clsx(styles.cardBodyFocusHighlight)}></span>
@@ -87,29 +102,31 @@ function Project({ children, frontMatter, title }) {
 }
 
 function Category({ category }) {
-  const name = category.title || category.content.frontMatter.title;
+  const categoryName = category.title || category.content.frontMatter.title;
 
   return (
     <div>
-      <h2 id={name} className={clsx(styles.projectCategory)}>
+      <h2 id={categoryName} className={clsx(styles.projectCategory)}>
         <div className={clsx(styles.projectCategorySeparator)}></div>
-        <Link className={clsx('hash-link')} to={'#' + name} />
-        {name}
+        <Link className={clsx('hash-link')} to={'#' + categoryName} />
+        {categoryName}
         <div style={{ width: '24px' }}></div>
         <div className={clsx(styles.projectCategorySeparator)}></div>
       </h2>
       {(category.content ? [category] : []).map(
         ({ content: BlogPostContent }) => (
-          <BlogPostProvider
-            key={name + '-description-' + BlogPostContent.metadata.permalink}
-            content={BlogPostContent}
+          <blockquote
+            key={
+              categoryName +
+              '-description-' +
+              BlogPostContent.metadata.permalink
+            }
+            className={clsx(styles.projectCategoryDescription)}
           >
-            <blockquote className={clsx(styles.projectCategoryDescription)}>
-              <MDXContent>
-                <BlogPostContent />
-              </MDXContent>
-            </blockquote>
-          </BlogPostProvider>
+            <MDXContent>
+              <BlogPostContent />
+            </MDXContent>
+          </blockquote>
         )
       )}
     </div>
@@ -123,20 +140,12 @@ function ProjectList({ category, projects }) {
     <div>
       <Category category={category} />
       <div className={clsx(styles.projectList)}>
-        {projects.map(({ content: BlogPostContent }, idx) => (
-          <BlogPostProvider
-            key={
-              categoryName + '-project-' + BlogPostContent.metadata.permalink
-            }
-            content={BlogPostContent}
-          >
-            <Project
-              key={categoryName + '-project-' + idx}
-              {...BlogPostContent.metadata}
-            >
-              <BlogPostContent />
-            </Project>
-          </BlogPostProvider>
+        {projects.map((project, idx) => (
+          <Project
+            key={categoryName + '-project-' + idx}
+            category={categoryName}
+            project={project}
+          ></Project>
         ))}
       </div>
     </div>
@@ -198,9 +207,9 @@ function Component({ items, metadata }) {
           <div className="row">
             <BlogSidebar sidebar={sidebar} />
             <main className={clsx('col col--7')}>
-              {categoryNames.map((categoryName) => (
+              {categoryNames.map((categoryName, idx) => (
                 <ProjectList
-                  key={categoryName}
+                  key={categoryName + '-project-list' + idx}
                   category={
                     categoryMap[categoryName]
                       ? categoryMap[categoryName]
