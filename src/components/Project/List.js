@@ -55,13 +55,9 @@ function Category({ category }) {
         <div className={clsx(styles.projectCategorySeparator)}></div>
       </h2>
       {(category.content ? [category] : []).map(
-        ({ content: BlogPostContent }) => (
+        ({ content: BlogPostContent }, idx) => (
           <blockquote
-            key={
-              categoryName +
-              '-description-' +
-              BlogPostContent.metadata.permalink
-            }
+            key={idx}
             className={clsx(styles.projectCategoryDescription)}
           >
             <MDXContent>
@@ -102,12 +98,8 @@ function Project({ project, category }) {
         <div className={clsx(styles.cardBodyContent)}>
           <h3>{title}</h3>
           <div>
-            {[project].map(({ content: BlogPostContent }) => (
-              <MDXContent
-                key={
-                  category + '-project-' + BlogPostContent.metadata.permalink
-                }
-              >
+            {[project].map(({ content: BlogPostContent }, idx) => (
+              <MDXContent key={idx}>
                 <BlogPostContent />
               </MDXContent>
             ))}
@@ -118,7 +110,7 @@ function Project({ project, category }) {
       <div className={clsx(styles.cardFooter)}>
         {links.map(({ url, name }, idx) => (
           <Link
-            key={category + '-project-' + title + '-link-' + idx}
+            key={idx}
             className={clsx(
               styles.cardFooterButton,
               !!url || styles.cardFooterButtonDisabled
@@ -142,11 +134,7 @@ function ProjectList({ category, projects }) {
       <Category category={category} />
       <div className={clsx(styles.projectList)}>
         {projects.map((project, idx) => (
-          <Project
-            key={categoryName + '-project-' + idx}
-            category={categoryName}
-            project={project}
-          />
+          <Project key={idx} category={categoryName} project={project} />
         ))}
       </div>
     </div>
@@ -204,7 +192,7 @@ function Component({ items, metadata }) {
             <main className={clsx('col col--7')}>
               {categoryNames.map((categoryName, idx) => (
                 <ProjectList
-                  key={categoryName + '-project-list-' + idx}
+                  key={idx}
                   category={
                     categoryMap[categoryName]
                       ? categoryMap[categoryName]
