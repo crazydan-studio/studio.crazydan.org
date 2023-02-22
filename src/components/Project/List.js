@@ -14,6 +14,10 @@ import Link from '@docusaurus/Link';
 import i18n from './i18n';
 import styles from './styles.module.css';
 
+function sort(a, b) {
+  return a > b ? 1 : a < b ? -1 : 0;
+}
+
 function sortProjectByCategory(projects) {
   const categoryProjects = {};
   const addProjectByCategory = (category, project) => {
@@ -85,9 +89,6 @@ function Project({ project, category }) {
 
   return (
     <div className={clsx(styles.card)}>
-      <div>
-        project: {JSON.stringify(frontMatter)}, image: {coverImageUrl}
-      </div>
       <div className={clsx(styles.cardBody)}>
         <div
           className={clsx(
@@ -125,7 +126,7 @@ function Project({ project, category }) {
             to={url}
             {...{ target: '_blank' }}
           >
-            {name}:{url}
+            {name}
           </Link>
         ))}
       </div>
@@ -159,9 +160,7 @@ function Component({ items, metadata }) {
 
   const categories = items
     .filter((item) => !!item.content.frontMatter.type)
-    .sort((a, b) =>
-      a.content.metadata.source.localeCompare(b.content.metadata.source)
-    );
+    .sort((a, b) => sort(a.content.metadata.source, b.content.metadata.source));
   const categoryMap = categories.reduce((map, category) => {
     map[category.content.frontMatter.title] = category;
     return map;
@@ -169,13 +168,9 @@ function Component({ items, metadata }) {
 
   const projects = items
     .filter((item) => !item.content.frontMatter.type)
-    .sort((a, b) =>
-      a.content.metadata.title.localeCompare(b.content.metadata.title)
-    );
+    .sort((a, b) => sort(a.content.metadata.title, b.content.metadata.title));
   const categoryProjects = sortProjectByCategory(projects);
-  const categoryProjectsKeys = Object.keys(categoryProjects).sort((a, b) =>
-    a.localeCompare(b)
-  );
+  const categoryProjectsKeys = Object.keys(categoryProjects).sort(sort);
 
   const categoryNames = Object.keys(categoryMap);
   for (const name of categoryProjectsKeys) {
