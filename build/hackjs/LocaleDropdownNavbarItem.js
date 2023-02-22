@@ -18,23 +18,13 @@ export default function LocaleDropdownNavbarItem({
   ...props
 }) {
   const {
-    i18n: {defaultLocale, locales, localeConfigs},
+    i18n: {currentLocale, locales, localeConfigs},
   } = useDocusaurusContext();
   const {pathname, search, hash} = useLocation();
-  const searchParams = new URLSearchParams(search);
-  const localeInSearchParams = searchParams.get('lang');
-  const currentLocale = localeInSearchParams || defaultLocale;
-
   const localeItems = locales.map((locale) => {
-    searchParams.delete('lang');
-    if (locale !== defaultLocale) {
-      searchParams.append('lang', locale);
-    }
-
     const baseTo = `pathname://${pathname}`;
-    const newSearch = searchParams.toString();
     // preserve ?search#hash suffix on locale switches
-    const to = `${baseTo}${newSearch ? '?' + newSearch : ''}${hash}`;
+    const to = `${baseTo}${search}${hash}`;
     return {
       label: localeConfigs[locale].label,
       lang: localeConfigs[locale].htmlLang,
@@ -51,6 +41,9 @@ export default function LocaleDropdownNavbarItem({
             ? 'menu__link--active'
             : 'dropdown__link--active'
           : '',
+      onClick: () => {
+        window.localStorage.setItem('locale', locale === currentLocale ? '' : locale);
+      },
     };
   });
   const items = [...dropdownItemsBefore, ...localeItems, ...dropdownItemsAfter];

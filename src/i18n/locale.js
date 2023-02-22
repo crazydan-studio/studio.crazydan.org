@@ -1,5 +1,4 @@
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import { useLocation } from '@docusaurus/router';
 
 function withTranslation(locale, translation) {
   return { locale, translation };
@@ -17,11 +16,8 @@ en.code = 'en';
 
 export function currentLocale() {
   const {
-    i18n: { defaultLocale }
+    i18n: { currentLocale }
   } = useDocusaurusContext();
-  const { search } = useLocation();
-  const searchParams = new URLSearchParams(search);
-  const localeInSearchParams = searchParams.get('lang');
 
-  return localeInSearchParams || defaultLocale;
+  return currentLocale;
 }
