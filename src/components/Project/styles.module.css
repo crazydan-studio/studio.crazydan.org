@@ -1,3 +1,7 @@
+.projectListByCategory {
+  margin-top: 64px;
+}
+
 .projectList {
   display: flex;
   flex-direction: row;

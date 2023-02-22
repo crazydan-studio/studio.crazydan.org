@@ -137,15 +137,16 @@ function ProjectList({ category, projects }) {
   const categoryName = category.title || category.content.frontMatter.title;
 
   return (
-    <div>
+    <div className={clsx(styles.projectListByCategory)}>
       <Category category={category} />
+      <div>{JSON.stringify(projects.map((p) => p.content.metadata))}</div>
       <div className={clsx(styles.projectList)}>
         {projects.map((project, idx) => (
           <Project
             key={categoryName + '-project-' + idx}
             category={categoryName}
             project={project}
-          ></Project>
+          />
         ))}
       </div>
     </div>
@@ -209,7 +210,7 @@ function Component({ items, metadata }) {
             <main className={clsx('col col--7')}>
               {categoryNames.map((categoryName, idx) => (
                 <ProjectList
-                  key={categoryName + '-project-list' + idx}
+                  key={categoryName + '-project-list-' + idx}
                   category={
                     categoryMap[categoryName]
                       ? categoryMap[categoryName]
