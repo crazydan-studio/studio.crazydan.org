@@ -48,6 +48,7 @@ function Project({ children, frontMatter, title }) {
 
   return (
     <section className={clsx(styles.card)}>
+      <div>project: {JSON.stringify(frontMatter)}, image: {coverImageUrl}</div>
       <div className={clsx(styles.cardBody)}>
         <div
           className={clsx(
