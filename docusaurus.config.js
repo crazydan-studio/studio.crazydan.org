@@ -89,6 +89,7 @@ module.exports = {
         routeBasePath: 'project',
         include: ['*.md', '*.mdx', 'category/*.md'],
         blogTitle: '项目',
+        postsPerPage: 'ALL',
         blogDescription: '',
         blogListComponent: '@site/src/components/Project/List.js',
         blogPostComponent: '@theme/BlogPostPage',
