@@ -59,7 +59,7 @@ module.exports = {
           ]
         },
         {
-          title: '站点',
+          title: '产品',
           items: [
             {
               label: '百家',
@@ -87,7 +87,7 @@ module.exports = {
         id: 'project',
         path: 'project',
         routeBasePath: 'project',
-        include: ['*.md', '*.mdx'],
+        include: ['*.md', '*.mdx', 'category/*.md'],
         blogTitle: '项目',
         blogDescription: '',
         blogListComponent: '@site/src/components/Project/List.js',
