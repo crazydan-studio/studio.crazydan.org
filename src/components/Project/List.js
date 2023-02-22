@@ -67,9 +67,9 @@ function Project({ children, frontMatter, title }) {
         <span className={clsx(styles.cardBodyFocusHighlight)}></span>
       </div>
       <footer className={clsx(styles.cardFooter)}>
-        {links.map(({ url, name }, idx) => (
+        {links.map(({ url, name }) => (
           <Link
-            key={idx}
+            key={title + '-' + url}
             className={clsx(
               styles.cardFooterButton,
               !!url || styles.cardFooterButtonDisabled
@@ -100,7 +100,7 @@ function Category({ category }) {
       {(category.content ? [category] : []).map(
         ({ content: BlogPostContent }) => (
           <BlogPostProvider
-            key={category + '-' + BlogPostContent.metadata.permalink}
+            key={name + '-description-' + BlogPostContent.metadata.permalink}
             content={BlogPostContent}
           >
             <blockquote className={clsx(styles.projectCategoryDescription)}>
@@ -116,16 +116,23 @@ function Category({ category }) {
 }
 
 function ProjectList({ category, projects }) {
+  const categoryName = category.title || category.content.frontMatter.title;
+
   return (
     <div>
       <Category category={category} />
       <div className={clsx(styles.projectList)}>
         {projects.map(({ content: BlogPostContent }, idx) => (
           <BlogPostProvider
-            key={category + '-p-' + BlogPostContent.metadata.permalink}
+            key={
+              categoryName + '-project-' + BlogPostContent.metadata.permalink
+            }
             content={BlogPostContent}
           >
-            <Project key={category + '-p-' + idx} {...BlogPostContent.metadata}>
+            <Project
+              key={categoryName + '-project-' + idx}
+              {...BlogPostContent.metadata}
+            >
               <BlogPostContent />
             </Project>
           </BlogPostProvider>
