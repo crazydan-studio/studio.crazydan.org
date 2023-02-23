@@ -22,7 +22,6 @@ export default function LocaleDropdownNavbarItem({
   } = useDocusaurusContext();
   const {pathname, search, hash} = useLocation();
   const localeItems = locales.map((locale) => {
-    console.log(currentLocale, defaultLocale, locale);
     const baseTo = `pathname://${pathname}`;
     // preserve ?search#hash suffix on locale switches
     const to = `${baseTo}${search}${hash}`;
@@ -32,6 +31,7 @@ export default function LocaleDropdownNavbarItem({
       to,
       target: '_self',
       autoAddBaseUrl: false,
+      isActive: () => locale === currentLocale,
       className:
         // eslint-disable-next-line no-nested-ternary
         locale === currentLocale
