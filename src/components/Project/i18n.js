@@ -1,16 +1,23 @@
-import { en, currentLocale } from '@site/src/i18n/locale';
-import { use, trans } from '@site/src/i18n/translator';
+import { i18n } from '@site/src/components/I18n';
 
-const translators = use([
-  trans(['项目'], en('Project')),
-  trans(['项目分类'], en('Project categories')),
-  trans(['未分类'], en('No category')),
-  trans(['演示'], en('Demo')),
-  trans(['文档'], en('Document')),
-  trans(['让生活：更简单，更美好'], en('Make life easier and happier'))
-]);
-
-export default function translate(...texts) {
-  const locale = currentLocale();
-  return translators.translate(locale, texts);
-}
+export default i18n()
+  //
+  .trans(['项目'])
+  .en('Project')
+  //
+  .trans(['项目分类'])
+  .en('Project categories')
+  //
+  .trans(['未分类'])
+  .en('Uncategorized')
+  //
+  .trans(['演示'])
+  .en('Demo')
+  //
+  .trans(['文档'])
+  .en('Document')
+  //
+  .trans(['让生活：更简单，更美好'])
+  .en('Make life easier and happier')
+  //
+  .done();
