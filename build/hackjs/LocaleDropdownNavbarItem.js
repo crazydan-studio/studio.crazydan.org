@@ -32,9 +32,8 @@ export default function LocaleDropdownNavbarItem({
       to,
       target: '_self',
       autoAddBaseUrl: false,
-      isActive: isActive,
       className:
-        // eslint-disable-next-line no-nested-ternary
+        (// eslint-disable-next-line no-nested-ternary
         isActive
           ? // Similar idea as DefaultNavbarItem: select the right Infima active
             // class name. This cannot be substituted with isActive, because the
@@ -42,7 +41,7 @@ export default function LocaleDropdownNavbarItem({
             mobile
             ? 'menu__link--active'
             : 'dropdown__link--active'
-          : '',
+          : '') + ' lang-locale-item',
       onClick: () => {
         window.localStorage.setItem('locale', locale);
       },
@@ -57,6 +56,13 @@ export default function LocaleDropdownNavbarItem({
         description: 'The label for the mobile language switcher dropdown',
       })
     : localeConfigs[currentLocale].label;
+
+  // Note: 原系统为静态页面，语言的选中状态已确定，但无法通过React更新列表项的选中状态，
+  // 故，将其删除，再由React重建
+  if (typeof window !== 'undefined') {
+    document.querySelector('.lang-locale-item').parentElement.parentElement.remove();
+  }
+
   return (
     <DropdownNavbarItem
       {...props}
