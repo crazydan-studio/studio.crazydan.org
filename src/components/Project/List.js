@@ -70,7 +70,7 @@ function Category({ category }) {
   );
 }
 
-function Project({ project, category }) {
+function Project({ project }) {
   const {
     content: {
       frontMatter,
@@ -127,14 +127,12 @@ function Project({ project, category }) {
 }
 
 function ProjectList({ category, projects }) {
-  const categoryName = category.title || category.content.frontMatter.title;
-
   return (
     <div className={clsx(styles.projectListByCategory)}>
       <Category category={category} />
       <div className={clsx(styles.projectList)}>
         {projects.map((project, idx) => (
-          <Project key={idx} category={categoryName} project={project} />
+          <Project key={idx} project={project} />
         ))}
       </div>
     </div>
