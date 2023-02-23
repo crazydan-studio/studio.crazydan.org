@@ -18,10 +18,11 @@ export default function LocaleDropdownNavbarItem({
   ...props
 }) {
   const {
-    i18n: {currentLocale, locales, localeConfigs},
+    i18n: {currentLocale, defaultLocale, locales, localeConfigs},
   } = useDocusaurusContext();
   const {pathname, search, hash} = useLocation();
   const localeItems = locales.map((locale) => {
+    console.log(currentLocale, defaultLocale, locale);
     const baseTo = `pathname://${pathname}`;
     // preserve ?search#hash suffix on locale switches
     const to = `${baseTo}${search}${hash}`;
@@ -42,7 +43,7 @@ export default function LocaleDropdownNavbarItem({
             : 'dropdown__link--active'
           : '',
       onClick: () => {
-        window.localStorage.setItem('locale', locale === currentLocale ? '' : locale);
+        window.localStorage.setItem('locale', locale);
       },
     };
   });
