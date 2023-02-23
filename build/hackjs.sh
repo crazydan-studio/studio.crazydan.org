@@ -2,12 +2,10 @@
 _DIR_="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
 set -xe
 
-NODE_MODULES_PATH="${_DIR_}/.."
+NODE_MODULES="${_DIR_}/../node_modules"
 
 cp -f "${_DIR_}/hackjs/docusaurusContext.js" \
-    "${NODE_MODULES_PATH}/node_modules/@docusaurus/core/lib/client/docusaurusContext.js" \
-&& cat "${NODE_MODULES_PATH}/node_modules/@docusaurus/core/lib/client/docusaurusContext.js"
+    "${NODE_MODULES}/@docusaurus/core/lib/client/docusaurusContext.js"
 
 cp -f "${_DIR_}/hackjs/LocaleDropdownNavbarItem.js" \
-    "${NODE_MODULES_PATH}/node_modules/@docusaurus/theme-classic/lib/theme/NavbarItem/LocaleDropdownNavbarItem/index.js" \
-&& cat "${NODE_MODULES_PATH}/node_modules/@docusaurus/theme-classic/lib/theme/NavbarItem/LocaleDropdownNavbarItem/index.js"
+    "${NODE_MODULES}/@docusaurus/theme-classic/lib/theme/NavbarItem/LocaleDropdownNavbarItem/index.js"
