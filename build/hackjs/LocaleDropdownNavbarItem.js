@@ -60,7 +60,8 @@ export default function LocaleDropdownNavbarItem({
   // Note: 原系统为静态页面，语言的选中状态已确定，但无法通过React更新列表项的选中状态，
   // 故，将其删除，再由React重建
   if (typeof window !== 'undefined') {
-    document.querySelector('.lang-locale-item').parentElement.parentElement.remove();
+    const item = document.querySelector('.lang-locale-item');
+    item && item.parentElement.parentElement.remove();
   }
 
   return (
