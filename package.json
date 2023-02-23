@@ -7,7 +7,7 @@
     "build": "export NODE_OPTIONS=--openssl-legacy-provider && npm run _hack_ && docusaurus build --out-dir dist",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
-    "_hack_": "bash build/hackjs.sh"
+    "_hack_": "rm -rf node_modules/.cache && bash build/hackjs.sh"
   },
   "dependencies": {
     "@docusaurus/core": "^2.3.1",
