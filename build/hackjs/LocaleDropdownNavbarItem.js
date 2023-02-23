@@ -18,23 +18,24 @@ export default function LocaleDropdownNavbarItem({
   ...props
 }) {
   const {
-    i18n: {currentLocale, defaultLocale, locales, localeConfigs},
+    i18n: {currentLocale, locales, localeConfigs},
   } = useDocusaurusContext();
   const {pathname, search, hash} = useLocation();
   const localeItems = locales.map((locale) => {
     const baseTo = `pathname://${pathname}`;
     // preserve ?search#hash suffix on locale switches
     const to = `${baseTo}${search}${hash}`;
+    const isActive = locale === currentLocale;
     return {
       label: localeConfigs[locale].label,
       lang: localeConfigs[locale].htmlLang,
       to,
       target: '_self',
       autoAddBaseUrl: false,
-      isActive: () => locale === currentLocale,
+      isActive: isActive,
       className:
         // eslint-disable-next-line no-nested-ternary
-        locale === currentLocale
+        isActive
           ? // Similar idea as DefaultNavbarItem: select the right Infima active
             // class name. This cannot be substituted with isActive, because the
             // target URLs contain `pathname://` and therefore are not NavLinks!
