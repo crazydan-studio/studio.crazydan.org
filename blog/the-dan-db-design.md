@@ -9,7 +9,7 @@ tags:
 - 数据版本化
 ---
 
-import DataLinkGraph from '@site/plugins/data-link-graph';
+import DataLinkGraph from '@site/src/components/DataLinkGraph';
 import sampleCashbagData from './dandb/sample-app-cashbag-data';
 
 > - DanDB 的设计仍在逐步改进与完善中，本文将随时发生变化，感兴趣的朋友们可以时刻保持关注；
