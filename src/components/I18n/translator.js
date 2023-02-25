@@ -33,8 +33,11 @@ Translator.prototype.zh = function (translation) {
 };
 
 Translator.prototype.done = function () {
-  // locale 只能在组件函数内调用，故，放在国际化翻译时获取
-  return (...texts) => translate(this.translators, currentLocale(), texts);
+  const translators = this.translators;
+  return function _translate_(...texts) {
+    // locale 只能在组件函数内调用，故，放在国际化翻译时获取
+    return translate(translators, _translate_.locale || currentLocale(), texts);
+  };
 };
 
 function translate(translators, lang, texts) {
