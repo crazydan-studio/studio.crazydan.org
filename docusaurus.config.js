@@ -77,7 +77,7 @@ module.exports = {
           ]
         }
       ],
-      copyright: `版权所有 © ${new Date().getFullYear()} Crazydan Studio<br>本站通过<a href="https://v2.docusaurus.io/">Docusaurus 2</a>构建`
+      copyright: 'footer.copyright'
     }
   },
   plugins: [
