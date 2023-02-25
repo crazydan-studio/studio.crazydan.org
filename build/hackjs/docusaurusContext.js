@@ -72,6 +72,9 @@ if (!siteConfig.__translated__ && isInBrowser) {
       }
     }
   });
+
+  // 强制更新 copyright 的内容
+  document.querySelector('footer__copyright').innerHTML = null;
 }
 
 // Static value on purpose: don't make it dynamic!
