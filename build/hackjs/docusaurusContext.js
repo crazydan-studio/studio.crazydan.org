@@ -75,7 +75,7 @@ if (!siteConfig.__translated__ && isInBrowser) {
 
   // 强制更新 copyright 的内容
   const $copyright = document.querySelector('.footer__copyright');
-  $copyright && ($copyright.innerHTML = null);
+  $copyright && ($copyright.innerHTML = translate(copyright));
 }
 
 // Static value on purpose: don't make it dynamic!
