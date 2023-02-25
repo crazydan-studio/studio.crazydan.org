@@ -58,11 +58,11 @@ function Home() {
   return (
     <Layout
       title={i18n('首页')}
-      description={`${i18n(siteConfig.title)}: ${i18n(siteConfig.tagline)}`}>
+      description={`${siteConfig.title}: ${siteConfig.tagline}`}>
       <header className={clsx('hero hero--primary', styles.heroBanner)}>
         <div className="container">
-          <h1 className={clsx('hero__title', styles.heroTitle)}>{i18n(siteConfig.title)}</h1>
-          <p className={clsx('hero__subtitle', styles.heroSubtitle)}>{i18n(siteConfig.tagline)}</p>
+          <h1 className={clsx('hero__title', styles.heroTitle)}>{siteConfig.title}</h1>
+          <p className={clsx('hero__subtitle', styles.heroSubtitle)}>{siteConfig.tagline}</p>
           <div className={styles.buttons}>
             {/* <Link
               className={clsx(

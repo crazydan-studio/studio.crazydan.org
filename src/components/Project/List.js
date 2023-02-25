@@ -182,7 +182,7 @@ function Component({ items, metadata }) {
     >
       <Layout
         title={i18n(blogTitle)}
-        description={`${i18n(siteConfig.title)}: ${i18n(siteConfig.tagline)}`}
+        description={`${siteConfig.title}: ${siteConfig.tagline}`}
       >
         <div className="container margin-vert--lg">
           <div className="row">

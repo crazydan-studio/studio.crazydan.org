@@ -9,7 +9,7 @@ export default i18n()
   .en('English')
   //
   .trans([arg(), '原文'])
-  .en((name) => `Original (${name})`)
+  .en((name) => `Source (${name})`)
   .zh((name) => `原文 (${name})`)
   //
   .done();

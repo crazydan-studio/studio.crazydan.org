@@ -17,7 +17,4 @@ export default i18n()
   .trans(['文档'])
   .en('Document')
   //
-  .trans(['让生活：更简单，更美好'])
-  .en('Make life easier and happier')
-  //
   .done();
