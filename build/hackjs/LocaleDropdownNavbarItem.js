@@ -41,9 +41,10 @@ export default function LocaleDropdownNavbarItem({
             mobile
             ? 'menu__link--active'
             : 'dropdown__link--active'
-          : '') + ' lang-locale-item',
+          : '') + (typeof window === 'undefined' ? ' locale-item-in-compile' : ''),
       onClick: () => {
         window.localStorage.setItem('locale', locale);
+        window.location.reload();
       },
     };
   });
@@ -60,7 +61,7 @@ export default function LocaleDropdownNavbarItem({
   // Note: 原系统为静态页面，语言的选中状态已确定，但无法通过React更新列表项的选中状态，
   // 故，将其删除，再由React重建
   if (typeof window !== 'undefined') {
-    const item = document.querySelector('.lang-locale-item');
+    const item = document.querySelector('.locale-item-in-compile');
     item && item.parentElement.parentElement.remove();
   }
 
