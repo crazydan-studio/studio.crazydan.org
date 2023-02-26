@@ -16,6 +16,7 @@ import {Translation, Text} from '@site/src/components/Translation';
 
 <Video
   src="/medias/3l-project/demo.mp4"
+  type="mp4"
   source={{
     url: 'https://3lproject.org',
     title: '3L Project'
