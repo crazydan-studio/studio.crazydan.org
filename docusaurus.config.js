@@ -107,24 +107,6 @@ module.exports = {
           type: null
         }
       }
-    ],
-    [
-      '@docusaurus/plugin-content-docs',
-      {
-        id: 'dandb-doc',
-        path: 'docs/dandb',
-        routeBasePath: 'docs/dandb'
-        // sidebarPath: require.resolve('./docs/dandb/sidebars.js')
-      }
-    ],
-    [
-      '@docusaurus/plugin-content-docs',
-      {
-        id: 'danos-doc',
-        path: 'docs/danos',
-        routeBasePath: 'docs/danos'
-        // sidebarPath: require.resolve('./docs/danos/sidebars.js')
-      }
     ]
   ],
   presets: [
