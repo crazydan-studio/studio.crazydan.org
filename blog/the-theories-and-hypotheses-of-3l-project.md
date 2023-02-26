@@ -8,13 +8,10 @@ tags:
 - 3L
 ---
 
+import Copyright, {Declaration} from '@site/src/components/Copyright/TranslationBlogByFlytreeleft';
 import {Translation, Text} from '@site/src/components/Translation';
 
-> 本译文已得到原文作者的中文翻译许可，并采用与原文相同的许可协议 -
-> [署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
-> 进行授权和传播。
->
-> 本译文不会对原文做任何除格式调整和拼写错误以外的调整和修改，以确保原文内容的完整性，保证原文所要阐述的事实和思想不被曲解。
+<Declaration />
 
 <Translation><Text source lang='en'>
 
@@ -439,10 +436,9 @@ Theory: hardware architecture can be massively improved.
   译文见 [深入了解 3L 项目](./the-3l-project-in-depth.md)。
 
 
-:::info Copyright
-- 原文链接: [https://3lproject.org/theories](https://3lproject.org/theories)
-- 原文作者: Thomas Hintz - [t@thintz.com](mailto:t@thintz.com)
-- 译文作者: flytreeleft - [flytreeleft@crazydan.org](mailto:flytreeleft@crazydan.org)
-- 版权声明: 本译文采用许可协议 [署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/)。
-  转载请注明来自 [Crazydan Studio](https://studio.crazydan.org/)！
-:::
+<Copyright
+  source={{
+    url: 'https://3lproject.org/theories',
+    author: { name: 'Thomas Hintz', email: 't@thintz.com' }
+  }}
+/>

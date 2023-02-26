@@ -10,6 +10,8 @@ tags:
 - 应用函数化
 ---
 
+import Copyright from '@site/src/components/Copyright/OwnBlogByAuthor';
+
 <!--
 - [PlantUML](http://plantuml.com/): Text described UML language
 - [Gravizo examples](https://github.com/tlmak0/gravizo/): The examples show how to use gravizo in markdown file
@@ -315,8 +317,8 @@ data_inf -up-> user_inf : 呈现
     - [Git is a purely functional data structure](https://blog.jayway.com/2013/03/03/git-is-a-purely-functional-data-structure/)
 
 
-:::info Copyright
-- 文章作者: flytreeleft - [flytreeleft@crazydan.org](mailto:flytreeleft@crazydan.org)
-- 版权声明: 本文章采用许可协议 [署名 4.0 国际 (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/)。
-  转载请注明来自 [Crazydan Studio](https://studio.crazydan.org/)！
-:::
+<Copyright
+  owner={{
+    name: 'flytreeleft', email: 'flytreeleft@crazydan.org'
+  }}
+/>

@@ -3,11 +3,13 @@ title: (转载) 王垠：一种新的操作系统设计
 authors:
 - yinwang
 tags:
-- 好文转载
+- 好文推荐
 - 新操作系统
 - 数据结构化
 - 程序函数化
 ---
+
+import Copyright from '@site/src/components/Copyright/TransferBlogByFlytreeleft';
 
 由于较长时间未能得到原文作者的转载许可，故而，仅在这里提供原文访问地址：
 
@@ -141,9 +143,9 @@ tags:
   - `在我的脑子里，只有更通用而简单的数据结构，以及针对它们的高效存储处理方式。`
 
 
-:::info Copyright
-- 原文链接: [http://www.yinwang.org/blog-cn/2013/04/14/os-design](http://www.yinwang.org/blog-cn/2013/04/14/os-design)
-- 原文作者: 王垠 - [yinwang0@gmail.com](mailto:yinwang0@gmail.com)
-- 转载编者: flytreeleft - [flytreeleft@crazydan.org](mailto:flytreeleft@crazydan.org)
-- 版权声明: 本转载文章的权益归原文作者所有，再次转载请注明原文来源及原文作者，并声明原文版权！
-:::
+<Copyright
+  source={{
+    url: 'http://www.yinwang.org/blog-cn/2013/04/14/os-design',
+    author: { name: '王垠', email: 'yinwang0@gmail.com' }
+  }}
+/>

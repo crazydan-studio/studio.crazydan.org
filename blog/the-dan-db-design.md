@@ -9,6 +9,7 @@ tags:
 - 数据版本化
 ---
 
+import Copyright from '@site/src/components/Copyright/OwnBlogByAuthor';
 import DataLinkGraph from '@site/src/components/DataLinkGraph';
 import sampleCashbagData from './dandb/sample-app-cashbag-data';
 
@@ -73,8 +74,8 @@ import sampleCashbagData from './dandb/sample-app-cashbag-data';
 ## 相关阅读
 
 
-:::info Copyright
-- 文章作者: flytreeleft - [flytreeleft@crazydan.org](mailto:flytreeleft@crazydan.org)
-- 版权声明: 本文章采用许可协议 [署名 4.0 国际 (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/)。
-  转载请注明来自 [Crazydan Studio](https://studio.crazydan.org/)！
-:::
+<Copyright
+  owner={{
+    name: 'flytreeleft', email: 'flytreeleft@crazydan.org'
+  }}
+/>

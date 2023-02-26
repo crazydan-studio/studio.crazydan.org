@@ -8,22 +8,19 @@ tags:
 - 3L
 ---
 
+import Copyright, {Declaration} from '@site/src/components/Copyright/TranslationBlogByFlytreeleft';
+import Video from '@site/src/components/Video';
 import {Translation, Text} from '@site/src/components/Translation';
 
-> 本译文已得到原文作者的中文翻译许可，并采用与原文相同的许可协议 -
-> [署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
-> 进行授权和传播。
->
-> 本译文不会对原文做任何除格式调整和拼写错误以外的调整和修改，以确保原文内容的完整性，保证原文所要阐述的事实和思想不被曲解。
+<Declaration />
 
-<div style={{ textAlign: 'center' }}>
-  <video controls width="100%" height="100%">
-    <source src="/medias/3l-project/demo.mp4" type="video/mp4"/>
-  </video>
-  <span style={{ color: 'var(--ifm-blockquote-color)' }}>
-    注：演示视频来自 <a target="_blank" href="https://3lproject.org">3L Project</a>
-  </span>
-</div>
+<Video
+  src="/medias/3l-project/demo.mp4"
+  source={{
+    url: 'https://3lproject.org',
+    title: '3L Project'
+  }}
+/>
 
 <Translation titled><Text source lang='en'>
 
@@ -371,10 +368,9 @@ This is an option if you want the maximum performance.
 - [A minimal boot sector tutorial](https://yinwang0.wordpress.com/2011/09/04/boot-sector/): 21行bootloader启动代码。
 
 
-:::info Copyright
-- 原文链接: [https://3lproject.org/in-depth](https://3lproject.org/in-depth)
-- 原文作者: Thomas Hintz - [t@thintz.com](mailto:t@thintz.com)
-- 译文作者: flytreeleft - [flytreeleft@crazydan.org](mailto:flytreeleft@crazydan.org)
-- 版权声明: 本译文采用许可协议 [署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/)。
-  转载请注明来自 [Crazydan Studio](https://studio.crazydan.org/)！
-:::
+<Copyright
+  source={{
+    url: 'https://3lproject.org/in-depth',
+    author: { name: 'Thomas Hintz', email: 't@thintz.com' }
+  }}
+/>

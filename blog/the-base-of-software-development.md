@@ -7,6 +7,8 @@ tags:
 - 软件基础设施
 ---
 
+import Copyright from '@site/src/components/Copyright/OwnBlogByAuthor';
+
 - 原生支持并发、分布式、集群的开发语言
 - 应用接口性能监控及分析：调用路径、逻辑关系、CPU消耗、内存使用、执行时间、随应用生命周期全程记录和保存并可复查、对应用影响极小、
 - 日志记录及分析：高性能、高压缩比、易于读写、文件接口、
@@ -22,8 +24,8 @@ tags:
 - 算法优化就是对数据去粗取精的过程，通过降低计算规模和计算次数实现提升计算速度的目的；
 
 
-:::info Copyright
-- 文章作者: flytreeleft - [flytreeleft@crazydan.org](mailto:flytreeleft@crazydan.org)
-- 版权声明: 本文章采用许可协议 [署名 4.0 国际 (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/)。
-  转载请注明来自 [Crazydan Studio](https://crazydan.org/)！
-:::
+<Copyright
+  owner={{
+    name: 'flytreeleft', email: 'flytreeleft@crazydan.org'
+  }}
+/>
