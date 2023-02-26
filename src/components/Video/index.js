@@ -5,7 +5,7 @@ import Link from '@docusaurus/Link';
 import i18n from './i18n';
 
 export default function ({ src, source }) {
-  const type = src.replaceAll(/^.+\.([^.]+)$/g, '$1');
+  const type = 'mp4'; //src.replaceAll(/^.+\.([^.]+)$/g, '$1');
 
   return (
     <div style={{ textAlign: 'center' }}>
