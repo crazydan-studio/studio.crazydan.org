@@ -31,6 +31,12 @@ module.exports = {
           position: 'right'
         },
         {
+          to: 'docs/',
+          activeBasePath: 'docs',
+          label: '文档',
+          position: 'right'
+        },
+        {
           href: 'https://book.crazydan.org',
           label: '书籍',
           position: 'right'
@@ -101,12 +107,33 @@ module.exports = {
           type: null
         }
       }
+    ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'dandb-doc',
+        path: 'docs/dandb',
+        routeBasePath: 'docs/dandb'
+        // sidebarPath: require.resolve('./docs/dandb/sidebars.js')
+      }
+    ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'danos-doc',
+        path: 'docs/danos',
+        routeBasePath: 'docs/danos'
+        // sidebarPath: require.resolve('./docs/danos/sidebars.js')
+      }
     ]
   ],
   presets: [
     [
       '@docusaurus/preset-classic',
       {
+        theme: {
+          customCss: require.resolve('./src/css/custom.css')
+        },
         blog: {
           id: 'blog',
           path: 'blog',
@@ -120,8 +147,10 @@ module.exports = {
             copyright: `Copyright © ${new Date().getFullYear()} Crazydan Studio.`
           }
         },
-        theme: {
-          customCss: require.resolve('./src/css/custom.css')
+        docs: {
+          path: 'docs',
+          routeBasePath: 'docs',
+          sidebarPath: require.resolve('./docs/sidebars.js')
         }
       }
     ]

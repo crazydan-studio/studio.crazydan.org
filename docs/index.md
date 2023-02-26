@@ -1,7 +1,9 @@
 ---
-id: index
-title: Documents
-slug: /
+title: 项目文档
 ---
 
-Hello, there are all our documents.
+import DocCardList from '@theme/DocCardList';
+
+各项目文档列表如下：
+
+<DocCardList />

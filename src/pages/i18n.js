@@ -8,6 +8,9 @@ export default i18n()
   .trans(['项目'])
   .en('Project')
   //
+  .trans(['文档'])
+  .en('Document')
+  //
   .trans(['博客'])
   .en('Blog')
   //
