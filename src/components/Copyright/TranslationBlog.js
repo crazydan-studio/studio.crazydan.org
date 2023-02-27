@@ -5,7 +5,20 @@ import Admonition from '@theme/Admonition';
 
 import i18n from './i18n';
 
-export default function ({ source, translator }) {
+const licenses = {
+  'CC BY 4.0': {
+    name: '署名 4.0 国际 (CC BY 4.0)',
+    url: 'https://creativecommons.org/licenses/by/4.0/deed.zh'
+  },
+  'CC BY-NC-SA 4.0': {
+    name: '署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)',
+    url: 'https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh'
+  }
+};
+
+export default function ({ source, translator, license }) {
+  const licenseObj = licenses[license];
+
   return (
     <Admonition type="info" title={i18n('版权声明')}>
       <ul>
@@ -26,9 +39,7 @@ export default function ({ source, translator }) {
         </li>
         <li>
           {i18n('版权声明')}: {i18n('本译文采用许可协议')}{' '}
-          <Link to="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">
-            {i18n('署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)')}
-          </Link>
+          <Link to={licenseObj.url}>{i18n(licenseObj.name)}</Link>
           {i18n('。')} {i18n('转载请注明来自')}{' '}
           <Link to="https://studio.crazydan.org/">Crazydan Studio</Link>
           {i18n('！')}

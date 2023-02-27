@@ -374,4 +374,5 @@ This is an option if you want the maximum performance.
     url: 'https://3lproject.org/in-depth',
     author: { name: 'Thomas Hintz', email: 't@thintz.com' }
   }}
+  license='CC BY-NC-SA 4.0'
 />

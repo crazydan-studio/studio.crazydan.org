@@ -607,4 +607,5 @@ instead of kicking the can down the road.
     url: 'https://thintz.com/essays/save-our-computing-future',
     author: { name: 'Thomas Hintz', email: 't@thintz.com' }
   }}
+  license='CC BY-NC-SA 4.0'
 />

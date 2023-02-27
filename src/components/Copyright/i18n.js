@@ -44,12 +44,10 @@ export default i18n()
   .en('https://creativecommons.org/licenses/by/4.0/')
   //
   .trans([
-    '本译文已得到原文作者的中文翻译许可，并采用与原文相同的许可协议进行授权和传播。'
+    '本译文采用与原文相同的许可协议进行授权和传播。'
   ])
   .en(
-    'This translation has obtained the Chinese translation permission' +
-      ' of the author of the original text,' +
-      ' and is authorized and disseminated under the same license agreement' +
+    'This translation is authorized and disseminated under the same license agreement' +
       ' as the original text.'
   )
   .trans([

@@ -441,4 +441,5 @@ Theory: hardware architecture can be massively improved.
     url: 'https://3lproject.org/theories',
     author: { name: 'Thomas Hintz', email: 't@thintz.com' }
   }}
+  license='CC BY-NC-SA 4.0'
 />

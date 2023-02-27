@@ -203,4 +203,5 @@ we know it pays off in the long run.
     url: 'https://3lproject.org/blog/why-do-we-need-a-new-os',
     author: { name: 'Thomas Hintz', email: 't@thintz.com' }
   }}
+  license='CC BY-NC-SA 4.0'
 />

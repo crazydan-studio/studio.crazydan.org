@@ -8,7 +8,7 @@ export function Declaration() {
     <blockquote>
       <p>
         {i18n(
-          '本译文已得到原文作者的中文翻译许可，并采用与原文相同的许可协议进行授权和传播。'
+          '本译文采用与原文相同的许可协议进行授权和传播。'
         )}
       </p>
       <p>
@@ -20,11 +20,12 @@ export function Declaration() {
   );
 }
 
-export default function ({ source }) {
+export default function ({ source, license }) {
   return (
     <TranslationBlog
       source={source}
       translator={{ name: 'flytreeleft', email: 'flytreeleft@crazydan.org' }}
+      license={license}
     />
   );
 }
