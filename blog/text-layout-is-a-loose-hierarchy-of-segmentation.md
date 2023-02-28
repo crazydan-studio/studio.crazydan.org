@@ -1,5 +1,5 @@
 ---
-title: (译文) 文本布局是一种松散的层级分割结构
+title: (译文) 文本布局是一种松散的分割层级结构
 authors:
 - name: Raph Levien
   url: https://raphlinus.github.io/
@@ -26,11 +26,18 @@ Yet, knowledge about it is quite arcane.
 I don’t believe there is a single place where it’s all properly written down.
 I have some explanation for that:
 while basic text layout is very important for UI, games, and other contexts,
-a lot of the “professional” needs around text layout are embedded
-in _much_ more complicated systems such as Microsoft Word or a modern Web browser.
+a lot of the “professional” needs around text layout
+are embedded in _much_ more complicated systems
+such as Microsoft Word or a modern Web browser.
 
 </Text><Text lang='zh'>
 
+我喜欢文本布局，并且已经以不同形式和它打了35年交道。
+然而，有关它的知识还是相当晦涩。
+我不认为在某一个地方就能够详尽地阐述它，因为：
+虽然基本的文本布局对UI、游戏和其他语境非常重要，
+但在如微软Word和现代Web浏览器这些**更**复杂的系统中，
+掌握文本布局是有许多「专业性」要求的。
 
 </Text></Translation>
 
@@ -40,13 +47,23 @@ in _much_ more complicated systems such as Microsoft Word or a modern Web browse
 A complete account of text layout would be at least a small book.
 Since there’s no way I can write that now,
 this blog post is a small step towards that – in particular,
-an attempt to describe the “big picture” using the conceptual framework of a “loose hierarchy”.
+an attempt to describe the “big picture”
+using the conceptual framework of a “loose hierarchy”.
 Essentially, a text layout engine breaks the input into finer and finer grains,
 then reassembles the results into a text layout object suitable
 for drawing, measurement, and hit testing.
 
 </Text><Text lang='zh'>
 
+要完整地讲清楚文本布局，至少得写满一小本书。
+由于现在我也没办法写这本书，这篇博客文章就算是迈出的一小步，
+特别是，以「松散的层级结构」这一概念框架来描述「大图景」的一种尝试。
+本质上，文本布局引擎是将输入拆分成很细很细的小块，
+再重新组装为一个适用于绘制、测量和命中测试的文本布局对象。
+
+> 译注：有关「命中测试」的概念，
+> 请参考[Hit-Testing in iOS](https://www.jianshu.com/p/64588525ddb9)
+> （原文地址[https://smnh.me/hit-testing-in-ios](https://smnh.me/hit-testing-in-ios)）。
 
 </Text></Translation>
 
@@ -58,6 +75,8 @@ Line breaking is also important, but has a separate, parallel hierarchy.
 
 </Text><Text lang='zh'>
 
+主要层级结构关注的是将整个段落布局为一行文本。
+换行也同样重要，但具有独立的、平行的层级结构。
 
 </Text></Translation>
 
@@ -71,7 +90,7 @@ Line breaking is also important, but has a separate, parallel hierarchy.
 
 </Text><Text lang='zh'>
 
-## 文本布局的主要层级结构
+## 主要文本布局层级结构
 
 </Text></Translation>
 
@@ -1073,7 +1092,7 @@ so capabilities are quite limited by modern standards.
 
 </Text><Text lang='zh'>
 
-## 关于接口层级的问题
+## 关于接口层次的问题
 
 </Text></Translation>
 
