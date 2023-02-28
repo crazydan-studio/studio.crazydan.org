@@ -63,8 +63,8 @@ function TranslationTitle({ locale, source, items }) {
 
   if (typeof window !== 'undefined') {
     items.forEach((item) => {
-      const itemId = item.props.children.props.id;
-      if (itemId === titleId) {
+      const itemId = item.props.children ? item.props.children.props.id : null;
+      if (!itemId || itemId === titleId) {
         return;
       }
 
@@ -99,14 +99,15 @@ function TranslationTitle({ locale, source, items }) {
                 : idx === 0
             }
           >
-            {[]
-              .concat(props.children)
-              .map(({ props, type: TitleComp }, idx) => (
-                <TitleComp key={idx} {...props} id="">
-                  {props.children}
-                  <a href={`#${titleId}`} className="hash-link"></a>
-                </TitleComp>
-              ))}
+            {props.children &&
+              []
+                .concat(props.children)
+                .map(({ props, type: TitleComp }, idx) => (
+                  <TitleComp key={idx} {...props} id="">
+                    {props.children}
+                    <a href={`#${titleId}`} className="hash-link"></a>
+                  </TitleComp>
+                ))}
           </TabItem>
         ))}
       </Tabs>
