@@ -27,10 +27,12 @@ export default function ({ source, translator, license }) {
         </li>
         <li>
           {i18n('原文作者')}: {source.author.name}
-          {' - '}
-          <Link to={`mailto:${source.author.email}`}>
-            {source.author.email}
-          </Link>
+          {source.author.email && ' - '}
+          {source.author.email && (
+            <Link to={`mailto:${source.author.email}`}>
+              {source.author.email}
+            </Link>
+          )}
         </li>
         <li>
           {i18n('译文作者')}: {translator.name}
@@ -40,6 +42,8 @@ export default function ({ source, translator, license }) {
         <li>
           {i18n('版权声明')}: {i18n('本译文采用许可协议')}{' '}
           <Link to={licenseObj.url}>{i18n(licenseObj.name)}</Link>
+          {source.notLicensed &&
+            i18n('（原文未声明许可协议，原文最终解释权归原作者所有）')}
           {i18n('。')} {i18n('转载请注明来自')}{' '}
           <Link to="https://studio.crazydan.org/">Crazydan Studio</Link>
           {i18n('！')}

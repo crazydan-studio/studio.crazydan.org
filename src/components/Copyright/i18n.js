@@ -43,9 +43,7 @@ export default i18n()
   .trans(['https://creativecommons.org/licenses/by/4.0/deed.zh'])
   .en('https://creativecommons.org/licenses/by/4.0/')
   //
-  .trans([
-    '本译文采用与原文相同的许可协议进行授权和传播。'
-  ])
+  .trans(['本译文采用与原文相同的许可协议进行授权和传播。'])
   .en(
     'This translation is authorized and disseminated under the same license agreement' +
       ' as the original text.'
@@ -68,6 +66,12 @@ export default i18n()
     'The rights and interests of the transfered article belong to the author of the original text.' +
       ' Please indicate the source and author of the original text if you transfer it again,' +
       ' and declare the copyright of the original text!'
+  )
+  //
+  .trans(['（原文未声明许可协议，原文最终解释权归原作者所有）'])
+  .en(
+    ' (The original text does not declare the license agreement,' +
+      ' and the final interpretation of the original text belongs to the original author)'
   )
   //
   .trans(['。'])
