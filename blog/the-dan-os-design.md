@@ -4,7 +4,7 @@ authors:
 - flytreleft
 tags:
 - DanOS
-- 软件基础设施
+- 重建数字基础
 - 新操作系统
 - 数据结构化
 - 应用函数化

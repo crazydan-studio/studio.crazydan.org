@@ -6,7 +6,7 @@ tags:
 - 外文翻译
 - 计算的未来
 - 3L
-- 软件基础设施
+- 重建数字基础
 ---
 
 import Copyright, {Declaration} from '@site/src/components/Copyright/TranslationBlogByFlytreeleft';

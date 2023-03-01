@@ -4,7 +4,7 @@ authors:
 - flytreleft
 tags:
 - 软件开发
-- 软件基础设施
+- 重建数字基础
 ---
 
 import Copyright from '@site/src/components/Copyright/OwnBlogByAuthor';
