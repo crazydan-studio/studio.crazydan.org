@@ -1,5 +1,5 @@
 ---
-title: (译文) 为什么我们需要一个新的操作系统？
+title: (译) 为什么我们需要一个新的操作系统？
 authors:
 - thintz
 tags:

@@ -1,5 +1,5 @@
 ---
-title: (译文) 拯救我们计算的未来
+title: (译) 拯救我们计算的未来
 authors:
 - thintz
 tags:

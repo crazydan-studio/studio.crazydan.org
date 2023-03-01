@@ -1,5 +1,5 @@
 ---
-title: (译文) 3L 项目的理论与假设
+title: (译) 3L 项目的理论与假设
 authors:
 - thintz
 tags:

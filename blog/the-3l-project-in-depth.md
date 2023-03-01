@@ -1,5 +1,5 @@
 ---
-title: (译文) 深入了解 3L 项目
+title: (译) 深入了解 3L 项目
 authors:
 - thintz
 tags:
