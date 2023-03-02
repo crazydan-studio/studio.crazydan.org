@@ -29,3 +29,10 @@
   min-height: 100vh;
   min-height: calc(100vh - var(--ifm-navbar-height));
 }
+
+figcaption {
+  opacity: 0.5;
+  font-size: 85%;
+  margin-top: 0.5em;
+  text-align: center;
+}
