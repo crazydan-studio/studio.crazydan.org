@@ -1117,7 +1117,7 @@ Here is a code for blinking with the diode on the Raspberry Pi:
 </Text></Translation>
 
 
-```bash
+```bash showLineNumbers
 echo 27 > /sys/class/gpio/export
 echo out > /sys/class/gpio/export/gpio27/direction
 echo 1 > /sys/class/gpio/export/gpio27/value
@@ -1381,7 +1381,7 @@ I was forced to use some piece of code like:
 </Text></Translation>
 
 
-```python
+```python showLineNumbers
 import subprocess
 
 sp = subprocess.Popen(
@@ -1814,7 +1814,7 @@ with completely different rules for parsing:
 </Text></Translation>
 
 
-```bash
+```bash showLineNumbers
 --mount source=local_path,target=/docs
 ```
 
@@ -1828,7 +1828,7 @@ A more complex example may look like this:
 </Text></Translation>
 
 
-```bash
+```bash showLineNumbers
 --mount 'type=volume,src=<VOLUME-NAME>,dst=<CONTAINER-PATH>,volume-driver=local,volume-opt=type=nfs,volume-opt=device=<nfs-server>:<nfs-path>,"volume-opt=o=addr=<nfs-address>,vers=4,soft,timeo=180,bg,tcp,rw"'
 ```
 
@@ -1933,7 +1933,7 @@ Here's an example:
 </Text></Translation>
 
 
-```dockerfile
+```dockerfile showLineNumbers
 FROM microsoft/nanoserver
 COPY testfile.txt c:\\
 RUN dir c:\
@@ -2097,7 +2097,7 @@ For example, a template example might look like this:
 </Text></Translation>
 
 
-```yaml
+```yaml showLineNumbers
 apiVersion: v1
 kind: Template
 metadata:
@@ -2316,7 +2316,7 @@ Here is an example of a nginx installation:
 </Text></Translation>
 
 
-```yaml
+```yaml showLineNumbers
 - name: Install nginx
   hosts: host.name.ip
   become: true
@@ -2357,7 +2357,7 @@ Of course, as YAML:
 - https://docs.ansible.com/ansible/latest/user_guide/playbooks_loops.html
 - https://docs.ansible.com/ansible/latest/user_guide/playbooks_error_handling.html
 
-```yaml
+```yaml showLineNumbers
 tasks:
     - command: echo {{ item }}
       loop: [ 0, 2, 4, 6, 8, 10 ]
