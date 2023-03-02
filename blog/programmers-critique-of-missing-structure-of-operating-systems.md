@@ -58,6 +58,8 @@ what I mean is that it's "_necessary for me_", "_possible for me_", or "_viable 
 
 </Text></Translation>
 
+<!-- more -->
+
 
 <Translation><Text source lang='en'>
 
