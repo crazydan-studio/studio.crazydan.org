@@ -1,12 +1,13 @@
 ---
-title: (译文) 文本布局是一种松散的分割层级结构
+title: (译) 文本布局是一种松散的分割层级结构
 authors:
 - name: Raph Levien
   url: https://raphlinus.github.io/
   email: raph.levien@gmail.com
 tags:
 - 外文翻译
-- UI文本布局
+- 字体
+- 文本布局
 ---
 
 import Copyright, {Declaration} from '@site/src/components/Copyright/TranslationBlogByFlytreeleft';
@@ -36,7 +37,7 @@ such as Microsoft Word or a modern Web browser.
 然而，有关它的知识还是相当晦涩。
 我不认为在某一个地方就能够详尽地阐述它，因为：
 虽然基本的文本布局对UI、游戏和其他语境非常重要，
-但在如微软Word和现代Web浏览器这些**更**复杂的系统中，
+但在如微软 Word 和现代 Web 浏览器这些**更**复杂的系统中，
 掌握文本布局是有许多「专业性」要求的。
 
 </Text></Translation>
