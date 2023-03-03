@@ -31,7 +31,7 @@ module.exports = {
           position: 'right'
         },
         {
-          to: 'docs/',
+          to: 'docs/home/',
           activeBasePath: 'docs',
           label: '文档',
           position: 'right'
@@ -107,6 +107,33 @@ module.exports = {
           type: null
         }
       }
+    ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'docs',
+        path: 'docs/home',
+        routeBasePath: 'docs/home',
+        sidebarPath: require.resolve('./docs/home/sidebars.js')
+      }
+    ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'docs-project-danos',
+        path: 'docs/project/danos',
+        routeBasePath: 'docs/danos',
+        sidebarPath: require.resolve('./docs/project/danos/sidebars.js')
+      }
+    ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'docs-project-dandb',
+        path: 'docs/project/dandb',
+        routeBasePath: 'docs/dandb',
+        sidebarPath: require.resolve('./docs/project/dandb/sidebars.js')
+      }
     ]
   ],
   presets: [
@@ -129,11 +156,7 @@ module.exports = {
             copyright: `Copyright © ${new Date().getFullYear()} Crazydan Studio.`
           }
         },
-        docs: {
-          path: 'docs',
-          routeBasePath: 'docs',
-          sidebarPath: require.resolve('./docs/sidebars.js')
-        }
+        docs: false
       }
     ]
   ]
