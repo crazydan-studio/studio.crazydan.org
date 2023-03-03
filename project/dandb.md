@@ -2,7 +2,7 @@
 title: DanDB
 cover_image: /img/danos/prototype-user-interface.svg
 demo_url:
-document_url: /blog/the-dan-db-design
+document_url: /docs/dandb
 authors:
 - flytreleft
 categories:

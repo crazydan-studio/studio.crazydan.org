@@ -2,7 +2,7 @@
 title: DanOS
 cover_image: /img/danos/arch-v1.0.jpg
 demo_url:
-document_url: /blog/the-dan-os-design
+document_url: /docs/danos
 authors:
 - flytreleft
 categories:
