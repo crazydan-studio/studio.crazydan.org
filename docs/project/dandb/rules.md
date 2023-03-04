@@ -1,36 +1,16 @@
 ---
-title: DanDB 设计
+title: 术语&规则
 authors:
 - flytreleft
-tags:
-- DanDB
-- 数据结构化
-- 数据不可变
-- 数据版本化
 ---
 
 import Copyright from '@site/src/components/Copyright/OwnBlogByAuthor';
-import DataLinkGraph from '@site/src/components/DataLinkGraph';
-import sampleCashbagData from './dandb/sample-app-cashbag-data';
 
 > - DanDB 的设计仍在逐步改进与完善中，本文将随时发生变化，感兴趣的朋友们可以时刻保持关注；
 > - 在文末有本文编者的联系方式，有不同意见和建议的朋友可以与其保持联系；
 
-`DanDB`（也称为**蛋DB**）是一款存取**结构化**、**不可变**和**版本化**数据的数据库，
-其为[DanOS](./the-dan-os-design.md)与[DanBot](./the-dan-bot-design.md)的数据存储层。
+## 术语
 
-<!-- more -->
-
-## 架构设计
-
-<DataLinkGraph
-  data={sampleCashbagData}
-  height={800}
->
-某记账App数据关系图
-</DataLinkGraph>
-
-术语：
 - 模型（`Model`）：对主体结构的描述
 - 主体（`Subject`）：
 - 属性（`Attribute`）：
@@ -39,7 +19,8 @@ import sampleCashbagData from './dandb/sample-app-cashbag-data';
 - 元数据（`MetaData`）：
 - 事件（`Event`）：
 
-规则：
+## 规则
+
 - 数据库记录的是主体、主体之间的关系，以及发生在主体上的事件
 - 主体的属性，是`主体`与`数据`的**关系**，或者，主体与主体的关系
 - 关系是主体与主体、主体与数据之间的连接情况
@@ -71,7 +52,7 @@ import sampleCashbagData from './dandb/sample-app-cashbag-data';
   在开发应用时，从应用需管理和维护的核心主体出发，对其模型结构不断进行改进和调整即可，
   不需要过早、特意地先确定核心主体与其他主体的关系
 
-## 相关阅读
+
 
 
 <Copyright
