@@ -11,7 +11,7 @@ import Copyright from '@site/src/components/Copyright/OwnBlogByAuthor';
 
 `DanDB`（也称为**蛋DB**）是面向**结构化**、**不可变**、**版本化**数据的数据库，
 用于维护数据自身的结构以及数据之间的关联关系，
-为[DanOS](/docs/danos)与[DanBot](/docs/danbot)提供底层的数据存储支撑。
+为[DanOS](/docs/danos)与[DanBot](/blog/the-dan-bot-design)提供底层的数据存储支撑。
 
 其支持任意层级的数据关联查询，深入挖掘数据之间的联系，发现埋藏在地底深处的**数据价值**；
 支持对数据做历史**变更分析**，掌握数据随时间的变化情况和规律，也可以对数据做审计和误操作修复；

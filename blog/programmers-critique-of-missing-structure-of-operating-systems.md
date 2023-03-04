@@ -183,7 +183,7 @@ Most of the communication backend was written by me.
 <Translation><Text source lang='en'>
 
 I also worked on the backend for the _Nubium development_,
-a company which operates probably the biggest Czech file hosting website [uloz.to](uloz.to).
+a company which operates probably the biggest Czech file hosting website [uloz.to](https://uloz.to).
 I've refactored and partially designed pieces of software
 that handle the storage and redistribution of files across different servers,
 and also software that handles processing of used data.
