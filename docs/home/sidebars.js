@@ -11,13 +11,13 @@ module.exports = {
       items: [
         {
           type: 'link',
-          label: 'DanOS',
-          href: '/docs/danos'
+          label: '盘古OS',
+          href: '/docs/pangu-os'
         },
         {
           type: 'link',
-          label: 'DanDB',
-          href: '/docs/dandb'
+          label: '磐石DB',
+          href: '/docs/panshi-db'
         }
       ]
     }

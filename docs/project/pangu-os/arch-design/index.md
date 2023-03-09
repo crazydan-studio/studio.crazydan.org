@@ -6,10 +6,10 @@ authors:
 
 import Copyright from '@site/src/components/Copyright/OwnBlogByAuthor';
 
-> - DanOS 的设计仍在逐步改进与完善中，本文将随时发生变化，感兴趣的朋友们可以时刻保持关注；
+> - `盘古OS`的设计仍在逐步改进与完善中，本文将随时发生变化，感兴趣的朋友们可以时刻保持关注；
 > - 在文末有本文编者的联系方式，有不同意见和建议的朋友可以与其保持联系；
 
-<img src="/img/danos/arch-v1.0.jpg" alt="DanOS 架构 v1.0"/>
+<img src="/img/pangu-os/arch-v1.0.jpg" alt="盘古OS 架构 v1.0"/>
 
 <!--
 - 驱动层与硬件交互硬件所支持的数据格式（非结构化数据），

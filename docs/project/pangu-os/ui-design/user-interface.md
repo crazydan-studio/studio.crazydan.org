@@ -6,12 +6,12 @@ authors:
 
 import Copyright from '@site/src/components/Copyright/OwnBlogByAuthor';
 
-> - DanOS 的设计仍在逐步改进与完善中，本文将随时发生变化，感兴趣的朋友们可以时刻保持关注；
+> - `盘古OS`的设计仍在逐步改进与完善中，本文将随时发生变化，感兴趣的朋友们可以时刻保持关注；
 > - 在文末有本文编者的联系方式，有不同意见和建议的朋友可以与其保持联系；
 
 ## 架构图
 
-![界面架构图](/img/danos/ui-arch-three-interfaces.svg)
+![界面架构图](/img/pangu-os/ui-arch-three-interfaces.svg)
 <details>
 <summary>Show graph description</summary>
 <p>
@@ -50,7 +50,7 @@ data_inf -up-> user_inf : 呈现
 <!--
 UI 组件架构：
 
-<img src="/img/danos/ui-arch-v1.0.jpg" alt="DanOS UI 组件架构 v1.0" height="600px"/>
+<img src="/img/pangu-os/ui-arch-v1.0.jpg" alt="盘古OS UI 组件架构 v1.0" height="600px"/>
 
 ## 数据结构
 
@@ -77,7 +77,7 @@ UI 组件架构：
 ## 界面原型
 
 <div style={{ textAlign: 'center' }}>
-  <img src="/img/danos/prototype-user-interface.svg" alt="DanOS用户界面原型图"/>
+  <img src="/img/pangu-os/prototype-user-interface.svg" alt="盘古OS 用户界面原型图"/>
   <figcaption>
     <em>注：</em>
     <a target="_blank" href="https://web-payments.org/slides/2013/cc-linked-data/images/facebook-open-graph.jpg">

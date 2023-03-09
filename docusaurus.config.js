@@ -120,19 +120,19 @@ module.exports = {
     [
       '@docusaurus/plugin-content-docs',
       {
-        id: 'docs-project-danos',
-        path: 'docs/project/danos',
-        routeBasePath: 'docs/danos',
-        sidebarPath: require.resolve('./docs/project/danos/sidebars.js')
+        id: 'docs-project-pangu-os',
+        path: 'docs/project/pangu-os',
+        routeBasePath: 'docs/pangu-os',
+        sidebarPath: require.resolve('./docs/project/pangu-os/sidebars.js')
       }
     ],
     [
       '@docusaurus/plugin-content-docs',
       {
-        id: 'docs-project-dandb',
-        path: 'docs/project/dandb',
-        routeBasePath: 'docs/dandb',
-        sidebarPath: require.resolve('./docs/project/dandb/sidebars.js')
+        id: 'docs-project-panshi-db',
+        path: 'docs/project/panshi-db',
+        routeBasePath: 'docs/panshi-db',
+        sidebarPath: require.resolve('./docs/project/panshi-db/sidebars.js')
       }
     ]
   ],

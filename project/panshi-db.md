@@ -2,9 +2,9 @@
 title: 磐石DB (PanShi DB)
 slogan: 把信息刻在“石头”上
 icon:
-cover_image: /img/danos/prototype-user-interface.svg
+cover_image: /img/pangu-os/prototype-user-interface.svg
 demo_url:
-document_url: /docs/dandb
+document_url: /docs/panshi-db
 authors:
 - flytreleft
 categories:
@@ -12,7 +12,7 @@ categories:
 ---
 
 面向**结构化**、**不可变**、**版本化**数据的数据库，
-用于维护数据自身的结构以及数据之间的关联关系，为**DanOS**提供底层的数据存储支撑。
+用于维护数据自身的结构以及数据之间的关联关系，为**盘古OS**提供底层的数据存储支撑。
 
 其支持任意层级的数据关联查询，深入挖掘数据之间的联系，发现埋藏在地底深处的**数据价值**；
 支持对数据做历史**变更分析**，掌握数据随时间的变化情况和规律，也可以对数据做审计和误操作修复；
