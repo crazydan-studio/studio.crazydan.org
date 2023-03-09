@@ -1,5 +1,5 @@
 ---
-title: 概述
+title: 盘古OS
 authors:
 - flytreleft
 ---

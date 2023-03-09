@@ -1,16 +1,19 @@
 module.exports = {
   docs: [
     {
-      type: 'doc',
-      id: 'index'
-    },
-    {
-      type: 'doc',
-      id: 'arch'
-    },
-    {
-      type: 'doc',
-      id: 'rules'
+      type: 'category',
+      label: '磐石DB',
+      link: { type: 'doc', id: 'index' },
+      items: [
+        {
+          type: 'doc',
+          id: 'arch'
+        },
+        {
+          type: 'doc',
+          id: 'rules'
+        }
+      ]
     }
   ]
 };

@@ -1,8 +1,17 @@
 ---
-title: 相关阅读
+title: 开发背景
 authors:
 - flytreleft
 ---
+
+import Copyright from '@site/src/components/Copyright/OwnBlogByAuthor';
+import DocCardList from '@theme/DocCardList';
+
+
+<DocCardList />
+
+
+## 相关阅读
 
 - [一种新的操作系统设计](http://www.yinwang.org/blog-cn/2013/04/14/os-design):
   转载文章在[这里](/blog/a-new-os-design-by-wangyin)。
@@ -24,3 +33,12 @@ authors:
     - 粒度粗细会影响维护成本，故版本控制、属性引用id化能降低数据结构变更的影响
   - [Purely Functional Data Structures](https://doc.lagout.org/programmation/Functional%20Programming/Chris_Okasaki-Purely_Functional_Data_Structures-Cambridge_University_Press%281998%29.pdf)
     - [Git is a purely functional data structure](https://blog.jayway.com/2013/03/03/git-is-a-purely-functional-data-structure/)
+
+
+
+
+<Copyright
+  owner={{
+    name: 'flytreeleft', email: 'flytreeleft@crazydan.org'
+  }}
+/>
