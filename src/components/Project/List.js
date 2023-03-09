@@ -78,6 +78,8 @@ function Project({ project }) {
     }
   } = project;
   const coverImageUrl = useBaseUrl(frontMatter.cover_image);
+  const iconUrl = useBaseUrl(frontMatter.icon);
+  const slogan = frontMatter.slogan;
   const links = [
     { url: frontMatter.demo_url, name: i18n('演示') },
     { url: frontMatter.document_url, name: i18n('文档') }
@@ -96,7 +98,21 @@ function Project({ project }) {
           }}
         ></div>
         <div className={clsx(styles.cardBodyContent)}>
-          <h3>{title}</h3>
+          <div className={clsx(styles.cardTitle)}>
+            <div
+              className={clsx(
+                styles.cardTitleIcon,
+                !!iconUrl || styles.cardTitleIconNone
+              )}
+              style={{
+                backgroundImage: !!iconUrl && 'url(' + iconUrl + ')'
+              }}
+            ></div>
+            <div className={clsx(styles.cardTitleText)}>
+              <h3>{title}</h3>
+              <h5>{slogan}</h5>
+            </div>
+          </div>
           <div>
             {[project].map(({ content: BlogPostContent }, idx) => (
               <MDXContent key={idx}>

@@ -38,6 +38,42 @@
   background-color: #fff;
 }
 
+.cardTitle {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 8px;
+}
+
+.cardTitleIcon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  margin-right: 16px;
+  padding: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.26);
+  background-repeat: no-repeat;
+  background-size: 60px;
+  background-position: center;
+}
+
+.cardTitleIconNone {
+  padding: 0px;
+}
+
+.cardTitleText {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.cardTitleText>* {
+  margin: 0;
+}
+
+.cardTitleText>h5 {
+  color: rgba(0, 0, 0, 0.26);
+}
+
 .cardBody {
   width: 100%;
   display: block;
