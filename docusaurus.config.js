@@ -120,19 +120,19 @@ module.exports = {
     [
       '@docusaurus/plugin-content-docs',
       {
-        id: 'docs-project-pangu-os',
-        path: 'docs/project/pangu-os',
+        id: 'docs-pangu-os',
+        path: 'docs/pangu-os',
         routeBasePath: 'docs/pangu-os',
-        sidebarPath: require.resolve('./docs/project/pangu-os/sidebars.js')
+        sidebarPath: require.resolve('./docs/pangu-os/sidebars.js')
       }
     ],
     [
       '@docusaurus/plugin-content-docs',
       {
-        id: 'docs-project-panshi-db',
-        path: 'docs/project/panshi-db',
+        id: 'docs-panshi-db',
+        path: 'docs/panshi-db',
         routeBasePath: 'docs/panshi-db',
-        sidebarPath: require.resolve('./docs/project/panshi-db/sidebars.js')
+        sidebarPath: require.resolve('./docs/panshi-db/sidebars.js')
       }
     ]
   ],
