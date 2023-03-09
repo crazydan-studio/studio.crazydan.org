@@ -6,7 +6,7 @@ document_url: /blog/the-dan-bot-design
 authors:
 - flytreleft
 categories:
-- 用户数字助理
+- 用户数字资产
 ---
 
 基于**结构化语义分析**的智能机器人大脑，其通过对语义进行结构化分析以及对**已有经验**的整合，

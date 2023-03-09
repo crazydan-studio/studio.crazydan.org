@@ -1,5 +1,7 @@
 ---
-title: DanDB
+title: 磐石DB (PanShi DB)
+slogan: 把信息刻在“石头”上
+icon:
 cover_image: /img/danos/prototype-user-interface.svg
 demo_url:
 document_url: /docs/dandb
