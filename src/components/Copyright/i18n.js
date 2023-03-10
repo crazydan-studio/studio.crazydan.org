@@ -35,7 +35,7 @@ export default i18n()
   .en('https://creativecommons.org/licenses/by-nc-sa/4.0/')
   //
   .trans(['本文章采用许可协议'])
-  .en('This blog is licensed under')
+  .en('This post is licensed under')
   //
   .trans(['署名 4.0 国际 (CC BY 4.0)'])
   .en('Attribution 4.0 International (CC BY 4.0)')
