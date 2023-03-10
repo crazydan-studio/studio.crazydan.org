@@ -1,6 +1,6 @@
 ---
 title: 磐石DB (PanShi DB)
-slogan: 把信息刻在“石头”上
+slogan: 把数据刻在“石头”上
 icon:
 cover_image: /img/pangu-os/prototype-user-interface.svg
 demo_url:
