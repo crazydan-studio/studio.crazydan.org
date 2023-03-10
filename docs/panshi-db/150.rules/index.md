@@ -1,5 +1,6 @@
 ---
 title: 术语&规则
+description: 了解磐石DB的相关术语和指导规则
 authors:
 - flytreleft
 ---

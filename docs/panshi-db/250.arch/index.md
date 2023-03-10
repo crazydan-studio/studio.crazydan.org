@@ -1,5 +1,6 @@
 ---
 title: 架构设计
+description: 了解磐石DB的架构情况
 authors:
 - flytreleft
 ---
