@@ -60,6 +60,11 @@
   padding: 0px;
 }
 
+.cardTitleIconPlaceholder {
+  width: 56px;
+  height: 56px;
+}
+
 .cardTitleText {
   display: flex;
   flex-direction: column;

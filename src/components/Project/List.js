@@ -107,7 +107,10 @@ function Project({ project }) {
               style={{
                 backgroundImage: !!iconUrl && 'url(' + iconUrl + ')'
               }}
-            ></div>
+            >
+              {/* 避免图片在小尺寸屏幕中被压缩 */}
+              <div className={clsx(styles.cardTitleIconPlaceholder)}></div>
+            </div>
             <div className={clsx(styles.cardTitleText)}>
               <h3>{title}</h3>
               <h5>{slogan}</h5>
