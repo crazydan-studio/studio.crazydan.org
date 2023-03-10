@@ -1,5 +1,6 @@
 ---
 title: 架构设计
+description: 了解盘古OS的架构设计
 authors:
 - flytreleft
 ---

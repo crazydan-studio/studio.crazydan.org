@@ -1,5 +1,6 @@
 ---
 title: 名称与图标
+description: 了解盘古OS名称和图标的立意与设计
 authors:
 - flytreleft
 ---

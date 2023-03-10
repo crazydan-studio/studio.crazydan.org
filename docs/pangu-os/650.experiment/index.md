@@ -1,5 +1,6 @@
 ---
 title: 技术选型
+description: 了解盘古OS实现过程中所验证和采纳的方案
 authors:
 - flytreleft
 ---
