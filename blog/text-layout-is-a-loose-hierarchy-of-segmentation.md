@@ -104,6 +104,9 @@ then Unicode script, and shaping clusters as the finest.
 
 </Text><Text lang='zh'>
 
+该层级结构为：
+段落分割做为金字塔底，接着是富文本样式和BiDi分析，
+然后是条目化（字体覆盖率），其次是Unicode脚本，塔尖是定形簇。
 
 </Text></Translation>
 
@@ -131,6 +134,9 @@ that function as paragraph separators in plain text:
 
 </Text><Text lang='zh'>
 
+最粗糙，也是最简单的分割任务就是段落分割。
+尽管，Unicode以其无限的智慧指定了许多码位作为纯文本中的段落分隔符，
+但大多数时候，段落仅需简单地用换行字符（`U+000A`）分隔即可。
 
 </Text></Translation>
 
@@ -145,12 +151,16 @@ that function as paragraph separators in plain text:
 
 <Translation><Text source lang='en'>
 
-In rich text, paragraphs are usually indicated through markup rather than special characters,
-for example `<p>` or `<br>` in HTML. But in this post, as in most text layout APIs,
+In rich text, paragraphs are usually indicated through markup
+rather than special characters,
+for example `<p>` or `<br>` in HTML.
+But in this post, as in most text layout APIs,
 we’ll treat rich text as plain text + attribute spans.
 
 </Text><Text lang='zh'>
 
+在富文本中，段落通常由标记符表示，而不是特殊字符，例如HTML中的`<p>`或`<br>`。
+但是在本文中，和大多数文本布局API一样，我们将**富文本**视为**纯文本+属性跨度**。
 
 </Text></Translation>
 
@@ -177,6 +187,11 @@ so that within a run the style is consistent.
 
 </Text><Text lang='zh'>
 
+富文本段落可能包含影响格式的_跨度_。
+特别是字体的选择，字体粗细，斜体或非斜体，
+以及其他一些属性也会影响文本布局。
+因此，每个段落通常被分成若干个样式运行，
+这样，在一个运行中样式是一致的。
 
 </Text></Translation>
 
@@ -193,6 +208,12 @@ For more details, see [Text Rendering Hates You](https://gankra.github.io/blah/t
 
 </Text><Text lang='zh'>
 
+注意，有些样式变化没有_必要_影响文本布局，最好的例子就是颜色。
+所周知，Firefox没有为颜色变化定义分割边界。
+如果一种颜色处在**连字**的边界上，
+它使用花哨的图形技术通过不同颜色来渲染**连字**的各个部分。
+但这是一个不易察觉的改进，我认为对于基础的文本渲染是没有必要的。
+可以阅读[Text Rendering Hates You](https://gankra.github.io/blah/text-hates-you/)来了解更多。
 
 </Text></Translation>
 
@@ -212,11 +233,13 @@ For more details, see [Text Rendering Hates You](https://gankra.github.io/blah/t
 
 Completely separate from the style spans,
 a paragraph may in general contain both left-to-right and right-to-left text.
-The need for bidirectional (BiDi) text is certainly one of the things
-that makes text layout more complicated.
+The need for bidirectional (BiDi) text is
+certainly one of the things that makes text layout more complicated.
 
 </Text><Text lang='zh'>
 
+完全独立于样式跨度，一个段落通常可以包含从左到右和从右到左的文本。
+对双向（BiDi）文本的需求无疑是使文本布局更加复杂的原因之一。
 
 </Text></Translation>
 
@@ -228,12 +251,18 @@ by a standard ([UAX #9](http://www.unicode.org/reports/tr9/)),
 and there are a number of good implementations.
 The interested reader is referred to
 [Unicode Bidirectional Algorithm basics](https://www.w3.org/International/articles/inline-bidi-markup/uba-basics).
-The key takeaway here is that BiDi analysis is done on the plain text of the entire paragraph,
+The key takeaway here is
+that BiDi analysis is done on the plain text of the entire paragraph,
 and the result is a sequence of _level runs_,
 where the level of each run defines whether it is LTR or RTL.
 
 </Text><Text lang='zh'>
 
+幸运的是，层级结构中的该部分已经有标准（[UAX #9](http://www.unicode.org/reports/tr9/)）做了定义，
+并且有很多很好的实现。感兴趣的读者可以参考
+[Unicode Bidirectional Algorithm basics](https://www.w3.org/International/articles/inline-bidi-markup/uba-basics)。
+这里的关键结论是，BiDi分析是在整个段落的纯文本上完成的，
+分析结果是一系列_级别运行_，其中每个运行的级别定义了它是LTR还是RTL。
 
 </Text></Translation>
 
@@ -241,12 +270,16 @@ where the level of each run defines whether it is LTR or RTL.
 <Translation><Text source lang='en'>
 
 The level runs and the style runs are then merged,
-so that in subsequent stages each run is of a consistent style and directionality.
+so that in subsequent stages
+each run is of a consistent style and directionality.
 As such, for the purpose of defining the hierarchy,
-the result of BiDi analysis could alternatively be considered an implicit or derived rich text span.
+the result of BiDi analysis could alternatively
+be considered an implicit or derived rich text span.
 
 </Text><Text lang='zh'>
 
+然后，级别运行和样式运行被合并，这样在随后的阶段中，每个运行都具有一致的样式和方向。
+因此，为了定义层级结构，可以将BiDi分析的结果视为隐式或派生的富文本跨度。
 
 </Text></Translation>
 
@@ -254,17 +287,27 @@ the result of BiDi analysis could alternatively be considered an implicit or der
 <Translation><Text source lang='en'>
 
 In addition to BiDi, which I consider a basic requirement,
-a more sophisticated text layout engine will also be able
-to handle vertical [writing modes](https://developer.mozilla.org/en-US/docs/Web/CSS/writing-mode),
+a more sophisticated text layout engine will also
+be able to handle vertical
+[writing modes](https://developer.mozilla.org/en-US/docs/Web/CSS/writing-mode),
 including mixed cases where short strings are horizontal within the vertical primary direction.
-Extremely sophisticated layout engines will also be able
-to handle ruby text and other ways of annotating the main text flow with intercalated strings.
+Extremely sophisticated layout engines will also
+be able to handle ruby text and other ways of annotating the main text flow
+with intercalated strings.
 See [Requirements for Japanese Text Layout](https://www.w3.org/TR/jlreq/)
 for many examples of sophisticated layout requirements;
-the scope of this blog post really is basic text layout of the kind needed in user interfaces.
+the scope of this blog post really is
+basic text layout of the kind needed in user interfaces.
 
 </Text><Text lang='zh'>
 
+除了我认为是基本需求的BiDi之外，更复杂的文本布局引擎还将能够处理垂直
+[书写模式](https://developer.mozilla.org/en-US/docs/Web/CSS/writing-mode)，
+包括短字符串在垂直主方向内是水平的混合情况。
+极其复杂的布局引擎也将能够处理拼音文本和其他用插入字符串注释主要文本流的方式。
+关于许多复杂的布局要求的例子，
+请参见[Requirements for Japanese Text Layout](https://www.w3.org/TR/jlreq/)，
+这篇文章的范围实际上是用户界面所需的基本文本布局。
 
 </Text></Translation>
 
@@ -276,7 +319,7 @@ the scope of this blog post really is basic text layout of the kind needed in us
 
 </Text><Text lang='zh'>
 
-### 分项（字体覆盖率）
+### 条目化（字体覆盖率）
 
 </Text></Translation>
 
@@ -284,11 +327,14 @@ the scope of this blog post really is basic text layout of the kind needed in us
 
 Itemization is the trickiest and least well specified part of the hierarchy.
 There is no standard for it, and no common implementation.
-Rather, each text layout engine deals with it in its own special way.
+Rather, each text layout engine deals with it
+in its own special way.
 
 </Text><Text lang='zh'>
 
-分项是层级结构中最棘手和最不明确的部分。
+条目化是层级结构中最棘手和最不明确的部分。
+它没有标准，也没有通用的实现。
+相反，每个文本布局引擎都以自己特殊的方式处理它。
 
 </Text></Translation>
 
@@ -306,6 +352,12 @@ if you don’t mind spending a few hundred megabytes for the assets.
 
 </Text><Text lang='zh'>
 
+从本质上讲，逐项化的结果是从_字体集合_中为运行选择一种具体的字体。
+一般来说，字体集合由一个主字体(通过字体名称从系统字体中选择，或作为自定义资源加载)组成，
+由一个_后备栈_作支持，后备栈通常是系统字体。
+如果您不介意为这些资源花费几百兆字节，
+通过[Noto](https://www.google.com/get/noto/)
+便可以将后备字体栈与应用程序捆绑在一起。
 
 </Text></Translation>
 
@@ -316,6 +368,7 @@ Why is it so tricky? A few reasons, which I’ll touch on.
 
 </Text><Text lang='zh'>
 
+为什么会如此复杂？有几个原因，我稍后会涉及到。
 
 </Text></Translation>
 
@@ -334,6 +387,14 @@ in its [Character to Glyph Index Mapping](https://docs.microsoft.com/en-us/typog
 
 </Text><Text lang='zh'>
 
+首先，要确定一种字体是否可以呈现特定的文本字符串并不容易。
+原因之一是[Unicode标准化](https://unicode.org/reports/tr15/)。
+例如，字符串“é”可以被编码为`U+00E9`（NFC编码）或`U+0065 U+0301`（NFD编码）。
+由于[Unicode等价原则](https://en.wikipedia.org/wiki/Unicode_equivalence)，
+这些字符应该完全相同地呈现，
+但是在[字符到字形索引映射](https://docs.microsoft.com/en-us/typography/opentype/spec/cmap)（cmap）表中，
+一种字体可能只覆盖其中一种。
+定形引擎具有处理这些情况的所有Unicode逻辑。
 
 </Text></Translation>
 
@@ -350,6 +411,11 @@ It’s worth noting that
 
 </Text><Text lang='zh'>
 
+当然，覆盖拉丁文的现实字体将在cmap表中覆盖这两个特定序列，
+但极端情况肯定会发生，无论是在扩展的拉丁文中，还是在其他脚本中，
+比如韩文，都有复杂的规范化规则（部分原因是韩国的规范化标准与Unicode有点不一致）。
+值得注意的是，
+[DirectWrite对韩文规范化的处理是完全错误的](https://devblogs.microsoft.com/oldnewthing/20201009-00/?p=104351)。
 
 </Text></Translation>
 
