@@ -37,6 +37,13 @@ figcaption {
   text-align: center;
 }
 
+code {
+  vertical-align: baseline;
+  line-height: 1em;
+  padding-left: 0.3em;
+  padding-right: 0.3em;
+}
+
 
 .medium-zoom-overlay,
 .medium-zoom-image--opened {
