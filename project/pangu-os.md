@@ -3,7 +3,7 @@ title: 盘古OS (PanGu OS)
 # 探讨自然与社会的基本规律，为民众摸索出一条共同遵行的大道，继承优良的传统文化，为后世开辟永久太平的基业
 slogan: 为天地立心，为生民立命，为往圣继绝学，为万世开太平
 icon: /img/pangu-os/icon.svg
-cover_image: /img/pangu-os/arch-v1.0.jpg
+cover_image: /img/pangu-os/arch-v1.0.png
 demo_url: https://pangu-os.space
 document_url: /docs/pangu-os
 authors:
