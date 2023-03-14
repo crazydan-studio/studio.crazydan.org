@@ -6,6 +6,10 @@ authors:
 ---
 
 import Copyright from '@site/src/components/Copyright/OwnBlogByAuthor';
+import Note from '../_note.md';
+
+<Note />
+
 
 <p style={{textAlign: 'center'}}>
   <img

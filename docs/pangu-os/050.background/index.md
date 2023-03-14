@@ -7,7 +7,6 @@ authors:
 import Copyright from '@site/src/components/Copyright/OwnBlogByAuthor';
 import DocCardList from '@theme/DocCardList';
 
-
 <DocCardList />
 
 
