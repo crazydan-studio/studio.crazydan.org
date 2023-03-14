@@ -2,7 +2,7 @@
 title: 磐石DB (PanShi DB)
 slogan: 把数据刻在“石头”上
 icon:
-cover_image: /img/pangu-os/prototype-user-interface.svg
+cover_image: /img/pangu-os/facebook-open-graph.jpg
 demo_url: https://panshi-db.space
 document_url: /docs/panshi-db
 authors:
