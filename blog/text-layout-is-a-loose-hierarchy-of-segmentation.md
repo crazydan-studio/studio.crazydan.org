@@ -33,10 +33,10 @@ such as Microsoft Word or a modern Web browser.
 
 </Text><Text lang='zh'>
 
-我喜欢文本布局，并且已经以不同形式和它打了35年交道。
+我喜欢文本布局，并且已经以不同形式和它打了 35 年交道。
 然而，有关它的知识还是相当晦涩。
 我不认为在某一个地方就能够详尽地阐述它，因为：
-虽然基本的文本布局对UI、游戏和其他语境非常重要，
+虽然基本的文本布局对 UI、游戏和其他语境非常重要，
 但在如微软 Word 和现代 Web 浏览器这些**更**复杂的系统中，
 掌握文本布局是有许多「专业性」要求的。
 
@@ -63,7 +63,7 @@ for drawing, measurement, and hit testing.
 再重新组装为一个适用于绘制、测量和命中测试的文本布局对象。
 
 > 译注：有关「命中测试」的概念，
-> 请参考[Hit-Testing in iOS](https://www.jianshu.com/p/64588525ddb9)
+> 请参考 [Hit-Testing in iOS](https://www.jianshu.com/p/64588525ddb9)
 > （原文地址[https://smnh.me/hit-testing-in-ios](https://smnh.me/hit-testing-in-ios)）。
 
 </Text></Translation>
@@ -105,8 +105,8 @@ then Unicode script, and shaping clusters as the finest.
 </Text><Text lang='zh'>
 
 该层级结构为：
-段落分割做为金字塔底，接着是富文本样式和BiDi分析，
-然后是条目化（字体覆盖率），其次是Unicode脚本，塔尖是定形簇。
+段落分割为最粗粒度，接着是富文本样式和 BiDi 分析，
+然后是逐项（字体覆盖率），其次是 Unicode 脚本，最细粒度的是绘制簇。
 
 </Text></Translation>
 
@@ -135,7 +135,7 @@ that function as paragraph separators in plain text:
 </Text><Text lang='zh'>
 
 最粗糙，也是最简单的分割任务就是段落分割。
-尽管，Unicode以其无限的智慧指定了许多码位作为纯文本中的段落分隔符，
+尽管，Unicode 以其无限的智慧指定了许多码位作为纯文本中的段落分隔符，
 但大多数时候，段落仅需简单地用换行字符（`U+000A`）分隔即可。
 
 </Text></Translation>
@@ -209,11 +209,12 @@ For more details, see [Text Rendering Hates You](https://gankra.github.io/blah/t
 </Text><Text lang='zh'>
 
 注意，有些样式变化没有_必要_影响文本布局，最好的例子就是颜色。
-所周知，Firefox没有为颜色变化定义分割边界。
+所周知，Firefox 没有为颜色变化定义分割边界。
 如果一种颜色处在**连字**的边界上，
 它使用花哨的图形技术通过不同颜色来渲染**连字**的各个部分。
 但这是一个不易察觉的改进，我认为对于基础的文本渲染是没有必要的。
-可以阅读[Text Rendering Hates You](https://gankra.github.io/blah/text-hates-you/)来了解更多。
+有关更多细节，请参见
+[Text Rendering Hates You](https://gankra.github.io/blah/text-hates-you/)。
 
 </Text></Translation>
 
@@ -261,8 +262,8 @@ where the level of each run defines whether it is LTR or RTL.
 幸运的是，层级结构中的该部分已经有标准（[UAX #9](http://www.unicode.org/reports/tr9/)）做了定义，
 并且有很多很好的实现。感兴趣的读者可以参考
 [Unicode Bidirectional Algorithm basics](https://www.w3.org/International/articles/inline-bidi-markup/uba-basics)。
-这里的关键结论是，BiDi分析是在整个段落的纯文本上完成的，
-分析结果是一系列_级别运行_，其中每个运行的级别定义了它是LTR还是RTL。
+这里的关键结论是，BiDi 分析是在整个段落的纯文本上完成的，
+分析结果是一系列_级别运行_，其中每个运行的级别定义了它是 LTR 还是 RTL。
 
 </Text></Translation>
 
@@ -279,7 +280,7 @@ be considered an implicit or derived rich text span.
 </Text><Text lang='zh'>
 
 然后，级别运行和样式运行被合并，这样在随后的阶段中，每个运行都具有一致的样式和方向。
-因此，为了定义层级结构，可以将BiDi分析的结果视为隐式或派生的富文本跨度。
+因此，为了定义层级结构，可以将 BiDi 分析的结果视为隐式或派生的富文本跨度。
 
 </Text></Translation>
 
@@ -301,12 +302,13 @@ basic text layout of the kind needed in user interfaces.
 
 </Text><Text lang='zh'>
 
-除了我认为是基本需求的BiDi之外，更复杂的文本布局引擎还将能够处理垂直
+除了我认为是基本需求的 BiDi 之外，更复杂的文本布局引擎还将能够处理垂直
 [书写模式](https://developer.mozilla.org/en-US/docs/Web/CSS/writing-mode)，
 包括短字符串在垂直主方向内是水平的混合情况。
 极其复杂的布局引擎也将能够处理拼音文本和其他用插入字符串注释主要文本流的方式。
 关于许多复杂的布局要求的例子，
-请参见[Requirements for Japanese Text Layout](https://www.w3.org/TR/jlreq/)，
+请参见
+[Requirements for Japanese Text Layout](https://www.w3.org/TR/jlreq/)，
 这篇文章的范围实际上是用户界面所需的基本文本布局。
 
 </Text></Translation>
@@ -319,7 +321,7 @@ basic text layout of the kind needed in user interfaces.
 
 </Text><Text lang='zh'>
 
-### 条目化（字体覆盖率）
+### 逐项（字体覆盖率）
 
 </Text></Translation>
 
@@ -332,7 +334,7 @@ in its own special way.
 
 </Text><Text lang='zh'>
 
-条目化是层级结构中最棘手和最不明确的部分。
+逐项是层级结构中最棘手和最不明确的部分。
 它没有标准，也没有通用的实现。
 相反，每个文本布局引擎都以自己特殊的方式处理它。
 
@@ -352,11 +354,11 @@ if you don’t mind spending a few hundred megabytes for the assets.
 
 </Text><Text lang='zh'>
 
-从本质上讲，逐项化的结果是从_字体集合_中为运行选择一种具体的字体。
+从本质上讲，逐项的结果是从_字体集合_中为运行选择一种具体的字体。
 一般来说，字体集合由一个主字体(通过字体名称从系统字体中选择，或作为自定义资源加载)组成，
 由一个_后备栈_作支持，后备栈通常是系统字体。
 如果您不介意为这些资源花费几百兆字节，
-通过[Noto](https://www.google.com/get/noto/)
+通过 [Noto](https://www.google.com/get/noto/)
 便可以将后备字体栈与应用程序捆绑在一起。
 
 </Text></Translation>
@@ -388,13 +390,13 @@ in its [Character to Glyph Index Mapping](https://docs.microsoft.com/en-us/typog
 </Text><Text lang='zh'>
 
 首先，要确定一种字体是否可以呈现特定的文本字符串并不容易。
-原因之一是[Unicode标准化](https://unicode.org/reports/tr15/)。
-例如，字符串“é”可以被编码为`U+00E9`（NFC编码）或`U+0065 U+0301`（NFD编码）。
-由于[Unicode等价原则](https://en.wikipedia.org/wiki/Unicode_equivalence)，
+原因之一是 [Unicode标准化](https://unicode.org/reports/tr15/)。
+例如，字符串 “é” 可以被编码为 `U+00E9`（NFC 编码）或 `U+0065 U+0301`（NFD 编码）。
+由于 [Unicode 等价原则](https://en.wikipedia.org/wiki/Unicode_equivalence)，
 这些字符应该完全相同地呈现，
 但是在[字符到字形索引映射](https://docs.microsoft.com/en-us/typography/opentype/spec/cmap)（cmap）表中，
 一种字体可能只覆盖其中一种。
-定形引擎具有处理这些情况的所有Unicode逻辑。
+绘制引擎具有处理这些情况的所有 Unicode 逻辑。
 
 </Text></Translation>
 
@@ -411,9 +413,9 @@ It’s worth noting that
 
 </Text><Text lang='zh'>
 
-当然，覆盖拉丁文的现实字体将在cmap表中覆盖这两个特定序列，
+当然，覆盖拉丁文的现实字体将在 cmap 表中覆盖这两个特定序列，
 但极端情况肯定会发生，无论是在扩展的拉丁文中，还是在其他脚本中，
-比如韩文，都有复杂的规范化规则（部分原因是韩国的规范化标准与Unicode有点不一致）。
+比如韩文，都有复杂的规范化规则（部分原因是韩国的规范化标准与 Unicode 有点不一致）。
 值得注意的是，
 [DirectWrite对韩文规范化的处理是完全错误的](https://devblogs.microsoft.com/oldnewthing/20201009-00/?p=104351)。
 
@@ -427,6 +429,9 @@ see [Developing Arabic fonts](https://www.arabeyes.org/Developing_Arabic_fonts) 
 
 </Text><Text lang='zh'>
 
+我相信阿拉伯语的表达形式也存在类似的情况。
+有关更多细节，请参见
+[Developing Arabic fonts](https://www.arabeyes.org/Developing_Arabic_fonts)。
 
 </Text></Translation>
 
@@ -442,6 +447,12 @@ for more background on the Chromium text layout changes.
 
 </Text><Text lang='zh'>
 
+由于这些棘手的规范化和表示问题，确定字体是否可以渲染字符串的最可靠的方法就是**挨个试**。
+这是 LibreOffice 一段时间以来的工作方式，
+2015 年
+[Chromium 也效仿了](https://lists.freedesktop.org/archives/harfbuzz/2015-October/005168.html)。
+有关 Chromium 文本布局变化的更多背景信息，请参见
+[Eliminating Simple Text](https://www.chromium.org/teams/layout-team/eliminating-simple-text)。
 
 </Text></Translation>
 
@@ -452,7 +463,8 @@ _Another_ whole class of complexity is emoji.
 A lot of emoji can be rendered
 with either [text or emoji presentation](https://en.wikipedia.org/wiki/Emoji#Emoji_versus_text_presentation),
 and there are no hard and fast rules to pick one or the other.
-Generally the text presentation is in a symbol font, and the emoji presentation is in a separate color font.
+Generally the text presentation is in a symbol font,
+and the emoji presentation is in a separate color font.
 A particularly tough example is the smiling emoji,
 which began its encoding life as 0x01 in [Code page 437](https://en.wikipedia.org/wiki/Code_page_437),
 the standard 8-bit character encoding of the original IBM PC, and is now U+263A in Unicode.
@@ -464,19 +476,38 @@ to pin down the presentation.)
 
 </Text><Text lang='zh'>
 
+_另一类_复杂的东西是表情（emoji）。
+很多表情[既可以通过文本也可以通过表情符号呈现](https://en.wikipedia.org/wiki/Emoji#Emoji_versus_text_presentation)，
+并且没有硬性且快速的规则来选择其中之一。
+一般来说，文本呈现使用符号字体，而表情符号呈现使用单独的颜色字体。
+一个特别棘手的例子是微笑表情，
+它在 [Code page 437](https://en.wikipedia.org/wiki/Code_page_437)
+中以 `0x01` 开始编码，
+这是最初 IBM 个人电脑的标准 8 位字符编码，现在在 Unicode 中是 U+263A。
+然而，建议的默认呈现是文本，这在需要颜色的世界中是行不通的。
+iOS 上的苹果公司单方面选择了表情符号呈现，
+因此许多文本栈都跟随苹果公司的做法。
+(顺便说一句，
+编码这种表情符号的最可靠的方法是添加一个[变量选择器](https://en.wikipedia.org/wiki/Variation_Selectors_(Unicode_block))，
+以确定呈现方式)
 
 </Text></Translation>
 
 
 <Translation><Text source lang='en'>
 
-Another source of complexity when trying to write a cross-platform text layout engine
+Another source of complexity
+when trying to write a cross-platform text layout engine
 is querying the system fonts.
 See [Font fallback deep dive](https://raphlinus.github.io/rust/skribo/text/2019/04/04/font-fallback.html)
 for more information about that.
 
 </Text><Text lang='zh'>
 
+在尝试编写跨平台文本布局引擎时，另一个复杂的来源是查询系统字体。
+阅读
+[Font fallback deep dive](https://raphlinus.github.io/rust/skribo/text/2019/04/04/font-fallback.html)
+以了解更多信息。
 
 </Text></Translation>
 
@@ -492,6 +523,11 @@ including all the code points in the relevant compatibility ranges.
 
 </Text><Text lang='zh'>
 
+我应该提醒一件事，这可能有助于人们对传统文本栈进行考古：
+它曾经常用于对文本布局进行“兼容性”格式处理，比如 NFKC 和 NFKD，
+这可能会导致各种问题。
+但是今天，通过提供一个具备_大量_ Unicode 覆盖范围的字体栈，
+包括在相关兼容性范围内的所有码位，它更常用于解决特定的问题。
 
 </Text></Translation>
 
@@ -519,6 +555,11 @@ but ligatures and kerning are also required for high quality text layout.
 
 </Text><Text lang='zh'>
 
+文本的_绘制_，或将一系列码位转换为一系列定位字形，都取决于脚本。
+有些文字，如阿拉伯语和天城文，具有极其复杂的绘制规则，
+而其他文字，如中文，则具有相当直接的从码位到字形的映射。
+拉丁语介于两者之间，从一个简单的映射开始，
+但是连字和字距也是高质量文本布局所必需的。
 
 </Text></Translation>
 
@@ -533,6 +574,10 @@ so the assigned script just continues the previous run.
 
 </Text><Text lang='zh'>
 
+确定执行脚本相当简单 —— 许多字符都有一个 Unicode 脚本属性，
+它唯一地标识了它们属于哪个脚本。
+但是，有些字符，如空格，是“常见”字符，
+因此指定的脚本只是继续前一次的运行。
 
 </Text></Translation>
 
@@ -544,6 +589,8 @@ This string is broken into two script runs: “hello “ is `Latn`, and “ми�
 
 </Text><Text lang='zh'>
 
+一个简单的例子是 “hello мир”。
+这个字符串被分成两个执行脚本：“hello” 是 `Latn`，“мир” 是 `Cyrl`。
 
 </Text></Translation>
 
