@@ -93,11 +93,7 @@ function Project({ project }) {
             styles.cardBodyCover,
             !!coverImageUrl || styles.cardBodyCoverNone
           )}
-          // style={{
-          //   backgroundImage: !!coverImageUrl && 'url(' + coverImageUrl + ')'
-          // }}
         >
-          {/* 仅用于图片缩放的占位，不显示 */}
           {coverImageUrl && <img src={coverImageUrl} />}
         </div>
         <div className={clsx(styles.cardBodyContent)}>
