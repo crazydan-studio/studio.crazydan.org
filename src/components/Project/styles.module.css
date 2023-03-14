@@ -111,6 +111,12 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  overflow: hidden;
+}
+
+.cardBodyCover img {
+  opacity: 0;
+  width: 100%;
 }
 
 .cardBodyCoverNone {

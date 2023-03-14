@@ -84,6 +84,18 @@ module.exports = {
         }
       ],
       copyright: 'footer.copyright'
+    },
+    // https://github.com/flexanalytics/plugin-image-zoom
+    imageZoom: {
+      // CSS selector to apply the plugin to, defaults to '.markdown img'
+      selector: '.markdown img, .project img',
+      // Optional medium-zoom options
+      // see: https://www.npmjs.com/package/medium-zoom#options
+      options: {
+        background: 'rgba(0, 0, 0, 0.5)',
+        margin: 32,
+        scrollOffset: 1000000
+      }
     }
   },
   plugins: [
@@ -134,7 +146,8 @@ module.exports = {
         routeBasePath: 'docs/panshi-db',
         sidebarPath: require.resolve('./docs/panshi-db/sidebars.js')
       }
-    ]
+    ],
+    'plugin-image-zoom'
   ],
   presets: [
     [

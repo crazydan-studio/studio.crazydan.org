@@ -36,3 +36,14 @@ figcaption {
   margin-top: 0.5em;
   text-align: center;
 }
+
+
+.medium-zoom-overlay,
+.medium-zoom-image--opened {
+  z-index: 10000;
+}
+
+.medium-zoom-image.medium-zoom-image--opened {
+  background-color: white;
+  opacity: 1 !important;
+}

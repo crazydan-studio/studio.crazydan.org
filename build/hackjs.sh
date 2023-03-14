@@ -10,6 +10,9 @@ cp -f "${_DIR_}/hackjs/docusaurusContext.js" \
 cp -f "${_DIR_}/hackjs/LocaleDropdownNavbarItem.js" \
     "${NODE_MODULES}/@docusaurus/theme-classic/lib/theme/NavbarItem/LocaleDropdownNavbarItem/index.js"
 
+cp -f "${_DIR_}/hackjs/plugin-image-zoom.js" \
+    "${NODE_MODULES}/plugin-image-zoom/src/zoom.js"
+
 # 禁止按本地化生成多份页面
 sed -i \
     -r '/^\s*context.siteConfig.i18n.locales = \[\];/d' \

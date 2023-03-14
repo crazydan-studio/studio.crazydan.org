@@ -86,7 +86,7 @@ function Project({ project }) {
   ];
 
   return (
-    <div className={clsx(styles.card)}>
+    <div className={clsx('project', styles.card)}>
       <div className={clsx(styles.cardBody)}>
         <div
           className={clsx(
@@ -96,7 +96,10 @@ function Project({ project }) {
           style={{
             backgroundImage: !!coverImageUrl && 'url(' + coverImageUrl + ')'
           }}
-        ></div>
+        >
+          {/* 仅用于图片缩放的占位，不显示 */}
+          {coverImageUrl && <img src={coverImageUrl} />}
+        </div>
         <div className={clsx(styles.cardBodyContent)}>
           <div className={clsx(styles.cardTitle)}>
             <div
