@@ -147,6 +147,15 @@ module.exports = {
         sidebarPath: require.resolve('./docs/panshi-db/sidebars.js')
       }
     ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'docs-user-digital-assets-store',
+        path: 'docs/user-digital-assets-store',
+        routeBasePath: 'docs/user-digital-assets-store',
+        sidebarPath: require.resolve('./docs/user-digital-assets-store/sidebars.js')
+      }
+    ],
     'plugin-image-zoom'
   ],
   presets: [
