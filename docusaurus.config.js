@@ -106,8 +106,17 @@ module.exports = {
         margin: 32,
         scrollOffset: 1000000
       }
+    },
+    // https://giscus.app/zh-CN
+    // https://www.alanwang.site/posts/blog-guides/docusaurus-comment
+    giscus: {
+      repo: 'crazydan-studio/studio.crazydan.org',
+      repoId: 'MDEwOlJlcG9zaXRvcnkzMDA3NzM1MTc=',
+      category: 'Announcements',
+      categoryId: 'DIC_kwDOEe1wjc4CU6If'
     }
   },
+  clientModules: [require.resolve('./src/clientModules/routeModules.ts')],
   plugins: [
     [
       '@docusaurus/plugin-content-blog',
@@ -146,7 +155,8 @@ module.exports = {
         path: 'docs/pangu-os',
         routeBasePath: 'docs/pangu-os',
         sidebarPath: require.resolve('./docs/pangu-os/sidebars.js'),
-        editUrl: 'https://github.com/crazydan-studio/studio.crazydan.org/edit/master',
+        editUrl:
+          'https://github.com/crazydan-studio/studio.crazydan.org/edit/master',
         showLastUpdateAuthor: true,
         showLastUpdateTime: true
       }
@@ -158,7 +168,8 @@ module.exports = {
         path: 'docs/panshi-db',
         routeBasePath: 'docs/panshi-db',
         sidebarPath: require.resolve('./docs/panshi-db/sidebars.js'),
-        editUrl: 'https://github.com/crazydan-studio/studio.crazydan.org/edit/master',
+        editUrl:
+          'https://github.com/crazydan-studio/studio.crazydan.org/edit/master',
         showLastUpdateAuthor: true,
         showLastUpdateTime: true
       }
@@ -170,7 +181,8 @@ module.exports = {
         path: 'docs/jingwei-store',
         routeBasePath: 'docs/jingwei-store',
         sidebarPath: require.resolve('./docs/jingwei-store/sidebars.js'),
-        editUrl: 'https://github.com/crazydan-studio/studio.crazydan.org/edit/master',
+        editUrl:
+          'https://github.com/crazydan-studio/studio.crazydan.org/edit/master',
         showLastUpdateAuthor: true,
         showLastUpdateTime: true
       }
