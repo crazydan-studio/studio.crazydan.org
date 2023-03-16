@@ -42,9 +42,19 @@ module.exports = {
           position: 'right'
         },
         {
-          href: 'https://code.studio.crazydan.org/explore/repos',
+          type: 'dropdown',
           label: '开源代码',
-          position: 'right'
+          position: 'right',
+          items: [
+            {
+              href: 'https://github.com/crazydan-studio',
+              label: 'Github'
+            },
+            {
+              href: 'https://code.studio.crazydan.org/explore/repos',
+              label: 'Crazydan Studio Code'
+            }
+          ]
         },
         {
           type: 'localeDropdown',
