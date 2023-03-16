@@ -1,5 +1,6 @@
 ---
 title: 项目文档
+disable_comments: true
 ---
 
 import DocCardList from '@theme/DocCardList';

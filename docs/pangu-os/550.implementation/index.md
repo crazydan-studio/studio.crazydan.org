@@ -1,5 +1,6 @@
 ---
 title: 功能实现
+disable_comments: true
 authors:
 - flytreleft
 ---

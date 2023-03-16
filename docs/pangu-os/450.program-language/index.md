@@ -1,5 +1,6 @@
 ---
 title: 编程语言
+disable_comments: true
 authors:
 - flytreleft
 ---
