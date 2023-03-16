@@ -150,10 +150,10 @@ module.exports = {
     [
       '@docusaurus/plugin-content-docs',
       {
-        id: 'docs-user-digital-assets-store',
-        path: 'docs/user-digital-assets-store',
-        routeBasePath: 'docs/user-digital-assets-store',
-        sidebarPath: require.resolve('./docs/user-digital-assets-store/sidebars.js')
+        id: 'docs-jingwei-store',
+        path: 'docs/jingwei-store',
+        routeBasePath: 'docs/jingwei-store',
+        sidebarPath: require.resolve('./docs/jingwei-store/sidebars.js')
       }
     ],
     'plugin-image-zoom'

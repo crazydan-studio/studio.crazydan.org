@@ -22,7 +22,7 @@ module.exports = {
         {
           type: 'link',
           label: '精卫 (JingWei, 用户数字资产库)',
-          href: '/docs/user-digital-assets-store'
+          href: '/docs/jingwei-store'
         }
       ]
     }
