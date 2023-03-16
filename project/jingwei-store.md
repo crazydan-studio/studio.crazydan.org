@@ -4,7 +4,7 @@ slogan: 衔木石填沧海，筑屏障护安全
 icon: /img/jingwei/icon.svg
 cover_image:
 demo_url:
-document_url: /docs/user-digital-assets-store
+document_url: /docs/jingwei-store
 authors:
 - flytreleft
 categories:
