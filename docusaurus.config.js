@@ -145,7 +145,10 @@ module.exports = {
         id: 'docs-pangu-os',
         path: 'docs/pangu-os',
         routeBasePath: 'docs/pangu-os',
-        sidebarPath: require.resolve('./docs/pangu-os/sidebars.js')
+        sidebarPath: require.resolve('./docs/pangu-os/sidebars.js'),
+        editUrl: 'https://github.com/crazydan-studio/studio.crazydan.org/edit/master',
+        showLastUpdateAuthor: true,
+        showLastUpdateTime: true
       }
     ],
     [
@@ -154,7 +157,10 @@ module.exports = {
         id: 'docs-panshi-db',
         path: 'docs/panshi-db',
         routeBasePath: 'docs/panshi-db',
-        sidebarPath: require.resolve('./docs/panshi-db/sidebars.js')
+        sidebarPath: require.resolve('./docs/panshi-db/sidebars.js'),
+        editUrl: 'https://github.com/crazydan-studio/studio.crazydan.org/edit/master',
+        showLastUpdateAuthor: true,
+        showLastUpdateTime: true
       }
     ],
     [
@@ -163,7 +169,10 @@ module.exports = {
         id: 'docs-jingwei-store',
         path: 'docs/jingwei-store',
         routeBasePath: 'docs/jingwei-store',
-        sidebarPath: require.resolve('./docs/jingwei-store/sidebars.js')
+        sidebarPath: require.resolve('./docs/jingwei-store/sidebars.js'),
+        editUrl: 'https://github.com/crazydan-studio/studio.crazydan.org/edit/master',
+        showLastUpdateAuthor: true,
+        showLastUpdateTime: true
       }
     ],
     'plugin-image-zoom'
