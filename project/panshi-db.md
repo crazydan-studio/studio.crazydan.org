@@ -4,7 +4,7 @@ slogan: 把数据刻在“石头”上
 icon:
 cover_image: /img/pangu-os/facebook-open-graph.jpg
 links:
-  site: https://home.panshi-db.space
+  site: https://panshi-db.space
   document: /docs/panshi-db
 authors:
 - flytreleft
