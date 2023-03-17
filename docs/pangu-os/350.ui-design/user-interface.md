@@ -5,10 +5,9 @@ authors:
 - flytreleft
 ---
 
-import Copyright from '@site/src/components/Copyright/OwnBlogByAuthor';
-import Note from '../_note.md';
+import Header from '../_header.md';
 
-<Note />
+<Header />
 
 
 ## 架构图
@@ -121,11 +120,3 @@ UI 组件架构：
   - 输入设备是用户下达操作指令的外部途径
 - 用户界面只是对数据变更结果的展示，通过视觉上的反馈，让用户知晓变更情况，
   以进一步确认变更是否有效、是否正确等
-
-
-
-<Copyright
-  owner={{
-    name: 'flytreeleft', email: 'flytreeleft@crazydan.org'
-  }}
-/>

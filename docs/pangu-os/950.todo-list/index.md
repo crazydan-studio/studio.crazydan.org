@@ -6,16 +6,10 @@ authors:
 - flytreleft
 ---
 
-import Copyright from '@site/src/components/Copyright/OwnBlogByAuthor';
+import Header from '../_header.md';
+
+<Header />
 
 ## @2023-03-xx
 
 - [ ] xxx
-
-
-
-<Copyright
-  owner={{
-    name: 'flytreeleft', email: 'flytreeleft@crazydan.org'
-  }}
-/>

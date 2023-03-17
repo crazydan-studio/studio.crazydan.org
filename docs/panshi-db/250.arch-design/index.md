@@ -5,12 +5,12 @@ authors:
 - flytreleft
 ---
 
-import Copyright from '@site/src/components/Copyright/OwnBlogByAuthor';
 import DataLinkGraph from '@site/src/components/DataLinkGraph';
 import sampleCashbagData from './samples/app-cashbag-data';
-import Note from '../_note.md';
 
-<Note />
+import Header from '../_header.md';
+
+<Header />
 
 
 <DataLinkGraph
@@ -19,12 +19,3 @@ import Note from '../_note.md';
 >
 某记账App数据关系图
 </DataLinkGraph>
-
-
-
-
-<Copyright
-  owner={{
-    name: 'flytreeleft', email: 'flytreeleft@crazydan.org'
-  }}
-/>

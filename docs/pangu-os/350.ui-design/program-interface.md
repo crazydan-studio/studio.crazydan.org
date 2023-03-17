@@ -5,20 +5,10 @@ authors:
 - flytreleft
 ---
 
-import Copyright from '@site/src/components/Copyright/OwnBlogByAuthor';
-import Note from '../_note.md';
+import Header from '../_header.md';
 
-<Note />
+<Header />
 
 
 
 包含**调试界面**。
-
-
-
-
-<Copyright
-  owner={{
-    name: 'flytreeleft', email: 'flytreeleft@crazydan.org'
-  }}
-/>

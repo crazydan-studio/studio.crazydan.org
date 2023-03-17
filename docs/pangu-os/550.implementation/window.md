@@ -3,9 +3,9 @@ title: 窗口渲染
 description: TODO
 ---
 
-import Note from '../_note.md';
+import Header from '../_header.md';
 
-<Note />
+<Header />
 
 
 - 定义数据结构，必要函数

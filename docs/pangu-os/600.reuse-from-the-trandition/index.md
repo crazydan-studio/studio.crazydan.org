@@ -5,10 +5,9 @@ authors:
 - flytreleft
 ---
 
-import Copyright from '@site/src/components/Copyright/OwnBlogByAuthor';
-import Note from '../_note.md';
+import Header from '../_header.md';
 
-<Note />
+<Header />
 
 
 ## 矢量字体
@@ -26,12 +25,3 @@ import Note from '../_note.md';
 ## 传统服务
 
 与第三方传统方式提供服务的应用进行数据（含文件）转换和交互。
-
-
-
-
-<Copyright
-  owner={{
-    name: 'flytreeleft', email: 'flytreeleft@crazydan.org'
-  }}
-/>

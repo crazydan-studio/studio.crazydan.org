@@ -5,10 +5,9 @@ authors:
 - flytreleft
 ---
 
-import Copyright from '@site/src/components/Copyright/OwnBlogByAuthor';
-import Note from '../_note.md';
+import Header from '../_header.md';
 
-<Note />
+<Header />
 
 
 PS: 对各种特性的实现方案的验证。
@@ -24,12 +23,3 @@ PS: 对各种特性的实现方案的验证。
   复用当下的开发成果，降低硬件层面的不稳定性和安全风险
 - 核心层只读，并支持滚动升级和降级恢复等
 - 仅使用其资源控制和调度能力，无文件系统等层面的调用
-
-
-
-
-<Copyright
-  owner={{
-    name: 'flytreeleft', email: 'flytreeleft@crazydan.org'
-  }}
-/>

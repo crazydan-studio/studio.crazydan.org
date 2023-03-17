@@ -5,10 +5,9 @@ authors:
 - flytreleft
 ---
 
-import Copyright from '@site/src/components/Copyright/OwnBlogByAuthor';
-import Note from '../_note.md';
+import Header from '../_header.md';
 
-<Note />
+<Header />
 
 
 ## 以数据为中心
@@ -91,12 +90,3 @@ import Note from '../_note.md';
     再推送至发布平台
   - 发布平台需对函数和应用的开发者做强安全认证，以避免被破坏者挟持并发布虚假的恶意更新
   - 发布平台需对安全更新做恶意行为检测，以及时中止破坏行为
-
-
-
-
-<Copyright
-  owner={{
-    name: 'flytreeleft', email: 'flytreeleft@crazydan.org'
-  }}
-/>

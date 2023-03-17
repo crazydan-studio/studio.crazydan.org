@@ -5,10 +5,9 @@ authors:
 - flytreleft
 ---
 
-import Copyright from '@site/src/components/Copyright/OwnBlogByAuthor';
-import Note from '../_note.md';
+import Header from '../_header.md';
 
-<Note />
+<Header />
 
 
 <p style={{textAlign: 'center'}}>
@@ -49,12 +48,3 @@ import Note from '../_note.md';
 
 图形元素：左边为旭日东升，右边为皓月当空，日月之下为高山流水，
 且与阴阳两界相通。也就是，阴阳互为一体，并且相互轮回，道出世界运行的本质。
-
-
-
-
-<Copyright
-  owner={{
-    name: 'flytreeleft', email: 'flytreeleft@crazydan.org'
-  }}
-/>

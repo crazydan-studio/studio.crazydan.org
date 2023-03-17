@@ -5,10 +5,9 @@ authors:
 - flytreleft
 ---
 
-import Copyright from '@site/src/components/Copyright/OwnBlogByAuthor';
-import Note from '../_note.md';
+import Header from '../_header.md';
 
-<Note />
+<Header />
 
 
 ## 中继信道
@@ -22,12 +21,3 @@ import Note from '../_note.md';
 - 「中继服务」为收发消息的两端均能够访问到的公共服务，所以，发送端和接收端仅需要经过一个中继即可完成消息收发，不需要多个中继转发。对于两端可通过其他方式实现互连的情况，也不需要任何中继服务，直接通过两端的可访问地址（如IPv6、内网穿透等）建立连接即可。
 
 ## 直连信道
-
-
-
-
-<Copyright
-  owner={{
-    name: 'flytreeleft', email: 'flytreeleft@crazydan.org'
-  }}
-/>

@@ -6,10 +6,9 @@ authors:
 - flytreleft
 ---
 
-import Copyright from '@site/src/components/Copyright/OwnBlogByAuthor';
-import Note from '../_note.md';
+import Header from '../_header.md';
 
-<Note />
+<Header />
 
 
 <img src="/img/pangu-os/arch-v1.0.png" alt="盘古OS 架构 v1.0"/>
@@ -22,12 +21,3 @@ import Note from '../_note.md';
     从而实现 UI 的显示
   - 每类设备的驱动，均为一个独立进程的服务函数，系统的应用通过对驱动数据的更新实现对设备的操作
 -->
-
-
-
-
-<Copyright
-  owner={{
-    name: 'flytreeleft', email: 'flytreeleft@crazydan.org'
-  }}
-/>
