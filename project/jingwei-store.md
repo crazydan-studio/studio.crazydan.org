@@ -3,8 +3,9 @@ title: 精卫 (JingWei)
 slogan: 衔木石填沧海，筑屏障护安全
 icon: /img/jingwei/icon.svg
 cover_image:
-demo_url:
-document_url: /docs/jingwei-store
+links:
+  demo:
+  document: /docs/jingwei-store
 authors:
 - flytreleft
 categories:

@@ -3,8 +3,9 @@ title: 点滴 (DianDi)
 slogan: 不让你的灵感从指尖溜走
 icon: /img/diandi/icon.svg
 cover_image: /img/diandi/logo.svg
-demo_url: https://diandi.app.studio.crazydan.org/
-document_url:
+links:
+  demo: https://diandi.app.studio.crazydan.org/
+  document:
 authors:
 - flytreleft
 categories:

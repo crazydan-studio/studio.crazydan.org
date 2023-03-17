@@ -1,8 +1,10 @@
 ---
 title: EasyOps
+icon:
 cover_image:
-demo_url:
-document_url:
+links:
+  demo:
+  document:
 authors:
 - flytreleft
 categories:

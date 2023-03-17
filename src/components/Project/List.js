@@ -81,8 +81,9 @@ function Project({ project }) {
   const iconUrl = useBaseUrl(frontMatter.icon);
   const slogan = frontMatter.slogan;
   const links = [
-    { url: frontMatter.demo_url, name: i18n('演示') },
-    { url: frontMatter.document_url, name: i18n('文档') }
+    { url: frontMatter.links.site, name: i18n('站点') },
+    { url: frontMatter.links.demo, name: i18n('演示') },
+    { url: frontMatter.links.document, name: i18n('文档') }
   ];
 
   return (

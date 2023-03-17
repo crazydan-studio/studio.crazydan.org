@@ -1,8 +1,10 @@
 ---
 title: 个人数字助理
+icon:
 cover_image:
-demo_url:
-document_url: /blog/the-dan-bot-design
+links:
+  demo:
+  document: /blog/the-dan-bot-design
 authors:
 - flytreleft
 categories:

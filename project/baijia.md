@@ -1,8 +1,9 @@
 ---
 title: 百家•辩
 cover_image: /img/baijia/bian.jpg
-demo_url: https://baijia.link/
-document_url:
+links:
+  site: https://baijia.link/
+  document:
 authors:
 - flytreleft
 categories:

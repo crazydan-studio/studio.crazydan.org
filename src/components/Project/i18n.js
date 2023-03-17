@@ -11,6 +11,9 @@ export default i18n()
   .trans(['未分类'])
   .en('Uncategorized')
   //
+  .trans(['站点'])
+  .en('Website')
+  //
   .trans(['演示'])
   .en('Demo')
   //

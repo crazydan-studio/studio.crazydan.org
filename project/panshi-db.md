@@ -3,8 +3,9 @@ title: 磐石DB (PanShi DB)
 slogan: 把数据刻在“石头”上
 icon:
 cover_image: /img/pangu-os/facebook-open-graph.jpg
-demo_url: https://panshi-db.space
-document_url: /docs/panshi-db
+links:
+  site: https://home.panshi-db.space
+  document: /docs/panshi-db
 authors:
 - flytreleft
 categories:

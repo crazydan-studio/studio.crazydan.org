@@ -4,7 +4,7 @@ module.exports = {
   url: 'https://studio.crazydan.org',
   baseUrl: '/',
   favicon: 'img/logo.svg',
-  organizationName: 'crazydan-studio',
+  organizationName: 'Crazydan Studio',
   projectName: 'studio.crazydan.org',
   i18n: {
     defaultLocale: 'zh',

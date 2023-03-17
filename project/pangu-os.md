@@ -4,8 +4,9 @@ title: 盘古OS (PanGu OS)
 slogan: 为天地立心，为生民立命，为往圣继绝学，为万世开太平
 icon: /img/pangu-os/icon.svg
 cover_image: /img/pangu-os/arch-v1.0.png
-demo_url: https://pangu-os.space
-document_url: /docs/pangu-os
+links:
+  site: https://home.pangu-os.space
+  document: /docs/pangu-os
 authors:
 - flytreleft
 categories:

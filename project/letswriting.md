@@ -1,8 +1,10 @@
 ---
 title: 全民写作平台
+icon:
 cover_image:
-demo_url: https://letswriting.net/
-document_url:
+links:
+  site: https://letswriting.net/
+  document:
 authors:
 - flytreleft
 categories:
