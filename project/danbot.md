@@ -1,5 +1,5 @@
 ---
-title: DanBot
+title: 个人数字助理
 cover_image:
 demo_url:
 document_url: /blog/the-dan-bot-design
