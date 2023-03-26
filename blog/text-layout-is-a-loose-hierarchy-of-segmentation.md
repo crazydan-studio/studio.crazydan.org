@@ -60,7 +60,7 @@ for drawing, measurement, and hit testing.
 由于现在我也没办法写这本书，这篇博客文章就算是迈出的一小步，
 特别是，以「松散的层级结构」这一概念框架来描述「大图景」的一种尝试。
 本质上，文本布局引擎是将输入拆分成很细很细的小块，
-再重新组装为一个适用于绘制、测量和命中测试的文本布局对象。
+再重新组装为一个适用于塑形、测量和命中测试的文本布局对象。
 
 > 译注：有关「命中测试」的概念，
 > 请参考 [Hit-Testing in iOS](https://www.jianshu.com/p/64588525ddb9)
@@ -106,7 +106,7 @@ then Unicode script, and shaping clusters as the finest.
 
 该层级结构为：
 段落分割为最粗粒度，接着是富文本样式和 BiDi 分析，
-然后是逐项（字体覆盖率），其次是 Unicode 脚本，最细粒度的是绘制簇。
+然后是逐项（字体覆盖率），其次是 Unicode 脚本，最细粒度的是塑形簇。
 
 </Text></Translation>
 
@@ -394,9 +394,9 @@ in its [Character to Glyph Index Mapping](https://docs.microsoft.com/en-us/typog
 例如，字符串 “é” 可以被编码为 `U+00E9`（NFC 编码）或 `U+0065 U+0301`（NFD 编码）。
 由于 [Unicode 等价原则](https://en.wikipedia.org/wiki/Unicode_equivalence)，
 这些字符应该完全相同地呈现，
-但是在[字符到字形索引映射](https://docs.microsoft.com/en-us/typography/opentype/spec/cmap)（cmap）表中，
+但是在[字符到字符索引映射](https://docs.microsoft.com/en-us/typography/opentype/spec/cmap)（cmap）表中，
 一种字体可能只覆盖其中一种。
-绘制引擎具有处理这些情况的所有 Unicode 逻辑。
+塑形引擎具有处理这些情况的所有 Unicode 逻辑。
 
 </Text></Translation>
 
@@ -555,9 +555,9 @@ but ligatures and kerning are also required for high quality text layout.
 
 </Text><Text lang='zh'>
 
-文本的_绘制_，或将一系列码位转换为一系列定位字形，都取决于脚本。
-有些文字，如阿拉伯语和天城文，具有极其复杂的绘制规则，
-而其他文字，如中文，则具有相当直接的从码位到字形的映射。
+文本的_塑形_，或将一系列码位转换为一系列定位字符，都取决于脚本。
+有些文字，如阿拉伯语和天城文，具有极其复杂的塑形规则，
+而其他文字，如中文，则具有相当直接的从码位到字符的映射。
 拉丁语介于两者之间，从一个简单的映射开始，
 但是连字和字距也是高质量文本布局所必需的。
 
@@ -602,7 +602,7 @@ This string is broken into two script runs: “hello “ is `Latn`, and “ми�
 
 </Text><Text lang='zh'>
 
-## 绘制（文本集）
+## 塑形（字符簇）
 
 </Text></Translation>
 
@@ -617,6 +617,11 @@ Fortunately, a very high quality open source implementation exists, in the form 
 
 </Text><Text lang='zh'>
 
+在这一点上，我们有一个固定的样式、字体、方向和脚本运行。
+它已经准备进行_塑形_了。
+塑形是一个将字符串（Unicode 码位序列）转换为定位字符的复杂过程。
+出于这篇博客文章的目的，我们通常可以将它视为一个黑盒。
+幸运的是，存在一个高质量的开源实现，即 **HarfBuzz**。
 
 </Text></Translation>
 
@@ -633,6 +638,11 @@ and complex reordering can happen within the cluster.
 
 </Text><Text lang='zh'>
 
+不过，我们_还_没有完全完成分割，
+因为塑形是将输入中的子字符串分配给字符[簇](https://harfbuzz.github.io/clusters.html)。
+对应关系很大程度上取决于字体。
+在拉丁语中，字符串“fi”通常被塑形成一个单一的字符（连字）。
+对于像天神阁里这样复杂的脚本，一个簇通常是源文本中的一个音节，并且在簇内可能会发生复杂的重排。
 
 </Text></Translation>
 
@@ -640,12 +650,17 @@ and complex reordering can happen within the cluster.
 <Translation><Text source lang='en'>
 
 Clusters are important for _hit testing_,
-or determining the correspondence between a physical cursor position in the text layout
-and the offset within the text.
+or determining the correspondence
+between
+a physical cursor position in the text layout
+and
+the offset within the text.
 Generally, they can be ignored if the text will only be rendered, not edited (or selected).
 
 </Text><Text lang='zh'>
 
+簇对于_点击测试_很重要，即确定文本布局中物理光标位置与文本内偏移量之间的对应关系。
+通常，如果文本只是被渲染，而不是被编辑（或被选择），那么它们可以被忽略。
 
 </Text></Translation>
 
@@ -665,6 +680,15 @@ for a detailed dive into grapheme clusters.
 
 </Text><Text lang='zh'>
 
+注意，这些塑形簇与字形簇不同。
+“fi”示例有两个字形簇，但只有一个塑形簇，因此一个字形簇边界可以切割一个塑形簇。
+因为可以在“f”和“i”之间移动光标，所以一个棘手的问题是在这种情况下确定光标的位置。
+字体_确实_有一个
+[插入表](https://docs.microsoft.com/en-us/typography/opentype/spec/gdef#ligature-caret-list-table)，
+但实现不一致。
+更稳健的解决方案是将簇的宽度平均分配给簇内的每个字形簇。
+关于字形簇的详细介绍，请参见
+[Let’s Stop Ascribing Meaning to Code Points](https://manishearth.github.io/blog/2017/01/14/stop-ascribing-meaning-to-unicode-code-points/)。
 
 </Text></Translation>
 
