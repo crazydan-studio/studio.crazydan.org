@@ -138,3 +138,13 @@ but can also be used to build portable applications.
   - `MIX_TARGET=x86_64 SCENIC_LOCAL_TARGET=glfw mix do firmware, firmware.image ./scenic-boot.img`
   - 将生成的镜像文件`scenic-boot.img`通过`virt-manager`启动
     - 创建虚拟机时，选择已存在的磁盘镜像
+
+<!--
+- 打补丁？
+  - Buildroot 补丁放在`nerves_system_x86_64/deps/nerves_system_br/patches`
+  - 包的补丁放在`nerves_system_x86_64/deps/nerves_system_br/buildroot/package/xxxx`
+  - 包的构建放在`nerves_system_x86_64/.nerves/artifacts/nerves_system_x86_64-portable-1.22.1/build/xxxx-x.x.x/`
+  - 包HASH校验`nerves_system_x86_64/deps/nerves_system_br/buildroot/package/xxxx/xxxx.hash`
+    - 另一处`hello_nerves/deps/nerves_system_br/buildroot/package/xxxx/xxxx.hash`
+- 使用 Wayland
+-->
