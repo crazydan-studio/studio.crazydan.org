@@ -123,10 +123,6 @@ but can also be used to build portable applications.
   - `mix deps.get`
   - `mix nerves.system.shell`
     - 执行`make menuconfig`
-    - 选中`Target packages -> Graphic libraries and applications -> mesa3d -> Gallium nouveau driver, OpenGL GLX`
-    - 选中`Target packages -> Graphic libraries and applications -> X.org X Window System -> X11R7 Servers -> xorg-server`
-    - 选中`Target packages -> Graphic libraries and applications -> X.org X Window System -> X11R7 X protocols`
-    - 选中`Target packages -> Libraries -> Graphics -> libglew, libglfw, libglu`
     - 执行`make savedefconfig`
     - 退出`exit`
   - 进入`hello_nerves`项目
@@ -148,3 +144,114 @@ but can also be used to build portable applications.
     - 另一处`hello_nerves/deps/nerves_system_br/buildroot/package/xxxx/xxxx.hash`
 - 使用 Wayland
 -->
+
+Nervers 项目内的配置：
+
+```elixir title="config/target.exs"
+config :nerves, :erlinit, update_clock: true,
+  # env: "XDG_RUNTIME_DIR=/tmp",
+  pre_run_exec: "/bin/sh /usr/bin/run-weston",
+  # alternate_exec: "/usr/bin/cage",
+  run_on_exit: "/bin/sh",
+  verbose: false
+```
+
+```bash title="rootfs_overlay/usr/bin/run-weston"
+#!/bin/sh
+
+if test -z "${XDG_RUNTIME_DIR}"; then
+    export XDG_RUNTIME_DIR=/root/.weston
+fi
+
+/usr/bin/seatd &
+
+# 使用了 --continue-without-input 可以启动 weston，
+# 但没有鼠标和键盘输入，去掉该选项，则会出现 input 设备不存在的错误，
+# 且 libinput list-devices 无输出结果
+# /usr/bin/weston \
+#     --log=/tmp/log \
+#     --no-config \
+#     --use-pixman \
+#     --continue-without-input \
+#     $@
+
+/usr/bin/weston \
+    --log=/tmp/log \
+    --use-pixman \
+    --no-config \
+    $@
+```
+
+`nerves_system_x86_64`的`make menuconfig`配置结果：
+
+```diff title="nerves_system_x86_64/nerves_defconfig"
+diff --git a/nerves_defconfig b/nerves_defconfig
+index 05efbcf..810974a 100644
+--- a/nerves_defconfig
++++ b/nerves_defconfig
+@@ -17,6 +17,7 @@ BR2_REPRODUCIBLE=y
+ BR2_ROOTFS_SKELETON_CUSTOM=y
+ BR2_ROOTFS_SKELETON_CUSTOM_PATH="${BR2_EXTERNAL_NERVES_PATH}/board/nerves-common/skeleton"
+ BR2_INIT_NONE=y
++BR2_ROOTFS_DEVICE_CREATION_DYNAMIC_EUDEV=y
+ BR2_ENABLE_LOCALE_WHITELIST="locale-archive"
+ BR2_ROOTFS_OVERLAY="${BR2_EXTERNAL_NERVES_PATH}/board/nerves-common/rootfs_overlay ${NERVES_DEFCONFIG_DIR}/rootfs_overlay"
+ BR2_ROOTFS_POST_BUILD_SCRIPT="${NERVES_DEFCONFIG_DIR}/post-build.sh ${BR2_EXTERNAL_NERVES_PATH}/board/nerves-common/post-build.sh"
+@@ -30,12 +31,71 @@ BR2_LINUX_KERNEL_XZ=y
+ BR2_LINUX_KERNEL_INSTALL_TARGET=y
+ BR2_LINUX_KERNEL_NEEDS_HOST_LIBELF=y
+ BR2_PACKAGE_BUSYBOX_CONFIG="${BR2_EXTERNAL_NERVES_PATH}/board/nerves-common/busybox.config"
++BR2_PACKAGE_BUSYBOX_SHOW_OTHERS=y
++BR2_PACKAGE_ALSA_UTILS=y
++BR2_PACKAGE_PIPEWIRE=y
++BR2_PACKAGE_PIPEWIRE_V4L2=y
++BR2_PACKAGE_PIPEWIRE_MEDIA_SESSION=y
++BR2_PACKAGE_PULSEAUDIO=y
++BR2_PACKAGE_PULSEAUDIO_DAEMON=y
+ BR2_PACKAGE_E2FSPROGS=y
+ # BR2_PACKAGE_E2FSPROGS_FSCK is not set
++BR2_PACKAGE_CAGE=y
++BR2_PACKAGE_MESA3D_DEMOS=y
++BR2_PACKAGE_FBTERM=y
++BR2_PACKAGE_MESA3D=y
++BR2_PACKAGE_MESA3D_GALLIUM_DRIVER_CROCUS=y
++BR2_PACKAGE_MESA3D_GALLIUM_DRIVER_NOUVEAU=y
++BR2_PACKAGE_MESA3D_GALLIUM_DRIVER_SVGA=y
++BR2_PACKAGE_MESA3D_GALLIUM_DRIVER_SWRAST=y
++BR2_PACKAGE_MESA3D_GALLIUM_DRIVER_VIRGL=y
++BR2_PACKAGE_MESA3D_OPENGL_GLX=y
++BR2_PACKAGE_MESA3D_OPENGL_ES=y
++BR2_PACKAGE_WESTON=y
++BR2_PACKAGE_WESTON_WAYLAND=y
++BR2_PACKAGE_WESTON_DEMO_CLIENTS=y
++BR2_PACKAGE_XORG7=y
++BR2_PACKAGE_XSERVER_XORG_SERVER=y
++BR2_PACKAGE_XLIB_LIBXCOMPOSITE=y
++BR2_PACKAGE_LINUX_FIRMWARE=y
++BR2_PACKAGE_EUDEV_RULES_GEN=y
++BR2_PACKAGE_INPUT_EVENT_DAEMON=y
++BR2_PACKAGE_INTEL_MICROCODE=y
++BR2_PACKAGE_KBD=y
+ BR2_PACKAGE_LIBP11=y
+ BR2_PACKAGE_UNIXODBC=y
++BR2_PACKAGE_KMSXX=y
++BR2_PACKAGE_LIBDRM_RADEON=y
++BR2_PACKAGE_LIBDRM_ETNAVIV=y
++BR2_PACKAGE_LIBDRM_INSTALL_TESTS=y
++BR2_PACKAGE_LIBEPOXY=y
++BR2_PACKAGE_LIBGLFW=y
++BR2_PACKAGE_WAYLAND_UTILS=y
++BR2_PACKAGE_LIBGUDEV=y
+ BR2_PACKAGE_LIBMNL=y
+ BR2_PACKAGE_LIBNL=y
++BR2_PACKAGE_NCURSES_WCHAR=y
++BR2_PACKAGE_BASH=y
++BR2_PACKAGE_SEATD_BUILTIN=y
++BR2_PACKAGE_SEATD_DAEMON=y
++BR2_PACKAGE_UTIL_LINUX_MORE=y
++BR2_PACKAGE_LESS=y
++BR2_PACKAGE_VIM=y
+ # BR2_TARGET_ROOTFS_TAR is not set
+ BR2_TARGET_GRUB2=y
+ BR2_TARGET_GRUB2_BUILTIN_MODULES_PC="boot linux ext2 squash4 fat part_msdos normal biosdisk loadenv echo true test sleep"
+```
