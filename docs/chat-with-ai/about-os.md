@@ -5,7 +5,7 @@ authors:
 - flytreleft
 ---
 
-import {Conversation, Ask, Reply} from '@site/src/components/Conversation';
+import {Conversation, Ask, Reply, Note} from '@site/src/components/Conversation';
 import Header from './_header.md';
 
 <Header />
@@ -384,9 +384,14 @@ import Header from './_header.md';
 
 总的来说，基于 Erlang 的操作系统都是特别注重并发和分布式、容错性能的，因此它们主要用于开发分布式高性能的应用程序、云服务、通信系统等领域。
 
-> 备注：
-> - [Ling](https://data-room-software.org/erlangonxen/): Erlang on Xen
-> - [Efene](https://efene.org/)
+<br/>
+
+<Note>
+
+- [Ling](https://data-room-software.org/erlangonxen/): Erlang on Xen
+- [Efene](https://efene.org/)
+
+</Note>
 
 </Reply>
 
@@ -408,7 +413,11 @@ import Header from './_header.md';
 
 4. 性能：不可变数据结构的实现通常比可变数据结构更快，因为不需要在写入时分配额外的内存。此外，函数式编程还能够优化代码的执行，从而提高操作系统性能。
 
-> 备注：针对不可变数据库的问答见[这里](./about-db)。
+<Note>
+
+针对不可变数据库的问答见[这里](./about-db)。
+
+</Note>
 
 </Reply>
 
