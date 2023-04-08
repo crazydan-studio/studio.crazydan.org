@@ -18,9 +18,9 @@ export function Conversation({ children, asker, replier }) {
         <Comp
           key={idx}
           user={
-            props.mdxType === Ask.name
+            props.mdxType === 'Ask'
               ? asker
-              : props.mdxType === Reply.name
+              : props.mdxType === 'Reply'
               ? replier
               : null
           }
