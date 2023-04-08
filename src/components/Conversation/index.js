@@ -2,6 +2,7 @@ import React from 'react';
 import clsx from 'clsx';
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
+import Admonition from '@theme/Admonition';
 import { currentLocale } from '@site/src/components/I18n';
 
 import i18n from './i18n';
@@ -60,5 +61,13 @@ export function Reply({ children, user = {} }) {
       </div>
       <div className={clsx(styles.conversationReplyContent)}>{children}</div>
     </div>
+  );
+}
+
+export function Note({ children }) {
+  return (
+    <Admonition type="tip" title={i18n('备注')}>
+      {children}
+    </Admonition>
   );
 }
