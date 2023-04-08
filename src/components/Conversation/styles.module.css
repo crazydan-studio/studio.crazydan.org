@@ -1,0 +1,73 @@
+.conversation {
+  display: flex;
+  flex-direction: column;
+  padding: 0 16px;
+  margin: 32px 0;
+  background-color: #ededed;
+  border-radius: var(--ifm-alert-border-radius);
+}
+
+.conversationUser {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.conversationUserImg {
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  min-height: 48px;
+  border-radius: 50%;
+  background-color: #fff;
+}
+
+.conversationUserName {
+  font-weight: var(--ifm-heading-font-weight);
+  font-size: 0.8rem;
+}
+
+.conversationAsk {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-start;
+  margin: 16px 0 8px 48px;
+}
+
+.conversationAskContent {
+  background-color: #95eb6c;
+  padding: 8px;
+  border-radius: 8px;
+  margin-right: 16px;
+}
+
+.conversationReply {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin: 0 48px 16px 0;
+}
+
+.conversationReplyContent {
+  background-color: #fff;
+  padding: 8px;
+  border-radius: 8px;
+  margin-left: 16px;
+}
+
+.conversationAskContent>*,
+.conversationReplyContent>* {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.65rem;
+}
+
+.conversationAskContent>h2>a {
+  display: none;
+}
+
+.conversationReplyContent blockquote>p {
+  margin: 0;
+}
