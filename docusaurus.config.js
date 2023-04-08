@@ -187,6 +187,19 @@ module.exports = {
         showLastUpdateTime: true
       }
     ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'docs-chat-with-ai',
+        path: 'docs/chat-with-ai',
+        routeBasePath: 'docs/chat-with-ai',
+        sidebarPath: require.resolve('./docs/chat-with-ai/sidebars.js'),
+        editUrl:
+          'https://github.com/crazydan-studio/studio.crazydan.org/edit/master',
+        showLastUpdateAuthor: true,
+        showLastUpdateTime: true
+      }
+    ],
     'plugin-image-zoom'
   ],
   presets: [

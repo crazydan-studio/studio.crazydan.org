@@ -1,5 +1,5 @@
 ---
-title: 文档 & 资料
+title: 资料收集
 disable_comments: true
 ---
 
