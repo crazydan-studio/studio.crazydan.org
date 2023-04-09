@@ -32,7 +32,7 @@
   flex-direction: row;
   justify-content: flex-end;
   align-items: flex-start;
-  margin: 16px 0 8px 48px;
+  margin: 16px 0 8px 64px;
 }
 
 .conversationAskContent {
@@ -47,10 +47,11 @@
   flex-direction: row;
   justify-content: flex-start;
   align-items: flex-start;
-  margin: 0 48px 16px 0;
+  margin: 0 64px 16px 0;
 }
 
 .conversationReplyContent {
+  width: 100%;
   background-color: #fff;
   padding: 8px;
   border-radius: 8px;
@@ -70,4 +71,39 @@
 
 .conversationReplyContent blockquote>p {
   margin: 0;
+}
+
+@media (max-width: 768px) {
+  .conversation {
+    padding: 0 8px;
+  }
+
+  .conversationUser {
+    flex-direction: row;
+    align-items: center;
+    margin: 8px 0;
+  }
+
+  .conversationUserName {
+    margin: 0 8px;
+  }
+
+  .conversationAsk {
+    flex-direction: column-reverse;
+    margin: 16px 0 8px 0px;
+    align-items: flex-end;
+  }
+
+  .conversationAskContent {
+    margin-right: 0px;
+  }
+
+  .conversationReply {
+    flex-direction: column;
+    margin: 0 0px 16px 0;
+  }
+
+  .conversationReplyContent {
+    margin-left: 0px;
+  }
 }
