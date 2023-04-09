@@ -255,3 +255,7 @@ index 05efbcf..810974a 100644
  BR2_TARGET_GRUB2=y
  BR2_TARGET_GRUB2_BUILTIN_MODULES_PC="boot linux ext2 squash4 fat part_msdos normal biosdisk loadenv echo true test sleep"
 ```
+
+## SDL
+
+- [ ] 编写简单的 SDL 绘图程序，并将其打包到 Linux 内核中，验证初始化图形界面的能力
