@@ -5,7 +5,7 @@ authors:
 - flytreleft
 ---
 
-import {Conversation, Ask, Reply} from '@site/src/components/Conversation';
+import {Conversation, Ask, Reply, Note} from '@site/src/components/Conversation';
 import Header from './_header.md';
 
 <Header />
@@ -64,7 +64,12 @@ import Header from './_header.md';
 
 因此，不可变数据库设计不会出现需要复制整个数据库的情况，即使进行大规模的数据更新。相反，它提供了一种有效的方法来更新数据库，而无需复制或移动整个数据库。这也是不可变数据库设计的一个优点之一。
 
-> 备注：此为针对其前面回答的不可变数据库的不足所做的补充问答。
+<br/>
+<Note>
+
+此为针对其前面回答的不可变数据库的不足所做的补充问答。
+
+</Note>
 
 </Reply>
 
