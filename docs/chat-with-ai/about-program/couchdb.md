@@ -40,6 +40,14 @@ Apache CouchDB是一种流行的面向文档的NoSQL数据库，其主要特点�
 
 总之，CouchDB非常适合需要支持数据复制、数据同步、数据处理和查询的应用场景。其特点包括支持多节点、面向文档、内建MapReduce引擎、支持HTTP操作，以及数据的ACID事务性操作。
 
+<br/>
+<Note>
+
+- [官网](https://couchdb.apache.org/)
+- [文档](https://docs.couchdb.org/en/stable/index.html)
+
+</Note>
+
 </Reply>
 
 <Ask>
@@ -119,6 +127,13 @@ Apache CouchDB在处理离线存储方面具有出色的能力。它提供了一
 </Ask>
 
 <Reply>
+
+<Note>
+
+未找到`ecto_couchdb`插件，应该只能采用erlang方式调用，以下仅作为`ecto`的使用参考。
+
+</Note>
+<br/>
 
 在Phoenix项目中使用CouchDB，你需要首先安装和配置CouchDB。
 

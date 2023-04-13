@@ -24,6 +24,13 @@ import Header from '../_header.md';
 
 <Reply>
 
+<Note>
+
+- [GraphQL语法教程](https://graphql.org/learn/)
+
+</Note>
+<br/>
+
 GraphQL的语法结构可以通过以下不同的样例进行说明：
 
 样例一：获取用户信息
