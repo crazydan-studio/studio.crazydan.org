@@ -29,7 +29,6 @@ import Header from '../_header.md';
 - [GraphQL语法教程](https://graphql.org/learn/)
 
 </Note>
-<br/>
 
 GraphQL的语法结构可以通过以下不同的样例进行说明：
 
@@ -344,6 +343,12 @@ query($director: String!, $actor1: String!, $actor2: String!) {
   }
 }
 ```
+
+<Note>
+
+样例中的`where`为[input](https://graphql.org/learn/schema/#input-types)类型，且需要自定义该类型。
+
+</Note>
 
 在这个查询中，`$director`、`$actor1`和`$actor2`是我们使用的变量。我们使用逻辑运算符AND和OR来组合多个条件。在这个例子中，电影的导演必须等于我们传递的`$director`变量，同时演员必须包含我们传递的任何一个或两个演员，即`$actor1`和`$actor2`。
 

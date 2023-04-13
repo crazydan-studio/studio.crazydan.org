@@ -384,8 +384,6 @@ import Header from './_header.md';
 
 总的来说，基于 Erlang 的操作系统都是特别注重并发和分布式、容错性能的，因此它们主要用于开发分布式高性能的应用程序、云服务、通信系统等领域。
 
-<br/>
-
 <Note>
 
 - [Ling](https://data-room-software.org/erlangonxen/): Erlang on Xen
