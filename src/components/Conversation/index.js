@@ -66,8 +66,10 @@ export function Reply({ children, user = {} }) {
 
 export function Note({ children }) {
   return (
-    <Admonition type="tip" title={i18n('备注')}>
-      {children}
-    </Admonition>
+    <div className={clsx(styles.conversationNote)}>
+      <Admonition type="tip" title={i18n('备注')}>
+        {children}
+      </Admonition>
+    </div>
   );
 }

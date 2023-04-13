@@ -73,6 +73,14 @@
   margin: 0;
 }
 
+.conversationNote {
+  margin: 8px 0 !important;
+}
+
+.conversationNote>* {
+  margin: 0;
+}
+
 @media (max-width: 768px) {
   .conversation {
     padding: 0 8px;
