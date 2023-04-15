@@ -1,12 +1,12 @@
 ---
-title: 关于软件开发
-description: 与软件开发、软件基础设施相关的话题
+title: 开发困境
+description: 了解软件开发及其开发基础的相关缺陷和困境
 authors:
 - flytreleft
 ---
 
 import {Conversation, Ask, Reply} from '@site/src/components/Conversation';
-import Header from './_header.md';
+import Header from '../_header.md';
 
 <Header />
 
