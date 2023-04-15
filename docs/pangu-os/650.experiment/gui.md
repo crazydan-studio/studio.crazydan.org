@@ -264,3 +264,21 @@ index 05efbcf..810974a 100644
 ## SDL
 
 - [ ] 编写简单的 SDL 绘图程序，并将其打包到 Linux 内核中，验证初始化图形界面的能力
+
+## Slint
+
+Slint is a toolkit to efficiently develop fluid graphical user interfaces
+for any display: embedded devices and desktop applications.
+It supports multiple programming languages, such as Rust, C++, and JavaScript.
+
+### 相关资源
+
+- [站点](https://slint-ui.com)
+- [开发文档](https://slint-ui.com/releases/1.0.0/docs/slint/index.html)
+- [语法结构](https://slint-ui.com/releases/1.0.0/docs/slint/src/concepts/file.html)
+
+### 优缺点
+
+优点：
+
+缺点：
