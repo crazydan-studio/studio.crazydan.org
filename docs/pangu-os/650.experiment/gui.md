@@ -47,7 +47,7 @@ It has a strong emphasis on simplicity and quality tooling.
   而组件自身的状态通过 JS 代码维护，其配置数据则通过 HTML 元素属性设置
   - [Interacting with Web Components](https://elmprogramming.com/interacting-with-web-components.html)
   - [Elm with webcomponents - Is this a bug or am I doing something wrong?](https://stackoverflow.com/questions/66284963/elm-with-webcomponents-is-this-a-bug-or-am-i-doing-something-wrong)
-  - [Native web](https://github.com/nativew/nativeweb):
+  - [Lit](https://lit.dev/docs/getting-started/):
     轻量级的 Web components 实现框架
 
 ## Elixir Scenic
