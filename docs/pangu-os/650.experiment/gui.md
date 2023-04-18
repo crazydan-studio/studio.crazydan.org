@@ -41,6 +41,15 @@ It has a strong emphasis on simplicity and quality tooling.
 - 无原生的动画支持
 - 页面基础元素状态(长宽与位置等)不能与 elm 同步
 
+**Note**：
+- 可以通过 Web Components 技术将含有状态的组件定义为 HTML 元素，
+  再通过组件上的事件实现 Elm 与组件的业务数据交互，
+  而组件自身的状态通过 JS 代码维护，其配置数据则通过 HTML 元素属性设置
+  - [Interacting with Web Components](https://elmprogramming.com/interacting-with-web-components.html)
+  - [Elm with webcomponents - Is this a bug or am I doing something wrong?](https://stackoverflow.com/questions/66284963/elm-with-webcomponents-is-this-a-bug-or-am-i-doing-something-wrong)
+  - [Native web](https://github.com/nativew/nativeweb):
+    轻量级的 Web components 实现框架
+
 ## Elixir Scenic
 
 Scenic is a client application library written directly on the Elixir/Erlang/OTP stack.
