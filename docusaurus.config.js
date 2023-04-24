@@ -190,6 +190,19 @@ module.exports = {
     [
       '@docusaurus/plugin-content-docs',
       {
+        id: 'docs-easy-ops',
+        path: 'docs/easy-ops',
+        routeBasePath: 'docs/easy-ops',
+        sidebarPath: require.resolve('./docs/easy-ops/sidebars.js'),
+        editUrl:
+          'https://github.com/crazydan-studio/studio.crazydan.org/edit/master',
+        showLastUpdateAuthor: true,
+        showLastUpdateTime: true
+      }
+    ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
         id: 'docs-chat-with-ai',
         path: 'docs/chat-with-ai',
         routeBasePath: 'docs/chat-with-ai',

@@ -31,6 +31,11 @@ module.exports = {
               type: 'link',
               label: '精卫 (JingWei, 用户数字资产库)',
               href: '/docs/jingwei-store'
+            },
+            {
+              type: 'link',
+              label: 'EasyOps（运维平台）',
+              href: '/docs/easy-ops'
             }
           ]
         },
