@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "export NODE_OPTIONS=--openssl-legacy-provider && npm run _hack_ && docusaurus start",
+    "start": "export NODE_OPTIONS=--openssl-legacy-provider && npm run _hack_ && docusaurus start --host localhost",
     "build": "export NODE_OPTIONS=--openssl-legacy-provider && npm run _hack_ && docusaurus build --out-dir dist",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
