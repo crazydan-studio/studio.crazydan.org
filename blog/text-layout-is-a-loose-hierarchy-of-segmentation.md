@@ -680,18 +680,16 @@ for a detailed dive into grapheme clusters.
 
 </Text><Text lang='zh'>
 
-注意，这些塑形簇与字形簇不同。
-“fi”示例有两个字形簇，但只有一个塑形簇，因此一个字形簇边界可以切割一个塑形簇。
-因为可以在“f”和“i”之间移动光标，所以一个棘手的问题是在这种情况下确定光标的位置。
-字体_确实_有一个
-[插入表](https://docs.microsoft.com/en-us/typography/opentype/spec/gdef#ligature-caret-list-table)，
-但实现不一致。
-更稳健的解决方案是将簇的宽度平均分配给簇内的每个字形簇。
+注意，这些塑性簇与字形簇是不同的。
+例如，“fi”有两个字形簇但只有一个塑性簇，因此字形簇边界可以切割塑性簇。
+由于光标可以在“f”和“i”之间移动，一个棘手的问题是确定在这种情况下光标的位置。
+字体_确实_有一个[插入表](https://docs.microsoft.com/en-us/typography/opentype/spec/gdef#ligature-caret-list-table)，
+但它的实现是参差不齐的。
+更稳健的解决方案是将塑性簇的宽度平均分配给聚类中的每个字形簇。
 关于字形簇的详细介绍，请参见
 [Let’s Stop Ascribing Meaning to Code Points](https://manishearth.github.io/blog/2017/01/14/stop-ascribing-meaning-to-unicode-code-points/)。
 
 </Text></Translation>
-
 
 
 <Translation titled><Text source lang='en'>
@@ -714,6 +712,10 @@ parallel to the main text layout hierarchy above.
 
 </Text><Text lang='zh'>
 
+较短的字符串可以看作是单行，较长的字符串则需要分成行。
+正确地做到这一点是相当棘手的问题。
+在这篇文章中，我们将其视为一个独立的（小）层级结构，
+与上面的[主要文本布局层级结构](#the-main-text-layout-hierarchy)类似。
 
 </Text></Translation>
 
@@ -738,6 +740,8 @@ as these are tricky enough.
 
 
 <Translation><Text source lang='en'>
+
+以下为关于计算机字体渲染相关的选段，请将其翻译为中文：
 
 In theory, the Unicode Line Breaking Algorithm ([UAX #14](https://unicode.org/reports/tr14/))
 identifies positions in a string that are candidate line breaks.
