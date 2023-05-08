@@ -17,12 +17,12 @@ import Preface from './elm-tour/_preface.md';
 
 ## 场景描述
 
-单页面应用的首页资源加载过程可能会比较耗时，此时页面会出现较长时间的空白，
-为了提升用户感知体验，往往需要添加开屏加载动画，让等待变得不再那么漫长。
+单页面应用首次加载资源的过程可能会比较耗时，进入应用会出现较长时间的空白，
+为了提升用户感知体验，往往需要添加开屏动画，让等待变得不再那么漫长。
 
-本方案主要解决一下问题：
-- 如何在访问页面时**立即显示**加载动画：消除页面加载的空白期
-- 如何在页面**渲染完毕**后去掉加载动画：确切掌握页面的就绪时间
+本方案主要解决开屏动画的以下问题：
+- 如何在进入应用时**立即显示**开屏动画：缩短页面加载的白屏时间
+- 如何在页面**渲染完毕**后去掉开屏动画：确切掌握页面的就绪时间
 
 <!-- more -->
 
@@ -36,13 +36,13 @@ import Preface from './elm-tour/_preface.md';
 git clone https://github.com/flytreeleft/elm-tour.git
 ```
 
-进入本案例所在的工程目录 `first-page-animation` 安装项目依赖：
+进入本案例所在的工程目录 `first-page-animation` 并安装项目依赖：
 
 ```bash
 yarn install
 ```
 
-> 具体的从零开始初始化项目的步骤详见
+> 从零开始初始化项目的步骤详见
 > [项目创建](https://github.com/flytreeleft/elm-tour/tree/master/first-page-animation#%E9%A1%B9%E7%9B%AE%E5%88%9B%E5%BB%BA)。
 
 依赖安装完毕后，启动本地演示服务：
@@ -57,11 +57,11 @@ yarn dev
 ## 实现方案
 
 在入口页面模板 `public/index.html` 的 `<head/>` 标签中，
-优先放置与加载动画相关的内部样式，
+优先放置与开屏动画相关的内部样式，
 再将其他外部 CSS 和 JS 资源放在靠后的位置，
-同时，加载动画自身采用 SVG 或 GIF 等支持动画的图片资源，
+同时，开屏动画自身采用 SVG 或 GIF 等支持动画的图片资源，
 并以 Base64 编码方式将其嵌入到内部样式中。
-这样，便可以最大限度地减少开屏的空白时间。
+这样，便可以最大限度地减少应用的白屏时间。
 
 ```html title="public/index.html"
 <!DOCTYPE html>
@@ -93,7 +93,7 @@ yarn dev
         flex-direction: column;
       }
 
-      /** Start: 通过 ::after 显示加载动画，再在 elm 渲染结束后隐藏动画，从而确保加载动画可以渐进消失 */
+      /** Start: 通过 ::after 显示开屏动画，再在 elm 渲染结束后隐藏动画，从而确保开屏动画可以渐进消失 */
       body::after {
         z-index: 100;
         opacity: 1;
@@ -102,7 +102,7 @@ yarn dev
 
         pointer-events: none; /* 禁用鼠标事件 */
 
-        /* 配置加载动画 */
+        /* 配置开屏动画 */
         height: 100%;
         width: 100%;
         overflow: hidden;
@@ -150,21 +150,17 @@ yarn dev
 </html>
 ```
 
-由于本案例实际所采用的是
+由于本案例实际使用的是
 [Browser.document](https://package.elm-lang.org/packages/elm/browser/latest/Browser#document)
-构建应用视图，该方式创建的视图会直接覆盖 `<body/>` 节点，
-所以，不能在 `<body/>` 元素内放置 `<img/>` 来显示加载动画，
-只能通过 CSS 伪元素 `body::after` 在文档所有元素的最上层显示一个遮罩层，
-并在该层中设置背景图为加载动画的方式实现。
-
-> 注意，伪元素无法通过 Elm 删除，故而，
-> 必须通过 `pointer-events: none;` 禁用加载动画遮罩层的鼠标事件，
-> 也就是鼠标可穿透该层，就好像其不存在一样。
+类型构建的应用视图，其创建的视图会直接覆盖 `<body/>` 节点，
+所以，不能在 `<body/>` 元素内放置 `<img/>` 来显示开屏动画，
+只能通过 CSS 伪元素 `body::after` 在 `<body/>` 的最上层显示一个遮罩层，
+并在该层中以背景图形式显示开屏动画。
 
 此外，视图的渲染过程是逐步进行的，
 所以，在渲染期间会出现部分元素提前显示的情况，
-为了避免这些元素跑到加载动画的上层显示，
-需要在视图完全就绪之前隐藏除加载动画之外的其他元素：
+为了避免这些元素跑到开屏动画的上层显示，
+需要在视图完全就绪之前隐藏除开屏动画以外的其他元素：
 
 ```css
 body > * {
@@ -173,7 +169,7 @@ body > * {
 }
 ```
 
-再在视图就绪后，将加载动画遮罩层设置为透明并取消 `<body/>` 下的元素透明，
+然后，在视图就绪后，将开屏动画遮罩层设置为透明并取消 `<body/>` 下的元素透明，
 以此实现加载与就绪的无缝过渡（淡入淡出效果通过 `transition` 控制）：
 
 ```elm title="src/Main.elm"
@@ -213,7 +209,7 @@ hideLoadingAnimation : Html msg
 hideLoadingAnimation =
     node "style"
         []
-        [ -- 隐藏加载动画，并显示 body 下的元素
+        [ -- 隐藏开屏动画，并显示 body 下的元素
           text """
 body::after { opacity: 0; }
 body > * { opacity: 1; }
@@ -221,20 +217,27 @@ body > * { opacity: 1; }
         ]
 ```
 
-在上面 `src/Main.elm` 的视图函数 `view` 的最后位置放了一个用于隐藏加载动画的函数，
-因为函数是顺序执行的，所以，当最后一个函数被执行时，那么前面的视图函数 `welcome` 也必然已执行，
-也就代表着应用视图已经全部就绪了。
+> 注意，伪元素无法通过 Elm 删除，故而，
+> 必须通过 `pointer-events: none;` 禁用开屏动画遮罩层的鼠标事件，
+> 以防止其变为透明后仍拦截鼠标事件而无法操作下层视图。
 
-所以在加载动画隐藏函数中，我们向文档追加了新的内部样式来隐藏加载动画并显示应用视图：
+在 Elm 中，需要在视图函数 `view`
+的最后位置添加一个用于隐藏开屏动画的函数 `hideLoadingAnimation`。
+因为函数是顺序执行的，所以，当最后一个函数被执行时，
+在它前面的视图函数 `welcome` 也必然已经执行完毕，
+这也就代表着应用视图已全部就绪。
+
+所以在 `hideLoadingAnimation` 函数中，
+我们向文档追加了新的内部样式来隐藏（设置为透明）开屏动画并显示（取消透明）应用视图：
 
 ```css
 body::after { opacity: 0; }
 body > * { opacity: 1; }
 ```
 
-而页面中的加载动画图片是通过 Webpack 插件
+开屏动画图片的 Base64 编码字符串可以通过 Webpack 插件
 [HTMLWebpackPlugin](https://github.com/jantimon/html-webpack-plugin#usage)
-以 `<%= htmlWebpackPlugin.options.loading %>` 方式向其注入的：
+以 `<%= htmlWebpackPlugin.options.loading %>` 方式向模板页面注入：
 
 ```js title="webpack.config.js"
 const fs = require("fs");
@@ -249,7 +252,7 @@ function filepath(...paths) {
   return path.join(__ROOT_DIR__, ...paths);
 }
 
-// 读取加载动画文件
+// 读取开屏动画文件
 const loadingSvg = fs.readFileSync(
   filepath(publicDir, "assets/img/loading.svg"),
   "utf-8"
@@ -268,7 +271,7 @@ module.exports = {
       publicPath: "/",
 
       // 禁用 css 与 js 自动注入机制，以便于在模板内控制资源的注入位置，
-      // 确保 js 始终在 body 标签内加载，降低 js 加载对首页加载动画的影响
+      // 确保 js 始终在 body 标签内加载，降低 js 加载对首页开屏动画的影响
       inject: false,
 
       // 其他配置 ...
@@ -278,9 +281,9 @@ module.exports = {
 }
 ```
 
-> 加载动画可以从 [loading.io](https://loading.io/spinner/) 中选择，
-> 并将其保存到文件 `public/assets/img/loading.svg` 中。
-> 注：可以通过以下 JS 脚本过滤出该站点的免费动画：
+> 我们可以从 [loading.io](https://loading.io/spinner/) 中选择喜欢的 SVG 动画，
+> 并将其保存到 `public/assets/img/loading.svg` 文件中。
+> 注：在浏览器控制台中，通过以下 JS 脚本可以过滤出该站点的免费动画：
 >
 > ```js
 > document.querySelectorAll('.item').forEach(function(item) {
@@ -294,10 +297,10 @@ module.exports = {
 
 ## 实践总结
 
-我们首先将 Base64 编码后的加载动画放在 HTML 文档的最开始位置的内部样式中，
-以确保尽早显示加载动画。
+我们首先将 Base64 编码后的开屏动画放在 HTML 文档的最开始位置的内部样式中，
+以确保尽早显示开屏动画。
 
-再通过 CSS 伪元素，并控制元素透明的方式让加载动画始终显示在应用视图最上层：
+再通过 CSS 伪元素，并控制元素透明的方式让开屏动画始终显示在应用视图最上层：
 
 ```css
 body::after {
@@ -308,7 +311,7 @@ body::after {
 
   pointer-events: none; /* 禁用鼠标事件 */
 
-  /* 配置加载动画 ... */
+  /* 配置开屏动画 ... */
 }
 
 body > * {
