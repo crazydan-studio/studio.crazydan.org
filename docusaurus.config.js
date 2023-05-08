@@ -114,6 +114,10 @@ module.exports = {
       repoId: 'MDEwOlJlcG9zaXRvcnkzMDA3NzM1MTc=',
       category: 'Announcements',
       categoryId: 'DIC_kwDOEe1wjc4CU6If'
+    },
+    prism: {
+      // https://docusaurus.io/docs/markdown-features/code-blocks#supported-languages
+      additionalLanguages: ['elm', 'elixir', 'erlang']
     }
   },
   clientModules: [require.resolve('./src/clientModules/routeModules.ts')],
