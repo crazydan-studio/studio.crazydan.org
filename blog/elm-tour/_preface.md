@@ -9,7 +9,7 @@
 个人认为，Elm 是一种更为优秀和彻底的前端解决方案，在逐渐跨过其使用门槛后，便会对其爱不释手。
 其 [强类型系统](https://guide.elm-lang.org/types/custom_types.html)、
 [模式匹配](https://guide.elm-lang.org/types/pattern_matching.html)、
-[模型视图更新机制](https://guide.elm-lang.org/architecture/)
+[模型/视图更新机制](https://guide.elm-lang.org/architecture/)
 以及 [函数式编程](https://guide.elm-lang.org/#why-a-functional-language)
 让应用开发过程更加流畅、思路更加清晰、代码结构也更加简洁明了，
 而且，由于数据不可变特性，其还支持
