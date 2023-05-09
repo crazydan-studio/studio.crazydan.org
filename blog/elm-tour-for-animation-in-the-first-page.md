@@ -9,6 +9,7 @@ tags:
 
 import Copyright from '@site/src/components/Copyright/OwnBlogByAuthor';
 import Preface from './elm-tour/_preface.md';
+import ReadMore from './elm-tour/_read_more.md';
 
 
 ## 写在开始
@@ -173,7 +174,6 @@ body > * {
 以此实现加载与就绪的无缝过渡（淡入淡出效果通过 `transition` 控制）：
 
 ```elm title="src/Main.elm"
-import Browser exposing (Document)
 import Html
     exposing
         ( Html
@@ -328,23 +328,15 @@ body::after { opacity: 0; }
 body > * { opacity: 1; }
 ```
 
-不过，该方案不仅适用于 Elm 应用，也同样适用于纯 JS 应用，
-大家可以按需使用、按需改进。
+当然，该方案不仅适用于 Elm 应用，也同样适用于其他 JS 应用，
+大家可以按需取用、按需改进。
 
 ## 扩展阅读
 
-- Elm 资料
-  - [Elm 官网](https://elm-lang.org/)
-  - [Elm 手册](https://guide.elm-lang.org/)
-  - [Elm 包仓库](https://package.elm-lang.org/)
-  - [Awesome Elm](https://github.com/icopy-site/awesome-cn/blob/master/docs/awesome/awesome-elm.md)
-  - [Elm at Rakuten](https://engineering.rakuten.today/post/elm-at-rakuten/):
-    乐天（Rakuten）的 10 万行 Elm 代码的经验分享
-  - [Elm语言有哪些优点？](https://zhuanlan.zhihu.com/p/443160143)
-  - [为什么 Elm 类似语言很稀罕？未来怎样？](https://www.zhihu.com/question/19957913)
-  - [如何评价Elm 编程语言？](https://www.zhihu.com/question/49028379)
 - [simonh1000/elm-webpack-starter/webpack.config.js](https://github.com/simonh1000/elm-webpack-starter/blob/b07c0c53a5/webpack.config.js):
   通过 Webpack 构建 Elm 项目的参考配置
+
+<ReadMore />
 
 
 <Copyright
