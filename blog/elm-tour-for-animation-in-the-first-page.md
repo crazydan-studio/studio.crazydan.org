@@ -57,7 +57,7 @@ yarn dev
 浏览器访问该演示服务地址 [http://localhost:4200/](http://localhost:4200/)，
 刷新页面以查看开屏动画效果。
 
-## 实现方案
+## 方案实现
 
 在入口页面模板 `public/index.html` 的 `<head/>` 标签中，
 优先放置与开屏动画相关的内部样式，
