@@ -12,6 +12,8 @@ import Preface from './elm-tour/_preface.md';
 import ReadMore from './elm-tour/_read_more.md';
 
 
+![](./elm-tour/first-page-animation.png)
+
 ## 写在开始
 
 <Preface />
