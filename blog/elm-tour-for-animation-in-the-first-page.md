@@ -31,7 +31,7 @@ import ReadMore from './elm-tour/_read_more.md';
 
 > 本案例公网演示地址为 https://flytreeleft-elm-tour.netlify.app/first-page-animation 。
 
-从 Github 克隆演示项目到本地：
+从 Github 克隆 [演示项目](https://github.com/flytreeleft/elm-tour.git) 到本地：
 
 ```bash
 git clone https://github.com/flytreeleft/elm-tour.git
@@ -43,7 +43,7 @@ git clone https://github.com/flytreeleft/elm-tour.git
 yarn install
 ```
 
-> 从零开始初始化 NodeJS/Elm 项目的步骤详见
+> 从零开始初始化该 NodeJS/Elm 项目的步骤详见
 > [项目创建](https://github.com/flytreeleft/elm-tour/tree/master/first-page-animation#%E9%A1%B9%E7%9B%AE%E5%88%9B%E5%BB%BA)。
 
 待依赖安装完毕后，启动本地演示服务：
