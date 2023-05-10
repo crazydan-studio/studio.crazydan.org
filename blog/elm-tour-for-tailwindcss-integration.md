@@ -72,9 +72,9 @@ yarn dev
 > 本方案采用的是在视图函数中通过 `Html.Attribute.class` 属性直接引用
 > Tailwind CSS 类名的方式进行集成。虽然有
 > [matheus23/elm-default-tailwind-modules](https://package.elm-lang.org/packages/matheus23/elm-default-tailwind-modules/latest/)
-> 这类 Elm 的库，但其使用仍不太灵活，而且对 Tailwind CSS 类名做
+> 这类 Elm/Tailwind CSS 库，但其使用仍不太灵活，而且对 Tailwind CSS 类名做
 > Elm 化也没有太大必要，此外，在实际的项目中还是会用到其他
-> JS 组件并引用 Tailwind CSS 类名，故而，直接引用其类名反而更便于以一致的方式进行视图样式维护。
+> JS 组件并引用 Tailwind CSS 的类名，故而，直接引用其类名反而更便于以一致的方式进行组件样式维护。
 
 与其他 JS 项目一样，要使用 Tailwind CSS，
 需要在项目中安装、启用并配置其 PostCSS 插件 `tailwindcss`：
@@ -112,20 +112,21 @@ module.exports = {
 
 在 `tailwind.config.js` 中需要首先
 [配置 Content](https://tailwindcss.com/docs/content-configuration)，
-也就是指定 Tailwind CSS 类名的引用位置。
+也就是指定 Tailwind CSS 类名的引用文件位置。
 其插件通过扫描 `content` 列表中的文件，识别出被引用的类名，
 进而生成最小化的 CSS 文件，以避免在前端页面中包含无关的 CSS 样式，影响资源加载。
 
 > CSS 文件将使用 `postcss-loader` 加载并处理，
 > 所以，在 `content` 中不放置 CSS 文件路径。
 
-由于是在 Elm 源码文件中直接引用其样式，
+由于本方案是在 Elm 源码文件中直接引用其类名，
 故而，直接将 `src` 下任意层级的 elm 文件（`./src/**/*.elm`）加入到 `content` 列表中。
 
 而 `darkMode` 用于设置页面暗黑模式的启用方式。
-默认是在任意节点的 `class` 属性中添加 `dark` 名称，其子节点便会应用其所设置的暗黑样式。
-但本方案设置使用 `[theme="dark"]` 选择器来启用子节点的暗黑模式，
-也就是在父节点添加 `theme` 属性并设置其值为 `dark` 或为空，来启用或禁用其子节点的暗黑模式，
+默认是在任意节点的 `class` 属性中添加 `dark` 名称（一般在 `<html/>` 或 `<body/>` 节点上设置），
+其子节点便会应用其所设置的暗黑样式。
+但本方案使用 `[theme="dark"]` 选择器来启用页面的暗黑模式，
+也就是在父节点上添加 `theme` 属性并设置其值为 `dark` 或为空，便可以控制其子节点暗黑模式的启/禁。
 该方式在代码层面更加清晰，也更便于通过代码控制暗黑主题的切换。
 
 完成插件配置后，还必须在项目的
@@ -256,7 +257,7 @@ welcome { theme } =
 
 > 关系紧密的 Tailwind CSS 类可以作为一组，通过 `class` 集中在一起，
 > 多个 `class` 就是多组不同的控制样式。
-> 按这种方式组织的代码，在视觉上更加整齐一致，更便于进行样式维护。
+> 按这种方式组织的代码，在视觉上更加整齐一致，也更便于进行样式维护。
 
 ## 实践总结
 
@@ -267,10 +268,10 @@ Elm 负责业务逻辑，Tailwind CSS 负责美观，二者各有侧重点，可
 
 若同时与
 [Elm UI](https://package.elm-lang.org/packages/mdgriffith/elm-ui/latest/)
-集成，会因为其生成的 CSS 内边距类名（`p-N`）与 Tailwind CSS 的相同，
+集成，会因为其生成的 CSS 内边距类名 `p-N` 与 Tailwind CSS 的相同，
 而出现 Tailwind CSS 的内边距设置不生效的问题。
 此时，只能使用 Tailwind CSS 中的 `px-N`、`py-N`、`pt-N`
-等指定了边距方向的类名进行重名规避。
+等指定了内边距方向的类名来规避命名冲突问题。
 
 
 ## 扩展阅读
