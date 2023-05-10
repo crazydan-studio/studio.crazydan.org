@@ -20,20 +20,22 @@ import ReadMore from './elm-tour/_read_more.md';
 
 ## 场景描述
 
-[Tailwind CSS](https://tailwindcss.com/) 对 CSS 样式进行命名，
-支持响应式页面、暗黑模式、按需构建静态 CSS 等特性，
-极大地简化了前端样式的设计，提供了样式的复用性，
-可以不需要太多的设计相关的知识并可编写出现代化的前端页面，
-实为我等没什么审美感的开发人员的福音。
+[Tailwind CSS](https://tailwindcss.com/)
+将所有 CSS 属性全部封装成了语义化的类，支持响应式设计、暗黑模式，
+可定制化程度高，可维护性强，还默认提供一套专业的 UI 属性值（尺寸、边距、颜色等）。
+其极大地简化了前端的开发工作，即使没有专业的设计知识，
+也可以快速地开发出现代化的应用页面，实为我等 UI 设计能力薄弱的开发人员的福音。
 
-而将其与 Elm 结合，不仅可以快速开发出美观的页面，也能够直接自适应移动端等设备，
-避免在 Elm 中根据设备屏幕大小编写不同的视图函数，
-从而有效降低视图函数代码的编写量，提高代码整体质量。
+Elm 开发侧重的是业务逻辑，并不提供专业的 UI 库，要想写出一套美观的页面，
+需要像写 HTML 一样编写内联样式（或自定义 CSS）。
+而将 Tailwind CSS 与 Elm 进行集成，不仅可以充分利用 Elm 的开发优势，
+还可以彻底摆脱页面太丑、无法自适应移动设备等 UI 设计问题，
+让一个后端 Boy 也能对前端开发游刃有余。
 
 虽然，像 [Elm UI](https://package.elm-lang.org/packages/mdgriffith/elm-ui/1.1.8/)
-之类的库致力于消除 CSS 的使用，但其并不能提供一套简单、现成、美观的 UI 库，
+之类的 Elm 库致力于消除对 CSS 的使用，但其并不能提供一套现成的、专业的、现代化的 UI 库，
 而自行从头设计一套 UI，不仅费时费力，还很难达到当下的审美设计要求。
-故而，将 Tailwind CSS 与 Elm 集成使用，才是比较实在的选择。
+故而，将 Tailwind CSS 与 Elm 集成使用，才是一个后端 Boy 比较实在的选择。
 
 <!-- more -->
 
@@ -41,7 +43,7 @@ import ReadMore from './elm-tour/_read_more.md';
 
 > 本案例公网演示地址为 https://flytreeleft-elm-tour.netlify.app/tailwindcss-integration 。
 
-从 Github 克隆 [演示项目](https://github.com/flytreeleft/elm-tour.git) 到本地：
+从 Github 克隆 [演示项目](https://github.com/flytreeleft/elm-tour) 到本地：
 
 ```bash
 git clone https://github.com/flytreeleft/elm-tour.git
@@ -67,13 +69,33 @@ yarn dev
 
 ## 方案实现
 
-> 针对本方案的实现，采用的是与 Tailwind CSS 直接集成，
-> 并在视图函数中通过 `Html.Attribute.class` 属性引用其类名称的方式，
-> 以及时采用 Tailwind CSS 的最新版本，并能灵活使用其特殊用法。
+> 本方案采用的是在视图函数中通过 `Html.Attribute.class` 属性直接引用
+> Tailwind CSS 类名的方式进行集成。虽然有
+> [matheus23/elm-default-tailwind-modules](https://package.elm-lang.org/packages/matheus23/elm-default-tailwind-modules/latest/)
+> 这类 Elm 的库，但其使用仍不太灵活，而且对 Tailwind CSS 类名做
+> Elm 化也没有太大必要，此外，在实际的项目中还是会用到其他
+> JS 组件并引用 Tailwind CSS 类名，故而，直接引用其类名反而更便于以一致的方式进行视图样式维护。
 
-首先，在项目根目录中创建配置文件 `tailwind.config.js`：
+与其他 JS 项目一样，要使用 Tailwind CSS，
+需要在项目中安装、启用并配置其 PostCSS 插件 `tailwindcss`：
 
-```js title="tailwind.config.js"
+```bash title="安装 tailwindcss 插件"
+yarn add --dev tailwindcss
+```
+
+```js title="postcss.config.js - 启用 tailwindcss 插件"
+// https://github.com/csaltos/elm-tailwindcss
+// https://tailwindcss.com/docs/installation/using-postcss
+module.exports = {
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {},
+  },
+};
+```
+
+```js title="tailwind.config.js - 配置 tailwindcss 插件"
+// https://tailwindcss.com/docs/installation/using-postcss
 module.exports = {
   // https://github.com/csaltos/elm-tailwindcss
   content: ["./src/**/*.elm"],
@@ -88,60 +110,43 @@ module.exports = {
 };
 ```
 
-其中，`content` 指定在哪些文件中引用 Tailwind CSS 的类名，
-以便于其 PostCSS 插件能够扫描并识别出被引用的类名，从而准确生成 CSS 文件。
-这里配置扫描 `src` 目录下任意层级的 Elm 源码文件。
-该项的配置规则请详见
-[Content Configuration](https://tailwindcss.com/docs/content-configuration)。
+在 `tailwind.config.js` 中需要首先
+[配置 Content](https://tailwindcss.com/docs/content-configuration)，
+也就是指定 Tailwind CSS 类名的引用位置。
+其插件通过扫描 `content` 列表中的文件，识别出被引用的类名，
+进而生成最小化的 CSS 文件，以避免在前端页面中包含无关的 CSS 样式，影响资源加载。
 
-而 `darkMode` 用于设置暗黑模式的启用方式，
-默认是在任意节点的 `class` 属性中添加 `dark`，其子节点便会采用所设置的暗黑样式，
-但本方案使用 `[theme="dark"]` 选择器的方式启用子节点的暗黑模式，
-也就是在父节点添加 `theme` 属性并设置其值为 `dark`，
-这样更便于控制页面的暗黑主题切换。
+> CSS 文件将使用 `postcss-loader` 加载并处理，
+> 所以，在 `content` 中不放置 CSS 文件路径。
 
-接着，在 `postcss.config.js` 中启用插件 `tailwindcss`：
+由于是在 Elm 源码文件中直接引用其样式，
+故而，直接将 `src` 下任意层级的 elm 文件（`./src/**/*.elm`）加入到 `content` 列表中。
 
-```js title="postcss.config.js"
-// https://github.com/csaltos/elm-tailwindcss
-module.exports = {
-  plugins: {
-    tailwindcss: {},
-    autoprefixer: {},
-  },
-};
-```
+而 `darkMode` 用于设置页面暗黑模式的启用方式。
+默认是在任意节点的 `class` 属性中添加 `dark` 名称，其子节点便会应用其所设置的暗黑样式。
+但本方案设置使用 `[theme="dark"]` 选择器来启用子节点的暗黑模式，
+也就是在父节点添加 `theme` 属性并设置其值为 `dark` 或为空，来启用或禁用其子节点的暗黑模式，
+该方式在代码层面更加清晰，也更便于通过代码控制暗黑主题的切换。
 
-然后，需要创建一个 CSS 文件用于导入 Tailwind CSS 的基础库，
-以使样式能够生效：
+完成插件配置后，还必须在项目的
+CSS 主文件（页面中第一个引入的 CSS 文件，如，`public/index.css`）中通过
+`@tailwind` 指令引入 Tailwind CSS 的基础库：
 
 ```css title="public/index.css"
-/* 导入 tailwindcss 基础库
- * https://tailwindcss.com/docs/installation/using-postcss
+/* 引入 tailwindcss 基础库
+ * https://tailwindcss.com/docs/functions-and-directives#tailwind
  */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@tailwind variants;
 ```
 
-该 CSS 文件需要在入口页面中被引用，或者在入口 JS 中显式导入：
-
-```js title="public/index.js"
-"use strict";
-
-import { Elm } from "../src/Main";
-
-import "./index.css";
-
-const app = Elm.Main.init({
-  // ...
-});
-```
-
-最后，需要在 Webpack 配置文件 `webpack.config.js`
-中对 CSS 文件使用 `postcss-loader` 加载器加载，
-从而能够处理 CSS 文件中的 `@tailwind`、`@apply` 等
-[Tailwind CSS 指令](https://tailwindcss.com/docs/functions-and-directives)：
+由于在 CSS 文件的 `@tailwind`、`@apply` 等
+[Tailwind CSS 指令](https://tailwindcss.com/docs/functions-and-directives)
+只能通过 PostCSS 处理，
+所以，需要在 Webpack 的配置文件中配置对 CSS 文件优先使用 `postcss-loader`
+加载（`use` 中的加载器列表为倒序执行，故，`postcss-loader` 需放在最后）：
 
 ```js title="webpack.config.js"
 const common = {
@@ -201,7 +206,8 @@ if (MODE === "production") {
 }
 ```
 
-现在，便可以愉快地在 Elm 源码文件中引用 Tailwind CSS 的类了：
+至此，Elm 与 Tailwind CSS 的集成便配置完成了。
+接下来，便可以愉快地在 Elm 源码文件中引用 Tailwind CSS 的样式了：
 
 ```elm title="src/Main.elm"
 type alias Model =
@@ -222,7 +228,7 @@ type Theme
 view : Model -> Html Msg
 view ({ theme } as model) =
     div
-        -- 在最外层 div 节点控制启禁页面的暗黑模式
+        -- 在最外层 div 节点控制启禁视图的暗黑模式
         [ attribute "theme"
             (case theme of
                 Dark ->
@@ -248,27 +254,29 @@ welcome { theme } =
         ]
 ```
 
-> 这里采用多个 `class` 属性，将关系紧密的类放在一起，
-> 代码既直观，又便于维护样式设置。
+> 关系紧密的 Tailwind CSS 类可以作为一组，通过 `class` 集中在一起，
+> 多个 `class` 就是多组不同的控制样式。
+> 按这种方式组织的代码，在视觉上更加整齐一致，更便于进行样式维护。
 
 ## 实践总结
 
-Tailwind CSS 插件是根据在被扫描文件中类名引用的情况来生成最终的 CSS 文件的，
-所以，其与 Elm 等任意框架的代码均能很好集成，让 Elm 更好地融入现代优秀的开发框架之中。
-
-使用 Tailwind CSS 可以有效降低页面设计难度，极大提升页面美感，
-并轻松实现对各类设备的自适应。值得大家好好学习和广泛使用。
+Elm 负责业务逻辑，Tailwind CSS 负责美观，二者各有侧重点，可以互取所长，
+对于降低前端开发难度，提升前端开发效率，会起到十分巨大的作用。
 
 ## 注意事项
 
-与 [Elm UI](https://package.elm-lang.org/packages/mdgriffith/elm-ui/latest/)
-集成会因为其生成的 CSS 内边距类名（`p-N`）相同而出现 Tailwind CSS 样式不生效的问题，
+若同时与
+[Elm UI](https://package.elm-lang.org/packages/mdgriffith/elm-ui/latest/)
+集成，会因为其生成的 CSS 内边距类名（`p-N`）与 Tailwind CSS 的相同，
+而出现 Tailwind CSS 的内边距设置不生效的问题。
 此时，只能使用 Tailwind CSS 中的 `px-N`、`py-N`、`pt-N`
-等指定了方向的类名进行规避。
+等指定了边距方向的类名进行重名规避。
 
 
 ## 扩展阅读
 
+- [使用Tailwind CSS，看这个帖子就够了，使用Tailwind CSS的N个感触](https://learnku.com/laravel/t/53827):
+  了解 Tailwind CSS 的优缺点
 - [Elm with Tailwind CSS](https://github.com/csaltos/elm-tailwindcss):
   Tailwind CSS 集成的样例工程，仅需关注`tailwind.config.js` 和 `postcss.config.js`
   的配置内容
