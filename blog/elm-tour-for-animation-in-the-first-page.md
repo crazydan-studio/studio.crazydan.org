@@ -33,7 +33,7 @@ import ReadMore from './elm-tour/_read_more.md';
 
 > 本案例公网演示地址为 https://flytreeleft-elm-tour.netlify.app/first-page-animation 。
 
-从 Github 克隆 [演示项目](https://github.com/flytreeleft/elm-tour.git) 到本地：
+从 Github 克隆 [演示项目](https://github.com/flytreeleft/elm-tour) 到本地：
 
 ```bash
 git clone https://github.com/flytreeleft/elm-tour.git
