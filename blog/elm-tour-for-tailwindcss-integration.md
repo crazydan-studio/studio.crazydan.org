@@ -69,11 +69,11 @@ yarn dev
 
 ## 方案实现
 
-> 本方案采用的是在视图函数中通过 `Html.Attribute.class` 属性直接引用
+> 本方案采用的是在 Elm 视图函数中通过 `Html.Attribute.class` 属性直接引用
 > Tailwind CSS 类名的方式进行集成。虽然有
 > [matheus23/elm-default-tailwind-modules](https://package.elm-lang.org/packages/matheus23/elm-default-tailwind-modules/latest/)
 > 这类 Elm/Tailwind CSS 库，但其使用仍不太灵活，而且对 Tailwind CSS 类名做
-> Elm 化也没有太大必要，此外，在实际的项目中还是会用到其他
+> Elm 函数化也没有太大必要，此外，在实际的项目中还是会用到其他
 > JS 组件并引用 Tailwind CSS 的类名，故而，直接引用其类名反而更便于以一致的方式进行组件样式维护。
 
 与其他 JS 项目一样，要使用 Tailwind CSS，
@@ -131,10 +131,10 @@ module.exports = {
 
 完成插件配置后，还必须在项目的
 CSS 主文件（页面中第一个引入的 CSS 文件，如，`public/index.css`）中通过
-`@tailwind` 指令引入 Tailwind CSS 的基础库：
+`@tailwind` 指令指定 PostCSS 插件 `tailwindcss` 生成的各类样式在 CSS 文件中的位置：
 
 ```css title="public/index.css"
-/* 引入 tailwindcss 基础库
+/* 指定 tailwindcss 各类样式在 CSS 文件中的插入位置
  * https://tailwindcss.com/docs/functions-and-directives#tailwind
  */
 @tailwind base;
@@ -143,9 +143,9 @@ CSS 主文件（页面中第一个引入的 CSS 文件，如，`public/index.css
 @tailwind variants;
 ```
 
-由于在 CSS 文件的 `@tailwind`、`@apply` 等
+由于在 CSS 文件中的 `@tailwind`、`@apply` 等
 [Tailwind CSS 指令](https://tailwindcss.com/docs/functions-and-directives)
-是通过 PostCSS 的插件 `tailwindcss` 识别并处理的，
+是通过 PostCSS 插件 `tailwindcss` 识别并处理的，
 所以，需要在 Webpack 的配置文件中配置对 CSS 文件优先使用 `postcss-loader`
 加载（`use` 中的加载器列表为倒序执行，故，`postcss-loader` 需放在最后）：
 
@@ -268,7 +268,7 @@ Elm 负责业务逻辑，Tailwind CSS 负责美观，二者各有侧重点，可
 
 若同时与
 [Elm UI](https://package.elm-lang.org/packages/mdgriffith/elm-ui/latest/)
-集成，会因为其生成的 CSS 内边距类名 `p-N` 与 Tailwind CSS 的相同，
+集成，会因为其生成的 CSS 内边距类名 `p-N` 与 Tailwind CSS 的重名，
 而出现 Tailwind CSS 的内边距设置不生效的问题。
 此时，只能使用 Tailwind CSS 中的 `px-N`、`py-N`、`pt-N`
 等指定了内边距方向的类名来规避命名冲突问题。
