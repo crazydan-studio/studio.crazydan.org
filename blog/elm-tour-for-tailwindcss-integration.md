@@ -145,7 +145,7 @@ CSS 主文件（页面中第一个引入的 CSS 文件，如，`public/index.css
 
 由于在 CSS 文件的 `@tailwind`、`@apply` 等
 [Tailwind CSS 指令](https://tailwindcss.com/docs/functions-and-directives)
-只能通过 PostCSS 处理，
+是通过 PostCSS 的插件 `tailwindcss` 识别并处理的，
 所以，需要在 Webpack 的配置文件中配置对 CSS 文件优先使用 `postcss-loader`
 加载（`use` 中的加载器列表为倒序执行，故，`postcss-loader` 需放在最后）：
 
