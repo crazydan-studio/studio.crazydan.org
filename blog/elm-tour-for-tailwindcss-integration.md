@@ -270,9 +270,20 @@ Elm 负责业务逻辑，Tailwind CSS 负责美观，二者各有侧重点，可
 [Elm UI](https://package.elm-lang.org/packages/mdgriffith/elm-ui/latest/)
 集成，会因为其生成的 CSS 内边距类名 `p-N` 与 Tailwind CSS 的重名，
 而出现 Tailwind CSS 的内边距设置不生效的问题。
-此时，只能使用 Tailwind CSS 中的 `px-N`、`py-N`、`pt-N`
+此时，可以使用 Tailwind CSS 中的 `px-N`、`py-N`、`pt-N`
 等指定了内边距方向的类名来规避命名冲突问题。
 
+更为彻底的方案（也是与现有项目的兼容方案）是为 Tailwind CSS 的类名都加上
+[前缀](https://tailwindcss.com/docs/configuration#prefix)：
+
+```js title="tailwind.config.js"
+module.exports = {
+  prefix: 'tw-',
+}
+```
+
+这样，内边距等类的名称都需要加上 `tw-` 前缀（如，`tw-p-1`），
+从而有效避免 CSS 类重名问题。
 
 ## 扩展阅读
 
