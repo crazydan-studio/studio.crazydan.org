@@ -193,6 +193,22 @@ function updateProperties(scope, changedProperties) {
 > 本案里仅截取与 Web Components 相关的代码，完整的代码请见
 > https://github.com/flytreeleft/elm-tour/blob/master/reuse-statefull-components/src/Native/webcomponents/bytemd/index.js 。
 
+有关 Lit 的使用，请自行阅读器 [在线文档](https://lit.dev/docs/)。
+
+这里主要解释一下以下几个方面：
+- 内部状态: 通过 `{ state: true }` 声明，
+  其仅在组件内部可见，用于记录组件内部状态
+- 外部属性: 通过 `{ attribute: true }` 声明，
+  在组件外部，通过属性名称为组件赋初值或对属性进行更新
+- `createRenderRoot`: 在不使用 Shadow Dom 创建组件时，
+  该函数需返回 `this`，最终组件将在当前文档内直接挂载，
+  从而在其上可以直接使用全局样式
+- `firstUpdated`: 是组件渲染节点 `this.renderRoot` 就绪后的更新函数，
+  可以在该函数内将 bytemd 挂载到渲染节点上并进行初始化和事件监听
+- `updated`: 为组件定义的属性值发生变化时所调用的函数，
+  在该函数内可以根据 `changedProperties.has(prop)` 是否为 `true`
+  确认属性 `prop` 是否发生了更新，进而判断是否需要更新挂载上的组件
+
 接着，在 `public/index.js` 中引入 ByteMD 组件：
 
 ```js
