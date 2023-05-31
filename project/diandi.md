@@ -1,6 +1,6 @@
 ---
 title: 点滴 (DianDi)
-slogan: 不让你的灵感从指尖溜走
+slogan: 不让你的所思从指尖溜走
 icon: /img/diandi/icon.svg
 cover_image: /img/diandi/logo.svg
 links:
