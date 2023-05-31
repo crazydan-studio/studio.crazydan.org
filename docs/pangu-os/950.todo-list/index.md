@@ -1,6 +1,6 @@
 ---
-title: ToDo列表
-description: 盘古OS的待办列表
+title: ToDo 列表
+description: 盘古 OS 的待办列表
 disable_comments: true
 authors:
 - flytreleft

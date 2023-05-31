@@ -2,7 +2,7 @@ module.exports = {
   docs: [
     {
       type: 'category',
-      label: '我与AI聊了个天',
+      label: '我与 AI 聊了个天',
       link: {
         type: 'generated-index',
         title: '主题分类',

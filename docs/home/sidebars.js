@@ -19,12 +19,12 @@ module.exports = {
           items: [
             {
               type: 'link',
-              label: '盘古OS',
+              label: '盘古 OS',
               href: '/docs/pangu-os'
             },
             {
               type: 'link',
-              label: '磐石DB',
+              label: '磐石 DB',
               href: '/docs/panshi-db'
             },
             {
@@ -49,7 +49,7 @@ module.exports = {
           items: [
             {
               type: 'link',
-              label: '《我与AI聊了个天》',
+              label: '《我与 AI 聊了个天》',
               href: '/docs/chat-with-ai'
             }
           ]

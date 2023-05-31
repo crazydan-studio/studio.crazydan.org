@@ -1,6 +1,6 @@
 ---
 title: 系统设计
-description: 了解盘古OS的功能点设计
+description: 了解盘古 OS 的功能点设计
 authors:
 - flytreleft
 ---

@@ -2,7 +2,7 @@ module.exports = {
   docs: [
     {
       type: 'category',
-      label: '盘古OS',
+      label: '盘古 OS',
       link: {
         type: 'generated-index',
         title: '目录索引',

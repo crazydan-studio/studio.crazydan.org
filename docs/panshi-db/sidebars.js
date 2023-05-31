@@ -2,7 +2,7 @@ module.exports = {
   docs: [
     {
       type: 'category',
-      label: '磐石DB',
+      label: '磐石 DB',
       link: {
         type: 'generated-index',
         title: '目录索引',

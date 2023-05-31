@@ -1,5 +1,5 @@
 ---
-title: UI设计
+title: UI 设计
 disable_comments: true
 authors:
 - flytreleft

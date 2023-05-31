@@ -1,6 +1,6 @@
 ---
 title: 架构设计
-description: 了解磐石DB的架构情况
+description: 了解磐石 DB 的架构情况
 authors:
 - flytreleft
 ---
@@ -17,5 +17,5 @@ import Header from '../_header.md';
   data={sampleCashbagData}
   height={800}
 >
-某记账App数据关系图
+某记账 App 数据关系图
 </DataLinkGraph>

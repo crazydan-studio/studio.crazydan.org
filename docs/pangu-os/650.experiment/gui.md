@@ -1,5 +1,5 @@
 ---
-title: GUI相关
+title: GUI 相关
 description: 与 GUI 相关的现行可参考技术和框架实现
 authors:
 - flytreleft

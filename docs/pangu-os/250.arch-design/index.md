@@ -1,6 +1,6 @@
 ---
 title: 架构设计
-description: 了解盘古OS的架构设计
+description: 了解盘古 OS的架构设计
 disable_comments: false
 authors:
 - flytreleft
@@ -11,7 +11,7 @@ import Header from '../_header.md';
 <Header />
 
 
-<img src="/img/pangu-os/arch-v1.0.png" alt="盘古OS 架构 v1.0"/>
+<img src="/img/pangu-os/arch-v1.0.png" alt="盘古 OS 架构 v1.0"/>
 
 <!--
 - 驱动层与硬件交互硬件所支持的数据格式（非结构化数据），
