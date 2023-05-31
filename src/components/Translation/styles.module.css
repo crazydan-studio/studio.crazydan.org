@@ -35,3 +35,7 @@
   padding: 0px 8px;
   line-height: 1.5;
 }
+
+.translationWaiting {
+  opacity: 0.3;
+}

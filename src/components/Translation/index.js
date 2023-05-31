@@ -14,7 +14,15 @@ const langNames = {
 };
 
 export function Text({ children }) {
-  return <div className={clsx(styles.translationText)}>{children}</div>;
+  return (
+    <div className={clsx(styles.translationText)}>
+      {children || (
+        <p className={clsx(styles.translationWaiting)}>
+          {i18n('正在翻译中 ...')}
+        </p>
+      )}
+    </div>
+  );
 }
 
 export function Translation({ children, titled }) {
@@ -31,6 +39,14 @@ export function Translation({ children, titled }) {
 }
 
 function TranslationParagraph({ locale, items }) {
+  const hasTranslation = items.reduce(
+    (result, { props }) =>
+      result ||
+      // 已翻译为当前语言
+      (locale && locale === props.lang && !!props.children),
+    false
+  );
+
   return (
     <div className={clsx(styles.translationContainer)}>
       <Tabs className={clsx(styles.translation)} /*groupId="translation"*/>
@@ -45,9 +61,9 @@ function TranslationParagraph({ locale, items }) {
             default={
               items.length === 1
                 ? true
-                : locale
+                : hasTranslation
                 ? locale === props.lang
-                : idx === 0
+                : props.source
             }
           >
             <TextComp {...props} />
@@ -74,6 +90,14 @@ function TranslationTitle({ locale, source, items }) {
     });
   }
 
+  const hasTranslation = items.reduce(
+    (result, { props }) =>
+      result ||
+      // 已翻译为当前语言
+      (locale && locale === props.lang && !!props.children),
+    false
+  );
+
   return (
     <div
       className={clsx(
@@ -94,9 +118,9 @@ function TranslationTitle({ locale, source, items }) {
             default={
               items.length === 1
                 ? true
-                : locale
+                : hasTranslation
                 ? locale === props.lang
-                : idx === 0
+                : props.source
             }
           >
             {props.children &&
