@@ -42,10 +42,10 @@ export default i18n()
   .trans(['更多'])
   .en('More')
   //
-  .trans(['Crazydan主站'])
+  .trans(['Crazydan 主站'])
   .en("Crazydan's Site")
   //
-  .trans(['flytreeleft的博客'])
+  .trans(['flytreeleft 的博客'])
   .en("flytreeleft's Blog")
   //
   .done();

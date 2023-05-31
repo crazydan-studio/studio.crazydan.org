@@ -69,7 +69,7 @@ module.exports = {
           title: '我们',
           items: [
             {
-              label: 'Crazydan主站',
+              label: 'Crazydan 主站',
               href: 'https://crazydan.org'
             }
           ]
@@ -87,7 +87,7 @@ module.exports = {
           title: '更多',
           items: [
             {
-              label: 'flytreeleft的博客',
+              label: 'flytreeleft 的博客',
               href: 'https://flytreeleft.org'
             }
           ]
