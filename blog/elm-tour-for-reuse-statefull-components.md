@@ -22,19 +22,19 @@ import ReadMore from './elm-tour/_read_more.md';
 
 Elm 为函数化编程语言，所以，通过 Elm 开发的组件也只能是一个个函数，
 而函数是无状态的，无法编写和使用**有状态**的组件，
-若组件有与组件自身相关的中间态数据，则必须将其状态挂载到业务模型上，与业务状态一起维护。
+若组件内部有自己的状态数据，则必须将其状态挂载到业务模型上，与业务状态一起维护。
 但该方式也面临以下问题：
-- 组件类型可能过多，需要在业务模型上维护多种类型的组件状态数据
-- 同类型的组件实例可能有多个，无法简单有效地将组件函数与某个组件状态关联起来，
-  也就无法更新某个组件状态
+- 组件类型可能过多，需要在业务模型上维护多种不同结构的组件状态数据
+- 同类型的组件实例可能有多个，无法简单有效地将组件函数与某个组件的状态数据关联起来，
+  也就无法更新某个具体组件的状态
 - 需要独立维护组件状态更新函数和消息，使得业务代码变得十分复杂
-- 有状态的 Elm 组件难以复用，几乎要求每个项目都重写代码，严重阻碍应用的开发进度
+- 有状态的 Elm 组件难以复用，几乎要求每个项目都重写代码，严重阻碍应用的开发速度
 
-有状态组件在 Elm 中难以实现和维护，导致其复用度极低，严重影响 Elm 的适用范围，
-也是很多开发人员不愿使用、Elm 生态难以扩大的原因之一。
+有状态组件在 Elm 中难以实现和维护，导致其复用度极低，严重影响 Elm 的应用范围，
+这也是很多开发人员不愿使用 Elm，以及 Elm 生态难以发展的原因之一。
 
 不过，通过 Web Components 机制，便可以彻底解决有状态组件无法在 Elm 中复用的问题，
-也不会破坏 Elm 的使用原则，并且也是 Elm 推荐的一种与 JS 生态的互操作方式 -
+也不会破坏 Elm 的使用原则，并且这也是 Elm 推荐的一种与 JS 生态互操作的方式 -
 [Custom Elements](https://guide.elm-lang.org/interop/custom_elements.html)。
 
 <!-- more -->
@@ -65,12 +65,12 @@ yarn dev
 ```
 
 浏览器访问该演示服务地址 [http://localhost:4202/](http://localhost:4202/)，
-刷新页面以查看开屏动画效果。
+并查看演示效果。
 
 ## 方案实现
 
 > 本方案以 [ByteMD](https://github.com/bytedance/bytemd)
-> 为例说明如何在 Elm 中通过 Web Components 机制实现有状态组件的集成。
+> 为例说明如何在 Elm 中通过 Web Components 机制实现与有状态组件的集成。
 
 首先，在项目中安装 Web Components 开发框架 [Lit](https://lit.dev/docs/)：
 
@@ -78,16 +78,13 @@ yarn dev
 yarn add lit
 ```
 
-再安装 Markdown 编辑器
+接着，安装 Markdown 编辑器
 [ByteMD](https://github.com/bytedance/bytemd)：
 
 ```bash
 yarn add bytemd
-```
 
-可以按需安装 ByteMD 的相关插件：
-
-```bash
+## 可以按需安装 ByteMD 的相关插件
 yarn add \
   @bytemd/plugin-breaks \
   @bytemd/plugin-gemoji \
@@ -101,8 +98,8 @@ yarn add \
   rehype-minify-whitespace
 ```
 
-然后，在 `src/Native/webcomponents/bytemd/index.js`
-中创建 ByteMD 的 Web Components 组件：
+然后，新建文件 `src/Native/webcomponents/bytemd/index.js`，
+并在其中创建 ByteMD 的 Web Components 组件：
 
 ```js
 import { LitElement } from "lit";
@@ -190,26 +187,24 @@ function updateProperties(scope, changedProperties) {
 }
 ```
 
-> 本案里仅截取与 Web Components 相关的代码，完整的代码请见
+> 本方案中仅截取了与 Web Components 相关的代码，完整的代码请见
 > https://github.com/flytreeleft/elm-tour/blob/master/reuse-statefull-components/src/Native/webcomponents/bytemd/index.js 。
 
-有关 Lit 的使用，请自行阅读器 [在线文档](https://lit.dev/docs/)。
+> 有关 Lit 的使用，请自行阅读其 [在线文档](https://lit.dev/docs/)。这里主要解释以下几个问题：
+> - 组件内部状态通过 `{ state: true }` 声明，
+>   其仅在组件内部可见，用于保持组件的内部状态数据
+> - 组件外部属性通过 `{ attribute: true }` 声明，
+>   在组件外部通过属性名称为对其状态数据进行更新
+> - `createRenderRoot` 在不使用 Shadow Dom 创建组件时，
+>   该函数需返回 `this`，最终组件将在当前文档内直接挂载，
+>   进而，可以在其上直接使用全局样式
+> - `firstUpdated` 是组件渲染节点 `this.renderRoot` 就绪后的更新函数，
+>   可以在该函数内将 bytemd 挂载到渲染节点上并进行初始化和绑定事件监听
+> - `updated` 为组件定义的属性值发生变化时所调用的函数，
+>   在该函数内可以根据 `changedProperties.has(prop)` 是否为 `true`
+>   确认属性 `prop` 是否发生了更新，进而判断是否需要更新视图等
 
-这里主要解释一下以下几个方面：
-- 内部状态: 通过 `{ state: true }` 声明，
-  其仅在组件内部可见，用于记录组件内部状态
-- 外部属性: 通过 `{ attribute: true }` 声明，
-  在组件外部，通过属性名称为组件赋初值或对属性进行更新
-- `createRenderRoot`: 在不使用 Shadow Dom 创建组件时，
-  该函数需返回 `this`，最终组件将在当前文档内直接挂载，
-  从而在其上可以直接使用全局样式
-- `firstUpdated`: 是组件渲染节点 `this.renderRoot` 就绪后的更新函数，
-  可以在该函数内将 bytemd 挂载到渲染节点上并进行初始化和事件监听
-- `updated`: 为组件定义的属性值发生变化时所调用的函数，
-  在该函数内可以根据 `changedProperties.has(prop)` 是否为 `true`
-  确认属性 `prop` 是否发生了更新，进而判断是否需要更新挂载上的组件
-
-接着，在 `public/index.js` 中引入 ByteMD 组件：
+再在 `public/index.js` 中导入前面创建的 ByteMD 组件：
 
 ```js
 "use strict";
@@ -223,7 +218,7 @@ const app = Elm.Main.init({
 });
 ```
 
-现在便可以在 Elm 中使用 ByteMD 组件了：
+最后，便可以在 Elm 中通过 `node` 函数引入 ByteMD 组件了：
 
 ```elm
 module Main exposing (main)
@@ -285,33 +280,33 @@ playground { markdown } =
         []
 ```
 
-> 对于自定义的 HTML 元素，在 Elm 中通过 `node` 函数引用。
-
 在我们编写的 ByteMD 的 Web Components 组件中，
 对外提供 `value` 和 `placeholder` 等属性，分别用于设置编辑器的初始文本和占位提示信息。
 
 而对于用户输入内容，在 Elm 侧则通过监听组件的 `change` 事件，
-从事件对象的 `detail.value` 中获取，
-再将获取的内容通过消息 `EditorValueChange` 发送给 Elm 应用，
-由其调用 `update` 函数更新模型 `Model`。
+从事件对象的 `detail.value` 中获取该内容，
+再将获取到的内容通过消息 `EditorValueChange` 发送给 Elm 应用，
+并由其调用 `update` 函数更新模型 `Model`。
 
-以上过程，便实现了在 Elm 中，通过对组件属性赋值，实现对自定义组件的初始化，
-再通过监听组件事件，获取组件最终状态，进而通过 Elm 消息完成对组件最终状态的记录。
+至此，便实现了 Elm 与有状态组件的集成。Elm 通过对组件做属性赋值来控制组件内部状态，
+再通过监听组件的事件得知组件的状态变更，从而完成从内到外的与组件数据互通的过程，
+而不用关心组件内部的数据结构和数据变化情况，彻底简化了 Elm 应用的开发过程。
 
 ## 实践总结
 
-通过 Web Components机制，Elm 仅需记录组件中与业务数据相关的状态，
-而不需要记录组件的中间态数据，使得 Elm 代码更加简洁，
-避免在业务模型中维护复杂的组件过程数据。
+通过 Web Components 机制，Elm 仅需记录组件中与业务数据相关的状态，
+而不再需要同时记录组件的内部状态数据，使得 Elm 代码更加简洁，
+避免在业务模型中维护复杂的组件状态数据。
 
-而且，该方案成功实现 Elm 与现有 JS 组件生态的集成，
+而且，该方案也可以实现 Elm 与现有 JS 组件生态的集成，
 让 Elm 应用能够直接使用其他框架开发的各种组件，
-不用再费心费力地重头开发纯粹的 Elm 组件。
+不用再费心费力地重头开发纯粹的 Elm 组件了。
 
 ## 扩展阅读
 
 - [Interacting with Web Components](https://elmprogramming.com/interacting-with-web-components.html):
-  以截图组件 `@github/image-crop-element` 为例，讲解 Elm 与 Web Components 集成的流程，
+  以截图组件 [@github/image-crop-element](https://github.com/github/image-crop-element)
+  为例，讲解 Elm 与 Web Components 集成的流程，
   同时提出以组件事件监听方式实时获取组件更新状态的方案
 - [A Guide to Using Elm With Webcomponents](https://github.com/elm-community/js-integration-examples/blob/master/more/webcomponents/README.md):
   Elm 社区给出的与 Web Components 集成的开发指南
