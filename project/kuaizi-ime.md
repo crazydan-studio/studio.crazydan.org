@@ -4,8 +4,9 @@ slogan: 高效编辑需要又好又快的输入法
 icon: /img/kuaizi/icon.svg
 cover_image: /img/kuaizi/keyboard.png
 links:
-  demo:
-  document: https://github.com/crazydan-studio/kuaizi-ime/tree/master
+  site: https://play.google.com/store/apps/details?id=org.crazydan.studio.app.ime.kuaizi
+  demo: https://www.youtube.com/watch?v=6bmR12nYwug
+  document: https://github.com/crazydan-studio/kuaizi-ime
 authors:
 - flytreleft
 categories:
