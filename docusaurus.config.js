@@ -236,7 +236,7 @@ module.exports = {
           truncateMarker: /<!--\s*(more)\s*-->/,
           feedOptions: {
             type: 'all',
-            copyright: `Copyright © ${new Date().getFullYear()} Crazydan Studio.`
+            copyright: `Copyright © 2014-${new Date().getFullYear()} Crazydan Studio.`
           }
         },
         docs: false
