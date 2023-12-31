@@ -1,3 +1,5 @@
+const localPlantUML = require('@mstroppel/remark-local-plantuml');
+
 module.exports = {
   title: 'Crazydan Studio',
   tagline: '让生活：更简单，更美好',
@@ -116,8 +118,11 @@ module.exports = {
       categoryId: 'DIC_kwDOEe1wjc4CU6If'
     },
     prism: {
+      theme: require('./src/theme/prism/prismLight'),
+      darkTheme: require('./src/theme/prism/prismDark'),
       // https://docusaurus.io/docs/markdown-features/code-blocks#supported-languages
-      additionalLanguages: ['elm', 'elixir', 'erlang']
+      // https://github.com/FormidableLabs/prism-react-renderer/blob/master/packages/generate-prism-languages/index.ts#L9-L23
+      additionalLanguages: ['elm', 'elixir', 'erlang', 'bash', 'yaml']
     }
   },
   clientModules: [require.resolve('./src/clientModules/routeModules.ts')],
@@ -137,6 +142,8 @@ module.exports = {
         blogTagsListComponent: '@theme/BlogTagsListPage',
         blogTagsPostsComponent: '@theme/BlogTagsPostsPage',
         showReadingTime: true,
+        // https://github.com/mstroppel/remark-local-plantuml/#integration
+        remarkPlugins: [localPlantUML],
         truncateMarker: /<!--\s*(more)\s*-->/,
         feedOptions: {
           type: null
@@ -162,7 +169,9 @@ module.exports = {
         editUrl:
           'https://github.com/crazydan-studio/studio.crazydan.org/edit/master',
         showLastUpdateAuthor: true,
-        showLastUpdateTime: true
+        showLastUpdateTime: true,
+        // https://github.com/mstroppel/remark-local-plantuml/#integration
+        remarkPlugins: [localPlantUML]
       }
     ],
     [
@@ -175,7 +184,9 @@ module.exports = {
         editUrl:
           'https://github.com/crazydan-studio/studio.crazydan.org/edit/master',
         showLastUpdateAuthor: true,
-        showLastUpdateTime: true
+        showLastUpdateTime: true,
+        // https://github.com/mstroppel/remark-local-plantuml/#integration
+        remarkPlugins: [localPlantUML]
       }
     ],
     [
@@ -188,7 +199,9 @@ module.exports = {
         editUrl:
           'https://github.com/crazydan-studio/studio.crazydan.org/edit/master',
         showLastUpdateAuthor: true,
-        showLastUpdateTime: true
+        showLastUpdateTime: true,
+        // https://github.com/mstroppel/remark-local-plantuml/#integration
+        remarkPlugins: [localPlantUML]
       }
     ],
     [
@@ -201,7 +214,9 @@ module.exports = {
         editUrl:
           'https://github.com/crazydan-studio/studio.crazydan.org/edit/master',
         showLastUpdateAuthor: true,
-        showLastUpdateTime: true
+        showLastUpdateTime: true,
+        // https://github.com/mstroppel/remark-local-plantuml/#integration
+        remarkPlugins: [localPlantUML]
       }
     ],
     [
@@ -214,7 +229,9 @@ module.exports = {
         editUrl:
           'https://github.com/crazydan-studio/studio.crazydan.org/edit/master',
         showLastUpdateAuthor: true,
-        showLastUpdateTime: true
+        showLastUpdateTime: true,
+        // https://github.com/mstroppel/remark-local-plantuml/#integration
+        remarkPlugins: [localPlantUML]
       }
     ],
     'plugin-image-zoom'
