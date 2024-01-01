@@ -17,11 +17,12 @@
   --ifm-code-font-size: 95%;
 }
 
-.docusaurus-highlight-code-line {
-  background-color: rgb(72, 77, 91);
-  display: block;
-  margin: 0 calc(-1 * var(--ifm-pre-padding));
-  padding: 0 var(--ifm-pre-padding);
+:where(:root) {
+  --docusaurus-highlighted-code-line-bg: rgb(221, 223, 225) !important;
+}
+
+:where([data-theme=dark]) {
+  --docusaurus-highlighted-code-line-bg: rgb(45, 45, 45) !important;
 }
 
 .main-wrapper {
