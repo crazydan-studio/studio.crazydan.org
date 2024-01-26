@@ -26,11 +26,11 @@ export default i18n()
   .trans(['footer.copyright'])
   .zh(
     () =>
-      `版权所有 © 2014-${new Date().getFullYear()} Crazydan Studio<br>本站通过 <a href="https://v2.docusaurus.io/">Docusaurus 2</a> 构建`
+      `版权所有 © 2014 Crazydan Studio<br>本站通过 <a href="https://v2.docusaurus.io/">Docusaurus 2</a> 构建`
   )
   .en(
     () =>
-      `Copyright © 2014-${new Date().getFullYear()} Crazydan Studio<br>Build with <a href="https://v2.docusaurus.io/">Docusaurus 2</a>`
+      `Copyright © 2014 Crazydan Studio<br>Build with <a href="https://v2.docusaurus.io/">Docusaurus 2</a>`
   )
   //
   .trans(['我们'])
