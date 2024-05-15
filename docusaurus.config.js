@@ -254,7 +254,9 @@ module.exports = {
           feedOptions: {
             type: 'all',
             copyright: `Copyright © 2014-${new Date().getFullYear()} Crazydan Studio.`
-          }
+          },
+          // https://github.com/mstroppel/remark-local-plantuml/#integration
+          remarkPlugins: [localPlantUML]
         },
         docs: false
       }
