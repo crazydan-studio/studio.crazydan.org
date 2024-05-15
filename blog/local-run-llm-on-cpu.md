@@ -19,6 +19,8 @@ import Copyright from '@site/src/components/Copyright/OwnBlogByAuthor';
 不过，借助于 [Ollama](https://ollama.com/) 我们还是可以在本地 CPU 上运行开源大模型，
 以亲身体验当下前沿 AI 技术的能力。
 
+<!-- more -->
+
 > 也可以考虑将 Ollama 作为 LLM 的私有化部署方案，在 CPU 和 GPU 算力较大的情况下，
 > 其运行速度还是可以接受的。
 
