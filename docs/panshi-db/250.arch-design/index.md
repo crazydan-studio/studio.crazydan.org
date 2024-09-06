@@ -8,7 +8,7 @@ authors:
 import DataLinkGraph from '@site/src/components/DataLinkGraph';
 import sampleCashbagData from './samples/app-cashbag-data';
 
-import Header from '../_header.md';
+import Header from '@site/docs/panshi-db/_header.md';
 
 <Header />
 

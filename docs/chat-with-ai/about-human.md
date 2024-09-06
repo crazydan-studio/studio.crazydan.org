@@ -6,7 +6,7 @@ authors:
 ---
 
 import {Conversation, Ask, Reply} from '@site/src/components/Conversation';
-import Header from './_header.md';
+import Header from '@site/docs/chat-with-ai/_header.md';
 
 <Header />
 
