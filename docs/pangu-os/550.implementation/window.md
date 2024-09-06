@@ -3,7 +3,7 @@ title: 窗口渲染
 description: TODO
 ---
 
-import Header from '../_header.md';
+import Header from '@site/docs/pangu-os/_header.md';
 
 <Header />
 

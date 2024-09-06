@@ -6,7 +6,7 @@ authors:
 - flytreleft
 ---
 
-import Header from '../_header.md';
+import Header from '@site/docs/pangu-os/_header.md';
 
 <Header />
 

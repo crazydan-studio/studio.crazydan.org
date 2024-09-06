@@ -3,7 +3,7 @@ title: 本地化
 description: TODO
 ---
 
-import Header from '../_header.md';
+import Header from '@site/docs/pangu-os/_header.md';
 
 <Header />
 
