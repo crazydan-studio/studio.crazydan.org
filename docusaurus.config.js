@@ -1,4 +1,18 @@
 const localPlantUML = require('@mstroppel/remark-local-plantuml');
+const math = require('remark-math');
+const katex = require('rehype-katex');
+
+const mdxPlugins = {
+  // https://github.com/mstroppel/remark-local-plantuml/#integration
+  remarkPlugins: [localPlantUML, math],
+  // https://docusaurus.io/docs/2.x/markdown-features/math-equations#configuration
+  rehypePlugins: [katex]
+};
+const docsCommonConfig = {
+  showLastUpdateAuthor: true,
+  showLastUpdateTime: true,
+  ...mdxPlugins
+};
 
 module.exports = {
   title: 'Crazydan Studio',
@@ -126,6 +140,12 @@ module.exports = {
     }
   },
   clientModules: [require.resolve('./src/clientModules/routeModules.ts')],
+  stylesheets: [
+    {
+      href: '/katex/katex.min.css',
+      type: 'text/css'
+    }
+  ],
   plugins: [
     [
       '@docusaurus/plugin-content-blog',
@@ -142,8 +162,7 @@ module.exports = {
         blogTagsListComponent: '@theme/BlogTagsListPage',
         blogTagsPostsComponent: '@theme/BlogTagsPostsPage',
         showReadingTime: true,
-        // https://github.com/mstroppel/remark-local-plantuml/#integration
-        remarkPlugins: [localPlantUML],
+        ...mdxPlugins,
         truncateMarker: /<!--\s*(more)\s*-->/,
         feedOptions: {
           type: null
@@ -168,10 +187,7 @@ module.exports = {
         sidebarPath: require.resolve('./docs/pangu-os/sidebars.js'),
         editUrl:
           'https://github.com/crazydan-studio/studio.crazydan.org/edit/master',
-        showLastUpdateAuthor: true,
-        showLastUpdateTime: true,
-        // https://github.com/mstroppel/remark-local-plantuml/#integration
-        remarkPlugins: [localPlantUML]
+        ...docsCommonConfig
       }
     ],
     [
@@ -183,10 +199,7 @@ module.exports = {
         sidebarPath: require.resolve('./docs/panshi-db/sidebars.js'),
         editUrl:
           'https://github.com/crazydan-studio/studio.crazydan.org/edit/master',
-        showLastUpdateAuthor: true,
-        showLastUpdateTime: true,
-        // https://github.com/mstroppel/remark-local-plantuml/#integration
-        remarkPlugins: [localPlantUML]
+        ...docsCommonConfig
       }
     ],
     [
@@ -198,10 +211,7 @@ module.exports = {
         sidebarPath: require.resolve('./docs/jingwei-store/sidebars.js'),
         editUrl:
           'https://github.com/crazydan-studio/studio.crazydan.org/edit/master',
-        showLastUpdateAuthor: true,
-        showLastUpdateTime: true,
-        // https://github.com/mstroppel/remark-local-plantuml/#integration
-        remarkPlugins: [localPlantUML]
+        ...docsCommonConfig
       }
     ],
     [
@@ -213,10 +223,7 @@ module.exports = {
         sidebarPath: require.resolve('./docs/easy-ops/sidebars.js'),
         editUrl:
           'https://github.com/crazydan-studio/studio.crazydan.org/edit/master',
-        showLastUpdateAuthor: true,
-        showLastUpdateTime: true,
-        // https://github.com/mstroppel/remark-local-plantuml/#integration
-        remarkPlugins: [localPlantUML]
+        ...docsCommonConfig
       }
     ],
     [
@@ -228,10 +235,7 @@ module.exports = {
         sidebarPath: require.resolve('./docs/chat-with-ai/sidebars.js'),
         editUrl:
           'https://github.com/crazydan-studio/studio.crazydan.org/edit/master',
-        showLastUpdateAuthor: true,
-        showLastUpdateTime: true,
-        // https://github.com/mstroppel/remark-local-plantuml/#integration
-        remarkPlugins: [localPlantUML]
+        ...docsCommonConfig
       }
     ],
     'plugin-image-zoom'
@@ -250,13 +254,12 @@ module.exports = {
           include: ['*.md', '*.mdx'],
           postsPerPage: 10,
           showReadingTime: true,
+          ...mdxPlugins,
           truncateMarker: /<!--\s*(more)\s*-->/,
           feedOptions: {
             type: 'all',
             copyright: `Copyright © 2014-${new Date().getFullYear()} Crazydan Studio.`
-          },
-          // https://github.com/mstroppel/remark-local-plantuml/#integration
-          remarkPlugins: [localPlantUML]
+          }
         },
         docs: false
       }
