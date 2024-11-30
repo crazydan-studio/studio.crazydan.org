@@ -136,7 +136,7 @@ module.exports = {
       darkTheme: require('./src/theme/prism/prismDark'),
       // https://docusaurus.io/docs/markdown-features/code-blocks#supported-languages
       // https://github.com/FormidableLabs/prism-react-renderer/blob/master/packages/generate-prism-languages/index.ts#L9-L23
-      additionalLanguages: ['elm', 'elixir', 'erlang', 'bash', 'yaml']
+      additionalLanguages: ['elm', 'elixir', 'erlang', 'bash', 'yaml', 'java']
     }
   },
   clientModules: [require.resolve('./src/clientModules/routeModules.ts')],
