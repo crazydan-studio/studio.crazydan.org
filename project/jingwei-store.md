@@ -4,6 +4,7 @@ slogan: 衔木石填沧海，筑屏障护安全
 icon: /img/jingwei/icon.svg
 cover_image:
 links:
+  site: https://github.com/crazydan-studio/jingwei
   demo:
   document: /docs/jingwei-store
 authors:
