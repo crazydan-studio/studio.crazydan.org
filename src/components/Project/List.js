@@ -11,6 +11,8 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Link from '@docusaurus/Link';
 
+import PayPalButton from '@site/src/components/PayPal/SingleButton';
+
 import i18n from './i18n';
 import styles from './styles.module.css';
 
@@ -207,6 +209,10 @@ function Component({ items, metadata }) {
           <div className="row">
             <BlogSidebar sidebar={sidebar} />
             <main className={clsx('col col--7')}>
+              <PayPalButton
+                style={{ display: 'flex', justifyContent: 'center' }}
+              />
+
               {categoryNames.map((categoryName, idx) => (
                 <ProjectList
                   key={idx}
