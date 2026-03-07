@@ -210,6 +210,7 @@ function Component({ items, metadata }) {
             <BlogSidebar sidebar={sidebar} />
             <main className={clsx('col col--7')}>
               <PayPalButton
+                text='购买产品'
                 style={{ display: 'flex', justifyContent: 'center' }}
               />
 

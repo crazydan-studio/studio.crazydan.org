@@ -3,7 +3,7 @@ import clsx from 'clsx';
 
 import styles from './styles.module.css';
 
-export default function PayPalButton({ style }) {
+export default function PayPalButton({ style, text }) {
   return (
     <div style={style}>
       <form
@@ -15,7 +15,7 @@ export default function PayPalButton({ style }) {
         <input
           className={clsx(styles.submitButton)}
           type="submit"
-          value="友情赞助"
+          value={text}
         />
         <img
           src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg"
