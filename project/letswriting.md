@@ -3,7 +3,7 @@ title: 全民写作平台
 icon:
 cover_image:
 links:
-  site: https://letswriting.net/
+  site:
   document:
 authors:
 - flytreleft

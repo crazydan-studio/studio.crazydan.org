@@ -5,7 +5,7 @@ slogan: 为天地立心，为生民立命，为往圣继绝学，为万世开太
 icon: /img/pangu-os/icon.svg
 cover_image: /img/pangu-os/arch-v1.0.png
 links:
-  site: https://pangu-os.space
+  site: https://pangu-os.crazydan.io/
   document: /docs/pangu-os
 authors:
 - flytreleft

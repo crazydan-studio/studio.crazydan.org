@@ -4,7 +4,7 @@ slogan: 不让你的所思从指尖溜走
 icon: /img/diandi/icon.svg
 cover_image: /img/diandi/logo.svg
 links:
-  demo: https://diandi.app.studio.crazydan.org/
+  demo:
   document:
 authors:
 - flytreleft

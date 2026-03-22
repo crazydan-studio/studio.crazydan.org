@@ -2,7 +2,7 @@
 title: 百家•辩
 cover_image: /img/baijia/bian.jpg
 links:
-  site: https://baijia.link/
+  site: https://baijia.crazydan.io/
   document:
 authors:
 - flytreleft
