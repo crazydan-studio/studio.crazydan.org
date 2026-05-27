@@ -741,8 +741,6 @@ as these are tricky enough.
 
 <Translation><Text source lang='en'>
 
-以下为关于计算机字体渲染相关的选段，请将其翻译为中文：
-
 In theory, the Unicode Line Breaking Algorithm ([UAX #14](https://unicode.org/reports/tr14/))
 identifies positions in a string that are candidate line breaks.
 In practice, there are some additional subtleties.

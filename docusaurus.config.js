@@ -104,7 +104,7 @@ module.exports = {
           items: [
             {
               label: 'flytreeleft 的博客',
-              href: 'https://flytreeleft.org'
+              href: 'https://flytreeleft.crazydan.org'
             }
           ]
         }
