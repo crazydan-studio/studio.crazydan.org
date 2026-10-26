@@ -170,6 +170,24 @@ module.exports = {
       }
     ],
     [
+      '@docusaurus/plugin-content-blog',
+      {
+        id: 'privacies',
+        path: 'privacies',
+        routeBasePath: 'privacies',
+        include: ['*.md', '*.mdx'],
+        postsPerPage: 'ALL',
+        blogTitle: '产品隐私政策',
+        blogDescription: '',
+        showReadingTime: true,
+        ...mdxPlugins,
+        truncateMarker: /<!--\s*(more)\s*-->/,
+        feedOptions: {
+          type: null
+        }
+      }
+    ],
+    [
       '@docusaurus/plugin-content-docs',
       {
         id: 'docs',
